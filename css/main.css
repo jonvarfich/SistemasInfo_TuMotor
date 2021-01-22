@@ -1,0 +1,11 @@
+#navbar-ul li {
+    display: inline;
+}
+
+#background {
+    background-color:#db0909;
+}
+
+body {
+    background-color: rgb(0, 130, 173);
+  }
