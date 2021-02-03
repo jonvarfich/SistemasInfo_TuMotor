@@ -3,27 +3,44 @@ body{
     }
 
 body .background{
-    background-color:#db0909;
+    background-color:#9e9d9d;
     height: 2500px;
     margin: 0px 0px 0px 0px;
     padding-top: 0px;
+    
+    }
+
+.landing{
+    height: 40%;
+    display: flex;
+    justify-content: space-around;
     }
 
 h1{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: rgb(19, 99, 204);
-}
+    }
 
 .topnavbar {
-
+    
     display: flexbox;
-    background-color: azure;
-    width: 100%;
     position: fixed;
     align-items: center;
     text-align: right;
+    justify-content: space-between;
+    
+    background-color: azure;
+    width: 100%;
+    
+    
+    
+    display: flex;
+    }
 
-}
+.topnavbar .logo-img{
+    list-style-type: none;
+    display: inline;
+    }
 
 .topnavbar .navbar-ul li{
     list-style-type: none;
@@ -33,17 +50,31 @@ h1{
 .topnavbar .navbar-ul li a {
     font-size: 20px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: rgb(19, 99, 204);
+    /*color: rgb(19, 99, 204);*/
     margin: 0px 50px 0px 50px;
     text-decoration: none;
-}
+    /* color: #1F3574;  command + k + c */
+    text-transform: uppercase;
+
+    }
+
+.opcion{
+    color:#1F3574;
+    }
 
 .login-btn {
+
     display: flexbox;
     color: azure;
-    background-color: rgb(19, 99, 204);
-    color: azure;
-    #padding: 5px 15px;
-    border-radius: 20px;
+    font-size: 12px;
 
-}
+    /*background-color: rgb(19, 99, 204);*/
+    background-color: #1F3574;
+
+    padding: 5px 15px;
+    /*<!--color: azure;*/
+    /* #padding: 5px 15px;
+    border-radius: 20px; */
+    border-radius: 10px;
+    
+    }   
