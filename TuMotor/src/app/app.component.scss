@@ -1,5 +1,19 @@
-.topnavbar {
+.landing{
+    height: 40%;
+    display: flex;
+    justify-content: space-around;
+    }
+
+.background{
+    background-color:#9e9d9d;
+    height: 2500px;
+    margin: 0px 0px 0px 0px;
+    padding-top: 0px;
+        
+    }
     
+.topnavbar {
+    background-color: white;
     display: flexbox;
     position: fixed;
     align-items: center;
