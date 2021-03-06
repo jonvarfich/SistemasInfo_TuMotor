@@ -48,7 +48,7 @@
     size: 12px;
     &:hover{
         font-size: 18px;
-        color:purple;
+        color: $lightBlue;
         font-weight: bolder;
     }
 }
@@ -65,8 +65,9 @@
     border-radius: 10px;
 
     &:hover{
-        background-color: purple;
+        background-color: $greenProject;
         font-weight: bolder;
+        color: $blueProject;
     }
     
     }   
