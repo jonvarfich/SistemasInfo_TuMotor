@@ -17,6 +17,11 @@ const routes: Routes = [
         loadChildren: () => import('./pages/home/home.module').then(function (m) {
             return m.HomeModule;
           }),
+      },{
+        path:'servicio',
+        loadChildren: () => import('./pages/servicio/servicio.module').then(function (m) {
+            return m.ServicioModule;
+          }),
       },
     ],
   },

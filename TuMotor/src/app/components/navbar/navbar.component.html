@@ -1,6 +1,5 @@
 <div class = "background">
             
-
     <div class = 'topnavbar'>
   
       <div class = "logo-img"> <img src="" alt=""> 
@@ -8,21 +7,19 @@
       </div>
     
       <ul class= 'navbar-ul'>
-  
-        <li> <a href="" class = "opcion">Servicio</a> </li>
-        <li> <a href="" class = "opcion">Nosotros</a> </li>
-        <li> <a href="" class = "opcion">Contacto</a> </li>
+        <li> <a [routerLink]="['/home']" class = "opcion">Home</a> </li>
+
+        <li> <a [routerLink]="['/servicio']" class = "opcion">Servicio</a> </li>
+        <li> <a [routerLink]="['/nosotros']" class = "opcion">Nosotros</a> </li>
+        <li> <a [routerLink]="['/contacto']" class = "opcion">Contacto</a> </li>
     
-        <li> <a href="" class = "login-btn"> Registro </a> </li>
-      
+        <li> <a href="" class = "login-btn">sign in</a> </li>
       </ul>
     
   </div>
   
-  <div class="landing">
-    
+  <!--<div class="landing">
     <img src="/assets/imagenPrincipal.jpg" alt="" class = landing-bg>
-    
-  </div>
+  </div>-->
   </div>
   

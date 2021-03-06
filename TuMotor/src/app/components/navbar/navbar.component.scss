@@ -1,3 +1,5 @@
+@import "../../styles/variables.scss"; 
+
 .landing{
     height: 40%;
     display: flex;
@@ -34,7 +36,6 @@
     /* color: #1F3574;  command + k + c */
     text-transform: uppercase;
 
-
     }
 
 .topnavbar .navbar-ul li{
@@ -43,9 +44,14 @@
     }
 
 .opcion{
-    color:#1F3574;
+    color: $blueProject;
     size: 12px;
+    &:hover{
+        font-size: 18px;
+        color:purple;
+        font-weight: bolder;
     }
+}
 
 .login-btn {
 
@@ -53,13 +59,14 @@
     color: azure;
     font-size: 12px;
 
-    /*background-color: rgb(19, 99, 204);*/
     background-color: #1F3574;
 
     padding: 5px 15px;
-    /*<!--color: azure;*/
-    /* #padding: 5px 15px;
-    border-radius: 20px; */
     border-radius: 10px;
+
+    &:hover{
+        background-color: purple;
+        font-weight: bolder;
+    }
     
     }   
