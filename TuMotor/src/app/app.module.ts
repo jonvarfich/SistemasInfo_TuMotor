@@ -18,6 +18,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 /////////////////////////
 import { NgAuthService } from "./services/auth.service";
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { NgAuthService } from "./services/auth.service";
     NosotrosComponent,
     ContactoComponent,
     LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
