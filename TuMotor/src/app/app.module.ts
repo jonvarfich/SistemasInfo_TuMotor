@@ -8,7 +8,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { NosotrosComponent } from './pages/nosotros/nosotros.component';
 import { ContactoComponent } from './pages/contacto/contacto.component';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from "./components/login/login.Component";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 /// Angular Modules /////

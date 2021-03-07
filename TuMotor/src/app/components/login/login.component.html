@@ -1,33 +1,50 @@
-<div class="modal-dialog modal-login">
-    <div class="modal-content">
-      <div class="authBlock">
-        <div class="modal-header">				
-          <h4 class="modal-title">Login</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        </div>
-        <div class="modal-body">				
-          <div class="form-group">
-            <label>Username</label>
-            <input type="text" class="form-control" placeholder="Username" required="required" #userName required>
-          </div>
-          <div class="form-group">
-            <div class="clearfix">
-              <label>Password</label>
-              <a href="#" class="pull-right text-muted"><small>Forgot?</small></a>
-            </div>
-            <input type="password" class="form-control" placeholder="Password" required="required" #userPassword required>
-          </div>
-        </div>
-        
-        <div class="modal-footer">
-
-          <label class="checkbox-inline pull-left"><input type="checkbox"> Remember me</label>
-    
-          <div class="formGroup">
-            <input type="button" class="btn btn-primary pull-right" (click)="ngAuthService.SignIn(userName.value, userPassword.value)" value="Sign in">
-          </div>
-
-        </div>
+<div class="container-fluid letra bg-pink tc">
+  <div class="row">
+      <div class="col-md-12 cen">
+          <img class="mt-1" src="../../../assets/images/logo.png" alt="SS" width="180px" height="160px">
       </div>
-    </div>
+      <div class="col-md-10 offset-1">
+          <form class="form" (ngSubmit)="login(f)" #f="ngForm" novalidate="">
+              <br>
+              <h1 class="h3 mb-3 cen">Iniciar sesión</h1>
+              <br>
+              <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                      <div class="input-group-text ador-form"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                  d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z" />
+                              <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                              <path fill-rule="evenodd"
+                                  d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z" />
+                          </svg></div>
+                  </div>
+                  <input type="text" id="email" name="email" class="form-control" #email="ngModel" ngModel [ngClass]="{'is-invalid':email.errors!=null && email.touched, 'is-valid':email.errors==null}" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="Correo electrónico">
+                  <!--Se enmarca ligeramente en verde si se cumple con el formato válido-->
+                  <div *ngIf="email.valid" class="valid-feedback"></div>
+              </div>
+              <br>
+              <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                      <div class="input-group-text ador-form"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-key" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                              <path fill-rule="evenodd"
+                                  d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8zm4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5z" />
+                              <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                          </svg></div>
+                  </div>
+                  <input type="password" class="form-control" id="password" name="password" #password="ngModel" ngModel placeholder="Password" [ngClass]="{'is-invalid':password.errors!=null && password.touched, 'is-valid':password.errors==null}" required minlength="6">
+                  <!--Se enmarca ligeramente en verde si se cumple con el formato válido-->
+                  <div *ngIf="email.valid" class="valid-feedback"></div>
+                  <hr>
+              </div>
+              <br>
+              <button class="btn btn-lg btn-acept btn-block" type="submit">Ingresar</button>
+              <br>
+          </form>
+          <button class="btn btn-lg btn-reg btn-block" [routerLink]="'/register'"> Registrarse</button>
+          <br>
+          <button class="btn btn-lg btn-seg btn-block" (click)="onGoogle()"> Google</button>
+          <br>
+          <p id="tw" class="mt-5 mb-3">&copy; Inversiones MIK 2020</p>
+      </div>
   </div>
+</div>
