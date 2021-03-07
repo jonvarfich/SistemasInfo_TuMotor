@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServicioComponent } from './pages/servicio/servicio.component';
@@ -9,6 +8,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { NosotrosComponent } from './pages/nosotros/nosotros.component';
 import { ContactoComponent } from './pages/contacto/contacto.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +19,7 @@ import { ContactoComponent } from './pages/contacto/contacto.component';
     LandingComponent,
     NosotrosComponent,
     ContactoComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
