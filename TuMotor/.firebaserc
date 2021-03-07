@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "tumotor-f9a71"
+  },
+  "targets": {
+    "tumotor-f9a71": {
+      "hosting": {
+        "TuMotor": [
+          "tumotor-f9a71"
+        ]
+      }
+    }
+  }
+}
