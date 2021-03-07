@@ -22,6 +22,16 @@ const routes: Routes = [
         loadChildren: () => import('./pages/servicio/servicio.module').then(function (m) {
             return m.ServicioModule;
           }),
+      },{
+        path:'nosotros',
+        loadChildren: () => import('./pages/nosotros/nosotros.module').then(function (m) {
+            return m.NosotrosModule;
+          }),
+      },{
+        path:'contacto',
+        loadChildren: () => import('./pages/contacto/contacto.module').then(function (m) {
+            return m.ContactoModule;
+          }),
       },
     ],
   },
