@@ -19,6 +19,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 /////////////////////////
 import { NgAuthService } from "./services/auth.service";
 import { RegisterComponent } from './components/register/register.component';
+import { UserhomeComponent } from './pages/userhome/userhome.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { RegisterComponent } from './components/register/register.component';
     ContactoComponent,
     LoginComponent,
     RegisterComponent,
+    UserhomeComponent,
   ],
   imports: [
     BrowserModule,
