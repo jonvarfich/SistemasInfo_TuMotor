@@ -4,6 +4,8 @@ import '@firebase/auth'
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
+import { LoginComponent } from '../components/login/login.component';
+
 
 export interface User {
     uid: string;
@@ -44,6 +46,7 @@ export class NgAuthService {
         .then((result) => {
           this.ngZone.run(() => {
             this.router.navigate(['userhome']);
+            document.getElementById('modalclosebutton').click();
           });
           this.SetUserData(result.user);
         }).catch((error) => {
@@ -57,7 +60,9 @@ export class NgAuthService {
         .then((result) => {
           this.SendVerificationMail();
           this.SetUserData(result.user);
+          document.getElementById('modalclosebutton').click();
           this.router.navigate(['userhome']);
+          
         }).catch((error) => {
           window.alert(error.message)
         })
@@ -97,7 +102,9 @@ export class NgAuthService {
       return this.afAuth.signInWithPopup(provider)
       .then((result) => {
          this.ngZone.run(() => {
+            document.getElementById('modalclosebutton').click();
             this.router.navigate(['userhome']);
+            
           })
         this.SetUserData(result.user);
       }).catch((error) => {

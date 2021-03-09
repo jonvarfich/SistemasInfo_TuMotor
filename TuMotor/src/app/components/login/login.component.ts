@@ -16,4 +16,9 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public static closemodal(){
+    document.getElementById("close").click();
+  }
+
+
 }
