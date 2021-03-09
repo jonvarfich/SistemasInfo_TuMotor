@@ -32,6 +32,11 @@ const routes: Routes = [
         loadChildren: () => import('./pages/contacto/contacto.module').then(function (m) {
             return m.ContactoModule;
           }),
+      },{
+        path:'userhome',
+        loadChildren: () => import('./pages/userhome/userhome.module').then(function (m) {
+            return m.UserhomeModule;
+          }),
       },
     ],
   },

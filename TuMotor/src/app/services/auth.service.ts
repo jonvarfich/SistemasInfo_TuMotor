@@ -43,7 +43,7 @@ export class NgAuthService {
       return this.afAuth.signInWithEmailAndPassword(email, password)
         .then((result) => {
           this.ngZone.run(() => {
-            this.router.navigate(['dashboard']);
+            this.router.navigate(['userhome']);
           });
           this.SetUserData(result.user);
         }).catch((error) => {
@@ -57,6 +57,7 @@ export class NgAuthService {
         .then((result) => {
           this.SendVerificationMail();
           this.SetUserData(result.user);
+          this.router.navigate(['userhome']);
         }).catch((error) => {
           window.alert(error.message)
         })
@@ -82,6 +83,11 @@ export class NgAuthService {
       const user = JSON.parse(localStorage.getItem('user'));
       return (user !== null && user.emailVerified !== false) ? true : false;
     }
+
+    get userdata(): JSON{
+      const user = JSON.parse(localStorage.getItem('user'));
+      return user;
+    }
   
     GoogleAuth() {
       return this.AuthLogin(new firebase.auth.GoogleAuthProvider());
@@ -91,7 +97,7 @@ export class NgAuthService {
       return this.afAuth.signInWithPopup(provider)
       .then((result) => {
          this.ngZone.run(() => {
-            this.router.navigate(['dashboard']);
+            this.router.navigate(['userhome']);
           })
         this.SetUserData(result.user);
       }).catch((error) => {
