@@ -1,6 +1,10 @@
+@import './app/styles/variables.scss';
 /* You can add global styles to this file, and also import other style files */
 
-
-.body{
-    margin:0;
+body{
+    margin: 0;
+    padding: 0;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    background-image: url('./assets/background.svg');
 }

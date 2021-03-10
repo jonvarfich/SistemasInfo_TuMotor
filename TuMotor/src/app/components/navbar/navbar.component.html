@@ -16,10 +16,14 @@
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/contacto']">Contacto</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/userhome']" *ngIf='user'>User Panel</a>
+        </li>
       </ul>
       <!-- <button type="button" href="#loginModal" data-toggle="modal" class="btn btn-primary">Login</button> -->
-      <button type="button" href="#loginModal" data-toggle="modal" class="btn btn-primary">Login</button>
-      <button type="button" class="btn btn-primary">Register</button>
+      <button type="button" href="#loginModal" data-toggle="modal" class="btn btn-primary" *ngIf='!user'>Login</button>
+      <button type="button" href="#registerModal" data-toggle="modal" class="btn btn-primary" *ngIf='!user'>Register</button>
+      <button type="button"  data-toggle="modal" class="btn btn-primary" *ngIf='user' (click)='ngAuthService.SignOut()'>Sign Out</button>
     </div>
   </nav>
 
@@ -27,4 +31,8 @@
 
   <div id="loginModal" class="modal fade">
     <app-login></app-login>
+  </div>
+
+  <div id="registerModal" class="modal fade">
+    <app-register></app-register>
   </div>

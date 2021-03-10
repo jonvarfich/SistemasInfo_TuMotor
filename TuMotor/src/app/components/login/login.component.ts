@@ -35,4 +35,9 @@ export class LoginComponent implements OnInit {
 
 
 
+  public static closemodal(){
+    document.getElementById("close").click();
+  }
+
+
 }

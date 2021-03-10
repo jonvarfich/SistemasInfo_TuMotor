@@ -1,6 +1,16 @@
+@import '../../styles/variables.scss';
+
 .letra{
     font-style:normal;
 }
 .mapa{
     height: auto;
+}
+
+.contain{
+    margin: 10vh 10vh 10vh 10vh;
+    background-color: $light;
+    height: fit-content;
+    padding: 3vh;
+    border-radius: 20px;
 }
