@@ -9,10 +9,11 @@ import { NgAuthService } from '../../services/auth.service';
 export class UserhomeComponent implements OnInit {
 
   public user = JSON.parse(localStorage.getItem('user'));
+
   constructor(private ngAuthService: NgAuthService) { }
 
   ngOnInit(): void {
-    console.log(this.user);
+   
   }
 
 }
