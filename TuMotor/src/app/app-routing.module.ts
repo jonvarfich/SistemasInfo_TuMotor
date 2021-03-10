@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {AuthenticationGuard} from './guard/authguard.guard'
 
 const routes: Routes = [
 
@@ -37,6 +38,7 @@ const routes: Routes = [
         loadChildren: () => import('./pages/userhome/userhome.module').then(function (m) {
             return m.UserhomeModule;
           }),
+        
       },
     ],
   },
