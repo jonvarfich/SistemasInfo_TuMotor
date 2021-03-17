@@ -8,11 +8,10 @@ import { User } from '../../models/user'
 })
 export class UserpanelComponent implements OnInit {
 
-  @Input() user: User =null;
+  @Input() public user: User;
   constructor() { }
 
   ngOnInit(): void {
-    
   }
 
 }

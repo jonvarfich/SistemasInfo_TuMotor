@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgAuthService } from '../../services/auth.service';
+import { NgAuthService, User } from '../../services/auth.service';
 
 @Component({
   selector: 'app-userhome',
@@ -8,11 +8,12 @@ import { NgAuthService } from '../../services/auth.service';
 })
 export class UserhomeComponent implements OnInit {
 
-  public user = JSON.parse(localStorage.getItem('user'));
-  constructor(private ngAuthService: NgAuthService) { }
+  public user: User;
+  constructor(private ngAuthService: NgAuthService) {
+    this.user = ngAuthService.userdata;
+  }
 
   ngOnInit(): void {
-    console.log(this.user);
   }
 
 }

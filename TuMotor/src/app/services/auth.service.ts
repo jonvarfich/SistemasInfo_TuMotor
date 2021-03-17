@@ -61,7 +61,8 @@ export class NgAuthService {
           this.SendVerificationMail();
           this.SetUserData(result.user);
           document.getElementById('modalclosebutton').click();
-          this.router.navigate(['userhome']);
+          //this.router.navigate(['userhome']);
+          this.redirectTo('userhome');
           
         }).catch((error) => {
           window.alert(error.message)
@@ -89,8 +90,8 @@ export class NgAuthService {
       return (user !== null && user.emailVerified !== false) ? true : false;
     }
 
-    get userdata(): JSON{
-      const user = JSON.parse(localStorage.getItem('user'));
+    get userdata(): User{
+      const user: User = JSON.parse(localStorage.getItem('user'));
       return user;
     }
   
@@ -103,7 +104,8 @@ export class NgAuthService {
       .then((result) => {
          this.ngZone.run(() => {
             document.getElementById('modalclosebutton').click();
-            this.router.navigate(['userhome']);
+            //this.router.navigate(['userhome']);
+            this.redirectTo('userhome');
             
           })
         this.SetUserData(result.user);
@@ -129,7 +131,13 @@ export class NgAuthService {
     SignOut() {
       return this.afAuth.signOut().then(() => {
         localStorage.removeItem('user');
-        this.router.navigate(['home']);
+        //this.router.navigate(['']);
+        this.redirectTo('');
       })
     }  
+
+   redirectTo(uri:string){
+      this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+      this.router.navigate([uri]));
+  }
 }
