@@ -1,4 +1,4 @@
-import { Injectable, NgZone } from '@angular/core';
+import { Injectable, NgZone, SystemJsNgModuleLoader } from '@angular/core';
 import { firebase } from '@firebase/app'
 import '@firebase/auth'
 import { AngularFireAuth } from "@angular/fire/auth";
@@ -87,7 +87,7 @@ export class NgAuthService {
   
     get isLoggedIn(): boolean {
       const user = JSON.parse(localStorage.getItem('user'));
-      return (user !== null && user.emailVerified !== false) ? true : false;
+      return (user !== null) ? true : false;
     }
 
     get userdata(): User{
@@ -106,7 +106,6 @@ export class NgAuthService {
             document.getElementById('modalclosebutton').click();
             //this.router.navigate(['userhome']);
             this.redirectTo('userhome');
-            
           })
         this.SetUserData(result.user);
       }).catch((error) => {
@@ -132,12 +131,15 @@ export class NgAuthService {
       return this.afAuth.signOut().then(() => {
         localStorage.removeItem('user');
         //this.router.navigate(['']);
-        this.redirectTo('');
+        this.redirectTo('/home');
       })
     }  
 
    redirectTo(uri:string){
+
       this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
       this.router.navigate([uri]));
+
+      
   }
 }

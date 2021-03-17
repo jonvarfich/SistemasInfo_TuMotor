@@ -35,6 +35,7 @@ const routes: Routes = [
           }),
       },{
         path:'userhome',
+        canActivate:[AuthenticationGuard],
         loadChildren: () => import('./pages/userhome/userhome.module').then(function (m) {
             return m.UserhomeModule;
           }),
