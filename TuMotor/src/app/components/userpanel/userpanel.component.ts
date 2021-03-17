@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { NgAuthService } from 'src/app/services/auth.service';
 import { User } from '../../models/user'
 
 @Component({
@@ -8,11 +9,15 @@ import { User } from '../../models/user'
 })
 export class UserpanelComponent implements OnInit {
 
-  @Input() user: User =null;
-  constructor() { }
+  //@Input() public user: User;
+  public user: User;
+
+  constructor(private ngAuthService: NgAuthService) {
+    this.user = this.ngAuthService.userdata;
+  }
 
   ngOnInit(): void {
-    
+    this.user = this.ngAuthService.userdata;
   }
 
 }
