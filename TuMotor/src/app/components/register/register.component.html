@@ -4,7 +4,7 @@
         
         <div class="modal-header">				
           <h4 class="modal-title">Register</h4>
-          <button id='modalclosebutton' type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <button id= "modalclosebutton" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         </div>
 
         <div class="modal-body">	
@@ -28,11 +28,11 @@
         <label class="checkbox-inline pull-left"><input type="checkbox"> Remember me</label>
 
         <div class="formGroup">
-        <input type="button" class="btn btn-primary pull-right" (click)="ngAuthService.SignUp(userEmail.value, userPassword.value)" value="Sign Up">
+        <input type="button" class="btn btn-primary pull-right" data-dismiss="modal" (click)="ngAuthService.SignUp(userEmail.value, userPassword.value)" value="Sign Up">
         </div>
 
         <div class="formGroup">
-        <button type="button" class="btn btn-block btn-danger" (click)="ngAuthService.GoogleAuth()">
+        <button type="button" class="btn btn-block btn-danger" data-dismiss="modal" (click)="ngAuthService.GoogleAuth()">
           <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
         </button>
         </div>
