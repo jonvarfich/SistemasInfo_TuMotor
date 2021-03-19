@@ -21,6 +21,7 @@ import { NgAuthService } from "./services/auth.service";
 import { RegisterComponent } from './components/register/register.component';
 import { UserhomeComponent } from './pages/userhome/userhome.component';
 import { UserpanelComponent } from './components/userpanel/userpanel.component';
+import { ManagerdatesComponent } from './pages/managerdates/managerdates.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { UserpanelComponent } from './components/userpanel/userpanel.component';
     RegisterComponent,
     UserhomeComponent,
     UserpanelComponent,
+    ManagerdatesComponent    
   ],
   imports: [
     BrowserModule,

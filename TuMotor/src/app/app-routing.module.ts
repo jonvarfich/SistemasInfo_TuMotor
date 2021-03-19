@@ -41,6 +41,12 @@ const routes: Routes = [
           }),
         
       },
+      {
+        path:'managerdates',
+        loadChildren: () => import('./pages/managerdates/managerdates.module').then(function (m) {
+          return m.ManagerdatesModule;
+        })
+      }
     ],
   },
 ];
