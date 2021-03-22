@@ -1,20 +1,24 @@
 @import '../../styles/variables.scss';
 
-.body{
-    .h1{
-        padding-top: 5%;
-    }
-    .the-team{
+.the-team{
     margin: 10vh 10vh 10vh 10vh;
     background-color: $light;
     height: 50vh;
     padding: 3vh;
     border-radius: 20px;
+    color: $blueProject;
+    
+    .card-text{
+        color: black;
     }
+}
 
-    .footer{
+.h1{
+    color: $blueProject;
+    padding-top: 5%;
+}
+
+.footer{
     justify-content: center;
     padding-top: 15%;
-    }
-
 }
