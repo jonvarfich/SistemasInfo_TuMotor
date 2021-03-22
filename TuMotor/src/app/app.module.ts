@@ -22,7 +22,11 @@ import { RegisterComponent } from './components/register/register.component';
 import { UserhomeComponent } from './pages/userhome/userhome.component';
 import { UserpanelComponent } from './components/userpanel/userpanel.component';
 import { ManagerdatesComponent } from './pages/managerdates/managerdates.component';
+<<<<<<< HEAD
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+=======
+import { FooterComponent } from './components/footer/footer.component';
+>>>>>>> 784d4aecc8ea77ac8faa39787fd77a9a6a3e98f2
 
 @NgModule({
   declarations: [
@@ -37,7 +41,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     RegisterComponent,
     UserhomeComponent,
     UserpanelComponent,
-    ManagerdatesComponent    
+    ManagerdatesComponent,
+    FooterComponent    
   ],
   imports: [
     BrowserModule,
