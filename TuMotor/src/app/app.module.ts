@@ -22,6 +22,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { UserhomeComponent } from './pages/userhome/userhome.component';
 import { UserpanelComponent } from './components/userpanel/userpanel.component';
 import { ManagerdatesComponent } from './pages/managerdates/managerdates.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { ManagerdatesComponent } from './pages/managerdates/managerdates.compone
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireAuthModule,
+    NgbModule,
   ],
   providers: [
     NgAuthService,
