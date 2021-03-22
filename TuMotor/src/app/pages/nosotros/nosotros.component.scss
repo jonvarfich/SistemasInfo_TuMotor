@@ -1,9 +1,20 @@
 @import '../../styles/variables.scss';
 
-.the-team{
+.body{
+    .h1{
+        padding-top: 5%;
+    }
+    .the-team{
     margin: 10vh 10vh 10vh 10vh;
     background-color: $light;
     height: 50vh;
     padding: 3vh;
     border-radius: 20px;
+    }
+
+    .footer{
+    justify-content: center;
+    padding-top: 15%;
+    }
+
 }
