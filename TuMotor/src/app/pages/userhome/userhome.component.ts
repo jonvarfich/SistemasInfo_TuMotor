@@ -16,8 +16,5 @@ export class UserhomeComponent implements OnInit {
   ngOnInit(): void {
    
   }
-<<<<<<< HEAD
 
-=======
->>>>>>> 19465e6c41cb5d3238d1ef83e4a6d73ef279b0a1
 }
