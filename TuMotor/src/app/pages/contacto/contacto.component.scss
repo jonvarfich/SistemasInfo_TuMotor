@@ -1,16 +1,21 @@
 @import '../../styles/variables.scss';
 
-.letra{
-    font-style:normal;
-}
-.mapa{
+.mapa
+{
     height: auto;
 }
 
-.contain{
+.display-1
+{
+    color: $blueProject;
+}
+
+.contain
+{
     margin: 10vh 10vh 10vh 10vh;
     background-color: $light;
     height: fit-content;
     padding: 3vh;
     border-radius: 20px;
+    
 }

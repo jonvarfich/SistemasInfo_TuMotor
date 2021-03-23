@@ -22,6 +22,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { UserhomeComponent } from './pages/userhome/userhome.component';
 import { UserpanelComponent } from './components/userpanel/userpanel.component';
 import { ManagerdatesComponent } from './pages/managerdates/managerdates.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ManagerdatesComponent } from './pages/managerdates/managerdates.compone
     RegisterComponent,
     UserhomeComponent,
     UserpanelComponent,
-    ManagerdatesComponent    
+    ManagerdatesComponent,
+    FooterComponent    
   ],
   imports: [
     BrowserModule,
