@@ -4,8 +4,12 @@ import '@firebase/auth'
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
+import { Observable, Subscription } from 'rxjs';
+import { DocumentSnapshot } from '@firebase/firestore-types';
 import { LoginComponent } from '../components/login/login.component';
+import { Vehicle } from '../models/vehicle';
 
+//https://stackoverflow.com/questions/49002735/how-to-add-collection-within-document-angularfire2-angular5
 
 export interface User {
     uid: string;
@@ -21,6 +25,8 @@ export interface User {
 
 export class NgAuthService {
     userState: any;
+    LoggedUser: User;
+    firestore: any;
 
     constructor(
       public afs: AngularFirestore,
@@ -55,15 +61,12 @@ export class NgAuthService {
     }
   
     SignUp(email, password) {
-      console.log("sign");
       return this.afAuth.createUserWithEmailAndPassword(email, password)
         .then((result) => {
-          this.SendVerificationMail();
+          //this.SendVerificationMail();
           this.SetUserData(result.user);
           document.getElementById('modalclosebutton').click();
-          //this.router.navigate(['userhome']);
-          this.redirectTo('userhome');
-          
+          this.redirectTo('userhome'); 
         }).catch((error) => {
           window.alert(error.message)
         })
@@ -97,6 +100,8 @@ export class NgAuthService {
   
     GoogleAuth() {
       return this.AuthLogin(new firebase.auth.GoogleAuthProvider());
+      this.LoggedUser = JSON.parse(localStorage.getItem('user'));
+      this.SetUserVehicleCollection();
     }
   
     AuthLogin(provider) {
@@ -104,13 +109,27 @@ export class NgAuthService {
       .then((result) => {
          this.ngZone.run(() => {
             document.getElementById('modalclosebutton').click();
-            //this.router.navigate(['userhome']);
             this.redirectTo('userhome');
           })
         this.SetUserData(result.user);
       }).catch((error) => {
         window.alert(error)
       })
+    }
+
+    SetUserVehicleCollection(){
+
+      const vehicleRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${this.LoggedUser.uid}`);
+      const userVehicle: Vehicle = {
+        uid: this.LoggedUser.uid,
+      }
+
+      this.afs.collection(`users/${this.LoggedUser.uid}/vehicles`).add(userVehicle);
+
+      return vehicleRef.set(userVehicle,{
+        merge: true
+      })
+
     }
   
     SetUserData(user) {
@@ -122,6 +141,8 @@ export class NgAuthService {
         photoURL: user.photoURL,
         emailVerified: user.emailVerified
       }
+      this.LoggedUser = userState;
+      this.SetUserVehicleCollection()
       return userRef.set(userState, {
         merge: true
       })
