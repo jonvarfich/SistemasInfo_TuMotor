@@ -6,4 +6,19 @@
     height: 50vh;
     padding: 3vh;
     border-radius: 20px;
+    color: $blueProject;
+    
+    .card-text{
+        color: black;
+    }
+}
+
+.h1{
+    color: $blueProject;
+    padding-top: 5%;
+}
+
+.footer{
+    justify-content: center;
+    padding-top: 15%;
 }

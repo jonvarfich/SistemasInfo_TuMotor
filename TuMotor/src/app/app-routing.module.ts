@@ -35,11 +35,18 @@ const routes: Routes = [
           }),
       },{
         path:'userhome',
+        canActivate:[AuthenticationGuard],
         loadChildren: () => import('./pages/userhome/userhome.module').then(function (m) {
             return m.UserhomeModule;
           }),
         
       },
+      {
+        path:'managerdates',
+        loadChildren: () => import('./pages/managerdates/managerdates.module').then(function (m) {
+          return m.ManagerdatesModule;
+        })
+      }
     ],
   },
 ];

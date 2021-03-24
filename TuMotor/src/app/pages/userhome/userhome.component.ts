@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NgAuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
+import { NgAuthService, User } from '../../services/auth.service';
 
 @Component({
   selector: 'app-userhome',
@@ -15,5 +16,4 @@ export class UserhomeComponent implements OnInit {
   ngOnInit(): void {
    
   }
-
 }
