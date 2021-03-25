@@ -25,6 +25,9 @@ import { ManagerdatesComponent } from './pages/managerdates/managerdates.compone
 import { FooterComponent } from './components/footer/footer.component';
 import { AdminhomeComponent } from './pages/adminhome/adminhome.component';
 import { MechanichomeComponent } from './pages/mechanichome/mechanichome.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { OrdenesComponent } from './pages/ordenes/ordenes.component';
+import { ReporteComponent } from './pages/reporte/reporte.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,10 @@ import { MechanichomeComponent } from './pages/mechanichome/mechanichome.compone
     ManagerdatesComponent,
     FooterComponent,
     AdminhomeComponent,
-    MechanichomeComponent    
+    MechanichomeComponent,
+    ProfileComponent,
+    OrdenesComponent,
+    ReporteComponent    
   ],
   imports: [
     BrowserModule,
