@@ -23,6 +23,7 @@ import { UserhomeComponent } from './pages/userhome/userhome.component';
 import { UserpanelComponent } from './components/userpanel/userpanel.component';
 import { ManagerdatesComponent } from './pages/managerdates/managerdates.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { AdminhomeComponent } from './pages/adminhome/adminhome.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { FooterComponent } from './components/footer/footer.component';
     UserhomeComponent,
     UserpanelComponent,
     ManagerdatesComponent,
-    FooterComponent    
+    FooterComponent,
+    AdminhomeComponent    
   ],
   imports: [
     BrowserModule,

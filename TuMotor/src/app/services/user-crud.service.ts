@@ -33,7 +33,6 @@ export class UserCrudService {
   
   addvehicle(){
 
-
       this.LoggedUser = this.ngAuthService.userdata;
       const vehicleRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${this.LoggedUser.uid}`);
       const userVehicle: Vehicle = {
@@ -41,11 +40,8 @@ export class UserCrudService {
       }
 
       this.afs.collection(`users/${this.LoggedUser.uid}/vehicles`).add(userVehicle);
-
       
     }
     
-
-
 
 }

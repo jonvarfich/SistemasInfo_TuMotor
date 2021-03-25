@@ -46,7 +46,13 @@ const routes: Routes = [
         loadChildren: () => import('./pages/managerdates/managerdates.module').then(function (m) {
           return m.ManagerdatesModule;
         })
-      }
+      },
+      {
+        path:'adminhome',
+        loadChildren: () => import('./pages/adminhome/adminhome.module').then(function (m) {
+          return m.AdminhomeModule;
+        })
+      },
     ],
   },
 ];
