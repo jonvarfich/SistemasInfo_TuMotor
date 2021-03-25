@@ -13,8 +13,10 @@
         <div class="card-body">Email : {{user.email}}</div>
         <div class="card-body">Manejo de vehículos</div>
         <div class="card-footer">Footer</div>
-        <button type="button" (click)='addvehicle()'>addvehicle</button>
+        <button type="button" href="#addVehicleModal" data-toggle="modal" class="btn btn-primary">addvehicle</button>
     </div>
 
-
+    <div id="addVehicleModal" class="modal fade">
+        <app-add-vehicle></app-add-vehicle>
+      </div>
 </section>

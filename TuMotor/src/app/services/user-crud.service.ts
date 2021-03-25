@@ -31,15 +31,17 @@ export class UserCrudService {
     public ngAuthService: NgAuthService,
   ) {}
   
-  addvehicle(){
+  addvehicle(name:string, brand:string){
 
       this.LoggedUser = this.ngAuthService.userdata;
       const vehicleRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${this.LoggedUser.uid}`);
       const userVehicle: Vehicle = {
-        uid: 'hola',
+        name: name,
+        marca: brand,
       }
 
       this.afs.collection(`users/${this.LoggedUser.uid}/vehicles`).add(userVehicle);
+      console.log('hello');
       
     }
     

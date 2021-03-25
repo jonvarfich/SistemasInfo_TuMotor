@@ -25,6 +25,7 @@ import { ManagerdatesComponent } from './pages/managerdates/managerdates.compone
 import { FooterComponent } from './components/footer/footer.component';
 import { AdminhomeComponent } from './pages/adminhome/adminhome.component';
 import { MechanichomeComponent } from './pages/mechanichome/mechanichome.component';
+import { AddVehicleComponent } from './components/add-vehicle/add-vehicle.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { MechanichomeComponent } from './pages/mechanichome/mechanichome.compone
     ManagerdatesComponent,
     FooterComponent,
     AdminhomeComponent,
-    MechanichomeComponent    
+    MechanichomeComponent,
+    AddVehicleComponent    
   ],
   imports: [
     BrowserModule,

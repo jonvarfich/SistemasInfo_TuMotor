@@ -22,11 +22,5 @@ export class UserpanelComponent implements OnInit {
     console.log(this.ngAuthService.userdata)
   }
 
-  addvehicle(){
-
-    console.log('1');
-    this.usercrud.addvehicle();
-
-  }
 
 }
