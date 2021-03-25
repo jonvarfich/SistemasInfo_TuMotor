@@ -1,0 +1,50 @@
+@import '../../styles/variables.scss';
+
+.big-box{
+    margin: 10vh 1vh 10vh 1vh;
+    background-color: $light;
+    height: 70vh;
+    padding: 3vh;
+    border-radius: 20px;
+    display: flex;
+
+    .gestor{
+        margin: 1vh 10vh 10vh 20vh;
+        background-color: $light;
+        height: 50vh;
+        padding: 3vh;
+        border-radius: 20px;
+    
+        .card-body{
+            background-color: white;
+            height: 15vh;
+            padding: 3vh;
+            border-radius: 20px;
+            border-color:darkblue;
+            
+        }
+    }
+    
+}
+
+.btn-primary{
+    background-color: $blueProject;
+    border-radius: 20px;
+    border: none;
+    margin: 5px;
+    
+}
+
+.botones{
+    padding-top: 30vh;
+    align-items:baseline;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+h4{
+    color:$blueProject;
+    font-weight:600;
+    font-size: 10vh;
+}

@@ -1,3 +1,33 @@
 <app-navbar></app-navbar>
-<p>adminhome works!</p>
+<section class="big-box">
+    <div class="botones">
+        <button type="button" href="#loginModal" data-toggle="modal" class="btn btn-primary" *ngIf='!user'>Gestor de citas</button>
+        <button type="button" href="#loginModal" data-toggle="modal" class="btn btn-primary" *ngIf='!user'>Gestor de ordenes</button>
+        <button type="button" href="#loginModal" data-toggle="modal" class="btn btn-primary" *ngIf='!user'>Reportes</button>
+        
+    </div>
+    
+    <section class="gestor">
+
+        <div>
+            <h4 class="display-1">Gestor de citas</h4>
+            <h6 class="display-1">Todas las citas</h6>
+        </div>
+
+        <div class="card-body">
+            <h5 class="card-title">21/04/2020</h5>
+            <p class="card-text">Estatus: Completada
+            </p>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">21/04/2020</h5>
+            <p class="card-text">Estatus: Completada
+            </p>
+        </div>
+        
+    </section>
+    
+
+</section>
+
 <app-footer></app-footer>

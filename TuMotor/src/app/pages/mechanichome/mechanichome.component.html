@@ -1,1 +1,34 @@
-<p>mechanichome works!</p>
+<app-navbar></app-navbar>
+<section class="big-box">
+    <div class="botones">
+        <button type="button" href="#loginModal" data-toggle="modal" class="btn btn-primary" *ngIf='!user'>Perfil</button>
+        <button type="button" href="#loginModal" data-toggle="modal" class="btn btn-primary" *ngIf='!user'>Citas</button>
+        <button type="button" href="#loginModal" data-toggle="modal" class="btn btn-primary" *ngIf='!user'>Gestor de ordenes</button>
+        <button type="button" href="#loginModal" data-toggle="modal" class="btn btn-primary" *ngIf='!user'>Reportes</button>
+        <button type="button" href="#loginModal" data-toggle="modal" class="btn btn-primary" *ngIf='!user'>Gestor de citas</button>
+        
+    </div>
+    
+    <section class="gestor">
+
+        <div>
+            <h4 class="display-1">Gestor de ordenes</h4>
+        </div>
+
+        <div class="card-body">
+            <h5 class="card-title">21/04/2020</h5>
+            <p class="card-text">Estatus: Completada
+            </p>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">21/04/2020</h5>
+            <p class="card-text">Estatus: Completada
+            </p>
+        </div>
+
+    </section>
+    
+
+</section>
+
+<app-footer></app-footer>
