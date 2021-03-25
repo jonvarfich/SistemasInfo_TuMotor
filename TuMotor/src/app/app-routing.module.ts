@@ -53,6 +53,12 @@ const routes: Routes = [
           return m.AdminhomeModule;
         })
       },
+      {
+        path:'mechanichome',
+        loadChildren: () => import('./pages/mechanichome/mechanichome.module').then(function (m) {
+          return m.MechanichomeModule;
+        })
+      },
     ],
   },
 ];
