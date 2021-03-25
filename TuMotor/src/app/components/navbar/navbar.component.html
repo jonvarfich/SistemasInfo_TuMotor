@@ -18,7 +18,16 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/userhome']" *ngIf='user'>User Panel</a>
+        </li>        
+        <li class="nav-item" >
+          <a class="nav-link special" [routerLink]="['/userhome']" *ngIf='user'>Perfil</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link special" [routerLink]="['/managerdates']" *ngIf='user'>Citas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link special" [routerLink]="['/vehicles']" *ngIf='user'>Vehiculos</a>
+        </li>        
       </ul>
       <!-- <button type="button" href="#loginModal" data-toggle="modal" class="btn btn-primary">Login</button> -->
       <button type="button" href="#loginModal" data-toggle="modal" class="btn btn-primary" *ngIf='!user'>Login</button>

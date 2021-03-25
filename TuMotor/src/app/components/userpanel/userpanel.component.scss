@@ -1,17 +1,62 @@
 @import '../../styles/variables.scss';
 
-.header{
+.card{
+    background-color: $lightShadow;    
+    margin-top: 100px;
 
-    font-size: 10vh;
+    .card-header.header{        
+        font-size: 7vh; 
+        display: flex;        
+        width: 100vw;   
+        background: none;
+    }
 
+    .nameheader{               
+        margin-left: 20px;
+        color: $blueProject;   
+        font-size: 5vh; 
+    }
+
+    .card-body{
+        background: none;  
+
+        .user-data{
+            color: $blueProject;
+            font-weight: bold;
+            font-size: 3vh;            
+
+            .data{
+                font-weight: normal;
+            }
+        }
+        
+        .title{
+            color: $blueProject;
+            font-weight: bold;
+            font-size: 5vh;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .list-group-item{            
+            font-size: 3vh;
+
+            &.active{
+                margin-top: 10px;
+                background-color: $blueProject;
+                border-color: $blueProject;
+                font-size: 3.2vh;
+            }
+        }
+    }
 }
 
-.nameheader{
 
-    color: $blueProject;
 
-}
 
-.container{
+
+
+
+.container{    
     width: 100%;
 }
