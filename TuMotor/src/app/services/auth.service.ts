@@ -100,8 +100,8 @@ export class NgAuthService {
   
     GoogleAuth() {
       return this.AuthLogin(new firebase.auth.GoogleAuthProvider());
-      this.LoggedUser = JSON.parse(localStorage.getItem('user'));
-      this.SetUserVehicleCollection();
+      //this.LoggedUser = JSON.parse(localStorage.getItem('user'));
+      //this.SetUserVehicleCollection();
     }
   
     AuthLogin(provider) {
@@ -126,9 +126,6 @@ export class NgAuthService {
 
       this.afs.collection(`users/${this.LoggedUser.uid}/vehicles`).add(userVehicle);
 
-      return vehicleRef.set(userVehicle,{
-        merge: true
-      })
 
     }
   
@@ -142,7 +139,7 @@ export class NgAuthService {
         emailVerified: user.emailVerified
       }
       this.LoggedUser = userState;
-      this.SetUserVehicleCollection()
+      //this.SetUserVehicleCollection()
       return userRef.set(userState, {
         merge: true
       })
