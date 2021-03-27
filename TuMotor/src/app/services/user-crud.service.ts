@@ -10,6 +10,7 @@ import { LoginComponent } from '../components/login/login.component';
 import { Vehicle } from '../models/vehicle';
 import { User } from '../models/user';
 import { NgAuthService } from './auth.service';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 //https://stackoverflow.com/questions/49002735/how-to-add-collection-within-document-angularfire2-angular5
 //https://stackoverflow.com/questions/48541270/how-to-add-document-with-custom-id-to-firestore
@@ -25,6 +26,7 @@ export class UserCrudService {
 
   constructor(
     public afs: AngularFirestore,
+    public Deposit: AngularFireStorage,
     public afAuth: AngularFireAuth,
     public router: Router,
     public ngZone: NgZone,
