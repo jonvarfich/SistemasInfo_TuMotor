@@ -13,20 +13,21 @@
 
     
     <div class="card">
-        <div class="card-header header">Manejo de Vehiculos<span *ngIf='user.displayName' class='nameheader'>{{user.displayName}}!</span></div>
+        <div class="card-header header">Manejo de Vehiculos</div>
         <div>
             <button type="button" href="#addVehicleModal" data-toggle="modal" class="userbtn btn btn-primary">addvehicle</button>
         </div>
         <div class="card-body">
 
-            <div class= 'card'>
-                <div class='card-header'>Nombre</div>
+            <div class= 'card' *ngFor="let vehicle of Vehicles">
+                <div class='card-header'>{{vehicle.uid}}</div>
+                <div class='card-header'>{{vehicle.name}}</div>
+                <div class='card-header'>{{vehicle.brand}}</div>
             </div>
 
         </div>
 
         <div class="card-footer">Footer</div>
-        <button type="button"  (click)='test()' class="btn btn-primary">makeadmin</button>
         
     </div>
 

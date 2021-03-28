@@ -22,8 +22,7 @@ export class UpdatemodalComponent implements OnInit {
     }
     else{
       alert('Must fill all fields');
-    }
-    
+    }    
 
   }
 
