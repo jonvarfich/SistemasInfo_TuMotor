@@ -3,7 +3,7 @@
 .the-team{
     margin: 10vh 10vh 10vh 10vh;
     background-color: $light;
-    height: 50vh;
+    height: fit-content;
     padding: 3vh;
     border-radius: 20px;
     color: $blueProject;
@@ -13,12 +13,44 @@
     }
 }
 
+.card-img-top{
+    max-height: 35vh;
+}
+
+
+.carousel-indicators .active{
+    background-color: $blueProject;
+    margin-bottom: 0px;
+    bottom: 0;
+}
+
+.carousel-indicators .inactive{
+    background-color: $blueProject;
+    margin-bottom: 0px;
+    bottom: 0;
+}
+
+.carousel-indicators li {
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+}
+.carousel-indicators {
+    bottom: -50px;
+}
+
+.card{
+    height: 65vh;
+    text-size-adjust: auto;
+}
+
+.card-text{
+    font-size: 1vw;
+    word-break: keep-all !important;
+}
+
 .h1{
     color: $blueProject;
     padding-top: 5%;
 }
 
-.footer{
-    justify-content: center;
-    padding-top: 15%;
-}

@@ -23,6 +23,14 @@ import { UserhomeComponent } from './pages/userhome/userhome.component';
 import { UserpanelComponent } from './components/userpanel/userpanel.component';
 import { ManagerdatesComponent } from './pages/managerdates/managerdates.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { AdminhomeComponent } from './pages/adminhome/adminhome.component';
+import { MechanichomeComponent } from './pages/mechanichome/mechanichome.component';
+
+import { AddVehicleComponent } from './components/add-vehicle/add-vehicle.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { OrdenesComponent } from './pages/ordenes/ordenes.component';
+import { ReporteComponent } from './pages/reporte/reporte.component';
+import { UpdatemodalComponent } from './components/updatemodal/updatemodal.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +46,14 @@ import { FooterComponent } from './components/footer/footer.component';
     UserhomeComponent,
     UserpanelComponent,
     ManagerdatesComponent,
-    FooterComponent    
+    FooterComponent,
+    AdminhomeComponent,
+    MechanichomeComponent,
+    AddVehicleComponent,    
+    ProfileComponent,
+    OrdenesComponent,
+    ReporteComponent,
+    UpdatemodalComponent    
   ],
   imports: [
     BrowserModule,

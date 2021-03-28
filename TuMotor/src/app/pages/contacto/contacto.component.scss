@@ -1,8 +1,55 @@
 @import '../../styles/variables.scss';
 
+
+.contain{
+    margin: 10vh auto 10vh ;
+    background-color: $light;
+    height: fit-content;
+    padding: 3vh;
+    border-radius: 20px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  
+.column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+}
+
+.ctext{
+
+    margin: 0 2vh;
+    color:$blueProject;
+    font-size: 2vh;
+    text-align: justify;
+    justify-content: center;
+
+}
+
 .mapa
 {
     height: auto;
+}
+
+.icon{
+    &:hover{
+        -webkit-filter: brightness(0.6)contrast(3.4)hue-rotate(217deg)saturate(9.9);
+        filter: brightness(0.6)contrast(3.4)hue-rotate(217deg)saturate(9.9);
+    }
+}
+
+.redes_sociales{
+    align-content: 0 auto;
+    margin-top: 1vh;
+    display: flex;
+    justify-content: center;
 }
 
 .display-1
@@ -10,12 +57,3 @@
     color: $blueProject;
 }
 
-.contain
-{
-    margin: 10vh 10vh 10vh 10vh;
-    background-color: $light;
-    height: fit-content;
-    padding: 3vh;
-    border-radius: 20px;
-    
-}

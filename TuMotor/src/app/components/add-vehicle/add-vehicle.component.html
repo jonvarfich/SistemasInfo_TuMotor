@@ -1,0 +1,25 @@
+<div class="modal-dialog modal-addvehicle">
+    <div class="modal-content">
+    
+    <div class="modal-header">				
+        <h4 class="modal-title">Login</h4>
+        <button id= "modalclosebutton" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    </div>
+    <div class="modal-body">				
+        <div class="form-group">
+        <label>Car Name</label>
+        <input type="text" class="form-control" placeholder="Car Name" required="required" #CarName required ngModel>
+        </div>
+        <div class="form-group">
+
+        <div class="clearfix">
+        <label>Brand</label>
+        </div>
+        <input type="text" class="form-control" placeholder="Brand" required="required" #CarBrand required ngModel>
+        </div>
+    </div>
+
+   <input type="button" class="btn btn-primary pull-right" data-dismiss="modal" (click)="addvehicle(CarName.value, CarBrand.value)" value="addvehicle">
+
+    </div>
+  </div>

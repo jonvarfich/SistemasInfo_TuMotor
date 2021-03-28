@@ -1,33 +1,43 @@
-<section>   
-    <div class="card">
-        <div class="card-header header">Bienvenido de vuelta </div>
-        <div><span *ngIf='user.displayName' class='nameheader'> {{user.displayName}}!</span></div>
-        <div class="card-body">
-            <div class="title" id="perfil">Perfil</div>
-            <div class="user-data">                
-                <div class="col-md-2" style="float:left">
-                    <img class="card-img-top rounded-circle"
-                        src="{{user.photoURL}}" alt="Foto de Perfil del Usuario">                    
-                  </div>
-            </div>
-            <div class="user-data">
-                Nombre de Usuario: <span *ngIf='user.displayName' class='data'> {{user.displayName}}</span>
-            </div>
-            <div class="user-data">
-                Correo Electrónico: <span *ngIf='user.displayName' class='data'> {{user.email}}</span>
-            </div>
-            <div class="user-data">
-                Nombre: <span *ngIf='user.displayName' class='data'> {{user.displayName}}</span>
-            </div>   
+<section>
 
-            <ul class="list-group">
-                <li class="list-group-item active">Vehículos Registrados</li>
-                <li class="list-group-item">Aquí iría el nombre de un vehículo</li>
-                <li class="list-group-item">2do vehículo</li>
-            </ul> 
+    <div class="card">
+        <div class="card-header header">Bienvenido <span *ngIf='user.displayName' class='nameheader'>{{user.displayName}}!</span></div>
+        <div class="card-body">Email : {{user.email}} </div>
+
+        <div>
+            <button type="button" href="#updateuserdata" data-toggle="modal" class="userbtn btn btn-primary">Update Info</button>
+        </div>
+        <!-- <button type="button"  (click)='test()' class="btn btn-primary">makeadmin</button> -->
+        
+    </div>
+
+    
+    <div class="card">
+        <div class="card-header header">Manejo de Vehiculos</div>
+        <div>
+            <button type="button" href="#addVehicleModal" data-toggle="modal" class="userbtn btn btn-primary">addvehicle</button>
+        </div>
+        <div class="card-body">
+
+            <div class= 'card' *ngFor="let vehicle of Vehicles">
+                <div class='card-header'>{{vehicle.uid}}</div>
+                <div class='card-header'>{{vehicle.name}}</div>
+                <div class='card-header'>{{vehicle.brand}}</div>
+            </div>
 
         </div>
-        <div class="card-body">Manejo de vehículos</div>
+
         <div class="card-footer">Footer</div>
+        
     </div>
+
 </section>
+
+
+<div id="addVehicleModal" class="modal fade">
+    <app-add-vehicle></app-add-vehicle>
+</div>
+
+<div id="updateuserdata" class="modal fade">
+    <app-updatemodal></app-updatemodal>
+</div>
