@@ -1,23 +1,42 @@
 <section>
-    <p>l</p>
-    <p>l</p>
-    <p>l</p>
-    <p>l</p>
-    <p>l</p>
-    <p>l</p>
-    <p>l</p>
-    <p>l</p>
 
     <div class="card">
         <div class="card-header header">Bienvenido <span *ngIf='user.displayName' class='nameheader'>{{user.displayName}}!</span></div>
-        <div class="card-body">Email : {{user.email}}</div>
-        <div class="card-body">Manejo de vehículos</div>
-        <div class="card-footer">Footer</div>
-        <button type="button" href="#addVehicleModal" data-toggle="modal" class="btn btn-primary">addvehicle</button>
-        <button type="button"  (click)='test()' class="btn btn-primary">makeadmin</button>
+        <div class="card-body">Email : {{user.email}} </div>
+
+        <div>
+            <button type="button" href="#updateuserdata" data-toggle="modal" class="userbtn btn btn-primary">Update Info</button>
+        </div>
+        <!-- <button type="button"  (click)='test()' class="btn btn-primary">makeadmin</button> -->
+        
     </div>
 
-    <div id="addVehicleModal" class="modal fade">
-        <app-add-vehicle></app-add-vehicle>
-      </div>
+    
+    <div class="card">
+        <div class="card-header header">Manejo de Vehiculos<span *ngIf='user.displayName' class='nameheader'>{{user.displayName}}!</span></div>
+        <div>
+            <button type="button" href="#addVehicleModal" data-toggle="modal" class="userbtn btn btn-primary">addvehicle</button>
+        </div>
+        <div class="card-body">
+
+            <div class= 'card'>
+                <div class='card-header'>Nombre</div>
+            </div>
+
+        </div>
+
+        <div class="card-footer">Footer</div>
+        <button type="button"  (click)='test()' class="btn btn-primary">makeadmin</button>
+        
+    </div>
+
 </section>
+
+
+<div id="addVehicleModal" class="modal fade">
+    <app-add-vehicle></app-add-vehicle>
+</div>
+
+<div id="updateuserdata" class="modal fade">
+    <app-updatemodal></app-updatemodal>
+</div>

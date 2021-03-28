@@ -43,8 +43,11 @@ export class UserCrudService {
       }
 
       this.afs.collection(`users/${this.LoggedUser.uid}/vehicles`).add(userVehicle);
-      console.log('hello');
-      
+    }
+
+    userUpdate(name: string){
+      this.ngAuthService.userdata.displayName = name;
+      this.afs.collection(`users`).doc(this.ngAuthService.userdata.uid).update({'displayName': name});
     }
     
 

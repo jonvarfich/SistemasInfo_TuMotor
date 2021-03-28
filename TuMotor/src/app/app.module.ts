@@ -30,6 +30,7 @@ import { AddVehicleComponent } from './components/add-vehicle/add-vehicle.compon
 import { ProfileComponent } from './pages/profile/profile.component';
 import { OrdenesComponent } from './pages/ordenes/ordenes.component';
 import { ReporteComponent } from './pages/reporte/reporte.component';
+import { UpdatemodalComponent } from './components/updatemodal/updatemodal.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { ReporteComponent } from './pages/reporte/reporte.component';
     AddVehicleComponent,    
     ProfileComponent,
     OrdenesComponent,
-    ReporteComponent    
+    ReporteComponent,
+    UpdatemodalComponent    
   ],
   imports: [
     BrowserModule,
