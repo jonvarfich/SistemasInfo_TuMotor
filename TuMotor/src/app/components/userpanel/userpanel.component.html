@@ -2,10 +2,14 @@
 
     <div class="card">
         <div class="card-header header">Bienvenido <span *ngIf='user.displayName' class='nameheader'>{{user.displayName}}!</span></div>
-        <div class="card-body">Email : {{user.email}} </div>
-
-        <div>
-            <button type="button" href="#updateuserdata" data-toggle="modal" class="userbtn btn btn-primary">Update Info</button>
+        <div class="card-body">
+            <h2>Perfil</h2>
+            <div class="user-data"><img src={{user.photoURL}} class="img-fluid rounded-circle img-thumbnail float-left" alt="Foto de Perfil"></div>
+            <div class="user-data"><span class="special">Nombre de usuario:</span> {{user.displayName}}</div>
+            <div class="user-data"><span class="special">Correo electrónico:</span> {{user.email}}</div>
+        </div>
+        <div class="modify-btn">
+            <button type="button" href="#updateuserdata" data-toggle="modal" class="userbtn btn btn-primary">Modificar Datos de Perfil</button>
         </div>
         <!-- <button type="button"  (click)='test()' class="btn btn-primary">makeadmin</button> -->
         
@@ -13,21 +17,21 @@
 
     
     <div class="card">
-        <div class="card-header header">Manejo de Vehiculos</div>
-        <div>
-            <button type="button" href="#addVehicleModal" data-toggle="modal" class="userbtn btn btn-primary">addvehicle</button>
-        </div>
-        <div class="card-body">
-
-            <div class= 'card' *ngFor="let vehicle of Vehicles">
-                <div class='card-header'>{{vehicle.uid}}</div>
+        <h2>Manejo de Vehiculos</h2>
+        <div class="card-body"> 
+            <h3>Vehiculos Registrados</h3>             
+            <div class= 'lista' *ngFor="let vehicle of Vehicles">
+                
                 <div class='card-header'>{{vehicle.name}}</div>
-                <div class='card-header'>{{vehicle.brand}}</div>
             </div>
-
         </div>
+        <div class="modify-btn">
+            <button type="button" href="#addVehicleModal" data-toggle="modal" class="userbtn btn btn-primary">Agregar Vehículo</button>
+        </div>       
 
-        <div class="card-footer">Footer</div>
+        <div class="card-footer">
+            <app-footer></app-footer>
+        </div>
         
     </div>
 
