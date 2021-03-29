@@ -18,6 +18,16 @@
         color: $blueProject;
       }
   }  
+.disablebtn{
+  display: inline-block;
+  margin-right: 0;
+  right:0;
+}
+
+.disabled{
+  background-color: rgb(59, 59, 59);
+  color: aquamarine;
+}
 
 
   h2 {

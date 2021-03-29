@@ -35,9 +35,15 @@ export class UserpanelComponent implements OnInit {
     );
   }
 
-  //test(){
-  //  this.superuser.makeadmin(10);
-  //}
-
+  disableVehicle(Vuid:string){
+    console.log(Vuid);
+    var answer = window.confirm("Está seguro que quiere desabilitar el vehiculo?");
+    if (answer) {
+      this.usercrud.DisableVehicle(Vuid);
+    }
+    else {
+      window.console.log('opción cancelada');
+    }
+  }
 
 }

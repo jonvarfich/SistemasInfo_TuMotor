@@ -21,10 +21,17 @@
         <div class="card-body"> 
             <h3>Vehiculos Registrados</h3>             
             <div class= 'lista' *ngFor="let vehicle of Vehicles">
-                
-                <div class='card-header'>{{vehicle.name}}</div>
+
+                <div *ngIf="vehicle.status == true; else Disabled">'
+                    <div class='card-header'><h1>{{vehicle.name}}</h1></div>
+                    <div class='card-body'>Marca: {{vehicle.marca}} Color: {{vehicle.color}} Placa: {{vehicle.placa}} Año: {{vehicle.year}} Fecha de registro: {{vehicle.DateRegistry}}</div>
+                    <div class='card-footer'><button type="button" class="btn btn-danger disablebtn" (click)="disableVehicle(vehicle.uid)">Disable</button></div>
+                </div>
+
             </div>
+
         </div>
+
         <div class="modify-btn">
             <button type="button" href="#addVehicleModal" data-toggle="modal" class="userbtn btn btn-primary">Agregar Vehículo</button>
         </div>       
@@ -45,3 +52,7 @@
 <div id="updateuserdata" class="modal fade">
     <app-updatemodal></app-updatemodal>
 </div>
+
+<ng-template #Disabled class="disabled">
+
+</ng-template>
