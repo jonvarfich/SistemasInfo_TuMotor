@@ -1,15 +1,23 @@
 @import '../../styles/variables.scss';
 
 .the-team{
-    margin: 10vh 10vh 10vh 10vh;
-    background-color: $light;
+    margin-top: 80px;
+    background-color: $lightShadow;
     height: fit-content;
-    padding: 3vh;
     border-radius: 20px;
     color: $blueProject;
     
     .card-text{
         color: black;
+    }
+
+    h1{
+        padding-top: 20px;
+        padding-bottom: 20px;
+        color: $blueProject;
+        font-size: 5vh;
+        font-weight: bold;
+        text-align: center;
     }
 }
 
@@ -45,12 +53,9 @@
 }
 
 .card-text{
-    font-size: 1vw;
+    font-size: 14px;
     word-break: keep-all !important;
 }
 
-.h1{
-    color: $blueProject;
-    padding-top: 5%;
-}
+
 
