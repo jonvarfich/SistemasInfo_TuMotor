@@ -15,8 +15,13 @@ export class AddVehicleComponent implements OnInit {
   ngOnInit(): void {
   }
   
-  addvehicle(name: string,brand: string){
-    this.usercrud.addvehicle(name,brand);
-  }
+  addvehicle(name: string,brand: string,color:string,placa:string, year:number, serial:string, foto:string){
 
+    if(name == '' || color == '' || brand == '' || placa == '' || serial == '' || year == null){
+      alert("all fields must be filled");
+    }
+    else{this.usercrud.addvehicle(name,brand,color,placa,year,serial,foto);} 
+  }
 }
+
+

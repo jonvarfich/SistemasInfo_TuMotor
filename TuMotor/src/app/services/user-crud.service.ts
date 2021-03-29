@@ -5,7 +5,7 @@ import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
 import { Observable, Subscription } from 'rxjs';
-import { map } from 'rxjs/Operators';
+import { map, timestamp } from 'rxjs/Operators';
 import { DocumentSnapshot } from '@firebase/firestore-types';
 import { LoginComponent } from '../components/login/login.component';
 import { Vehicle } from '../models/vehicle';
@@ -56,14 +56,25 @@ export class UserCrudService {
       ));
 
   }
+
+  DisableVehicle(Vuid: string){
+    this.afs.collection('users').doc(this.ngAuthService.userdata.uid).collection('vehicles').doc(Vuid).update({'status': false});
+  }
   
-  addvehicle(name:string, brand:string){
+  addvehicle(name:string, brand:string, color:string,placa:string,year:number,serial:string,foto:string){
 
       this.LoggedUser = this.ngAuthService.userdata;
       const vehicleRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${this.LoggedUser.uid}`);
       const userVehicle: Vehicle = {
         name: name,
         marca: brand,
+        color: color,
+        placa: placa,
+        status: true,
+        year:year,
+        serial:serial,
+        foto:foto,
+        DateRegistry: new Date(),
       }
 
       this.afs.collection(`users/${this.LoggedUser.uid}/vehicles`).add(userVehicle);
