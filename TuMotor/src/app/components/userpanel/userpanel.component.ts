@@ -22,8 +22,7 @@ export class UserpanelComponent implements OnInit {
 
 
   constructor(private ngAuthService: NgAuthService, private usercrud: UserCrudService, private superuser: SuperuserService) {
-    this.user = this.ngAuthService.userdata;
-    
+    this.user = this.ngAuthService.userdata;   
   }
 
   ngOnInit(): void {
@@ -37,7 +36,7 @@ export class UserpanelComponent implements OnInit {
 
   disableVehicle(Vuid:string){
     console.log(Vuid);
-    var answer = window.confirm("Está seguro que quiere desabilitar el vehiculo?");
+    var answer = window.confirm("¿Está seguro que quiere desabilitar el vehiculo?");
     if (answer) {
       this.usercrud.DisableVehicle(Vuid);
     }

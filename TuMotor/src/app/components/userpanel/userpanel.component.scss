@@ -12,8 +12,8 @@
   background-color: $lightShadow;
   border: none;
 
-  .card-header{
-    margin-top: 10vh;
+  .header{
+    margin-top: 80px;
     .nameheader {    
         color: $blueProject;
       }
@@ -76,13 +76,21 @@
     margin-left:20px;
     margin-right: 20px;
 
+    .car-card{
+      display: flex;
+      .foto{
+        align-self: center;
+      }
+    }
     .card-header{
         background: $light;
-        color: $blueProject;
+        color: $blueProject; 
         margin-left: 30px; 
         margin-right: 30px;   
+        width: 90vw;
         border-color: $blueProject;
-        margin:0;
+        font-size: 20px;
+        font-weight: bold;
     }
   }
 
@@ -90,11 +98,8 @@
     border: none;
     height: 40px;
     background: none;
-  }
-
-  
+  }  
 }
-
 
 .container {
   width: 100%;

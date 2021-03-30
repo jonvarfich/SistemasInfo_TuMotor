@@ -19,6 +19,7 @@ h1{
 .carousel-indicators{
     position: static;
     margin: 0;
+    margin-bottom: 20px;
     padding: 0;
     width: 100vw;
     background: $blueProject;
@@ -26,4 +27,11 @@ h1{
 
 h4{
     color:$blueProject; 
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+}
+
+p{
+    text-align: justify;
 }

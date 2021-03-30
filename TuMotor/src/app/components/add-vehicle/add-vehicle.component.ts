@@ -18,7 +18,9 @@ export class AddVehicleComponent implements OnInit {
   addvehicle(name: string,brand: string,color:string,placa:string, year:number, serial:string, foto:string){
 
     if(name == '' || color == '' || brand == '' || placa == '' || serial == '' || year == null){
-      alert("all fields must be filled");
+      alert("Todos los datos deben ser llenados");
+    }else if(year <= 0){
+      alert("El año no puede ser negativo");
     }
     else{this.usercrud.addvehicle(name,brand,color,placa,year,serial,foto);} 
   }

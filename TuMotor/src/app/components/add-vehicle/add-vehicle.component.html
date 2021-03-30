@@ -1,37 +1,114 @@
 <div class="modal-dialog modal-addvehicle">
-    <div class="modal-content">
-    
-    <div class="modal-header">				
-        <h4 class="modal-title">Login</h4>
-        <button id= "modalclosebutton" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="modal-title">Registrar vehículo</span>
+      <button
+        id="modalclosebutton"
+        type="button"
+        class="close"
+        data-dismiss="modal"
+        aria-hidden="true"
+      >
+        &times;
+      </button>
     </div>
-    <div class="modal-body">				
-        <div class="form-group">
-            <label>Car Name</label>
-            <input type="text" class="form-control" placeholder="Car Name" required="required" #CarName required ngModel>
+    <div class="modal-body">
+      <div class="form-group">
+        <label>Nombre del vehículo</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Margarita"
+          required="required"
+          #CarName
+          required
+          ngModel
+        />
 
-            <label>Brand</label>
-            <input type="text" class="form-control" placeholder="Brand" required="required" #CarBrand required ngModel>
+        <label>Marca</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Fork"
+          required="required"
+          #CarBrand
+          required
+          ngModel
+        />
 
-            <label>Color</label>
-            <input type="text" class="form-control" placeholder="Color" required="required" #Color required ngModel>
+        <label>Color</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Azul Celeste"
+          required="required"
+          #Color
+          required
+          ngModel
+        />
 
-            <label>Placa</label>
-            <input type="text" class="form-control" placeholder="Placa" required="required" #Placa required ngModel>
+        <label>Placa</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="AC43D4"
+          required="required"
+          #Placa
+          required
+          ngModel
+        />
 
-            <label>Año</label>
-            <input type="number" class="form-control" placeholder="Año" required="required" #Year required ngModel>
+        <label>Año</label>
+        <input
+          type="number"
+          class="form-control"
+          placeholder="1999"
+          required="required"
+          #Year
+          required
+          ngModel
+        />
 
-            <label>Serial del motor</label>
-            <input type="text" class="form-control" placeholder="Serial del Motor" required="required" #Serial required ngModel>
+        <label>Serial del motor</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="S1533KC13"
+          required="required"
+          #Serial
+          required
+          ngModel
+        />
 
-            <label>Foto</label>
-            <input type="text" class="form-control" placeholder="Foto" required="required" #Foto required ngModel>          
-
-        </div>
+        <label>Foto</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Foto"
+          required="required"
+          #Foto
+          required
+          ngModel
+        />
+      </div>
     </div>
 
-   <input type="button" class="btn btn-primary pull-right" data-dismiss="modal" (click)="addvehicle(CarName.value, CarBrand.value,Color.value,Placa.value,Year.value,Serial.value,Foto.value)" value="addvehicle">
-
-    </div>
+    <input
+      type="button"
+      class="btn btn-primary pull-right"
+      data-dismiss="modal"
+      (click)="
+        addvehicle(
+          CarName.value,
+          CarBrand.value,
+          Color.value,
+          Placa.value,
+          Year.value,
+          Serial.value,
+          Foto.value
+        )
+      "
+      value="Registrar vehículo"
+    />
   </div>
+</div>

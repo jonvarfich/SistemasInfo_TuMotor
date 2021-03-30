@@ -1,7 +1,7 @@
 <section>
 
     <div class="card">
-        <div class="card-header header">Bienvenido <span *ngIf='user.displayName' class='nameheader'>{{user.displayName}}!</span></div>
+        <div class="header">Bienvenido <span *ngIf='user.displayName' class='nameheader'>{{user.displayName}}!</span></div>
         <div class="card-body">
             <h2>Perfil</h2>
             <div class="user-data"><img src={{user.photoURL}} class="img-fluid rounded-circle img-thumbnail float-left" alt="Foto de Perfil"></div>
@@ -21,15 +21,25 @@
         <div class="card-body"> 
             <h3>Vehiculos Registrados</h3>             
             <div class= 'lista' *ngFor="let vehicle of Vehicles">
-
-                <div *ngIf="vehicle.status == true; else Disabled">'
-                    <div class='card-header'><h1>{{vehicle.name}}</h1></div>
-                    <div class='card-body'>Marca: {{vehicle.marca}} Color: {{vehicle.color}} Placa: {{vehicle.placa}} Año: {{vehicle.year}} Fecha de registro: {{vehicle.DateRegistry}}</div>
-                    <div class='card-footer'><button type="button" class="btn btn-danger disablebtn" (click)="disableVehicle(vehicle.uid)">Disable</button></div>
+                <div *ngIf="vehicle.status == true; else Disabled">
+                    <div class="car-card">
+                        <div class='card-header'>{{vehicle.name}}</div>
+                        <div class='card-footer'><button type="button" class="btn btn-danger disablebtn" (click)="disableVehicle(vehicle.uid)">Desactivar</button></div>
+                    </div>
+                    <div class="car-card">
+                            <div class="foto">                                
+                                <img src={{vehicle.foto}} class="img-fluid rounded-circle img-thumbnail float-left" width="250px" alt="Foto del vehículo">
+                            </div>
+                            <div>
+                                <div class="user-data"><span class="special">Marca:</span> {{vehicle.marca}}</div>
+                                <div class="user-data"><span class="special">Color:</span> {{vehicle.color}}</div>
+                                <div class="user-data"><span class="special">Placa:</span> {{vehicle.placa}}</div>
+                                <div class="user-data"><span class="special">Año:</span> {{vehicle.year}}</div>
+                                <div class="user-data"><span class="special">Fecha de registro:</span> {{vehicle.DateRegistry.toDate() | date}}</div>
+                            </div>
+                    </div>       
                 </div>
-
             </div>
-
         </div>
 
         <div class="modify-btn">
