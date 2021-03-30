@@ -9,8 +9,12 @@
         <div class="form-group">
 
             <label>Seleccione el vehículo</label>
+
                 <select class="form-control" name="Vehicles" #Vehicle>
-                    <option *ngFor="let car of Vehicles" value="{{car.uid}}">{{car.name}} // {{car.marca}} // {{car.placa}}</option>
+                    <ng-container *ngFor="let car of Vehicles">
+                        <option *ngIf="car.status == true" value="{{car.uid}}">{{car.name}} // {{car.marca}} // {{car.placa}}</option>
+                    </ng-container>
+                    
                 </select>
 
             <label>Explique brevemente su problema</label>
