@@ -7,6 +7,7 @@ import { User } from '../../models/user'
 import { AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
+import { Appointment } from 'src/app/models/appointment';
 
 @Component({
   selector: 'app-userpanel',
@@ -19,6 +20,7 @@ export class UserpanelComponent implements OnInit {
   public user: User;
   private AngularFirestore: any;
   Vehicles: Array<Vehicle> = [];
+  Appointments: Array<Appointment> = [];
 
 
   constructor(private ngAuthService: NgAuthService, private usercrud: UserCrudService, private superuser: SuperuserService) {
@@ -34,6 +36,12 @@ export class UserpanelComponent implements OnInit {
         this.Vehicles = Vehicles;
       }
     );
+    this.usercrud.getallAppointments().subscribe(
+      (Appointments) => {
+        console.log(JSON.stringify(Appointments,null,4));
+        this.Appointments = Appointments;
+      }
+    );
   }
 
   disableVehicle(Vuid:string){
@@ -45,6 +53,11 @@ export class UserpanelComponent implements OnInit {
     else {
       window.console.log('opción cancelada');
     }
+  }
+
+  vehicleName(CarUid: string): string{
+    let Vehicle =  this.Vehicles.find(x => x.uid == CarUid);
+    return Vehicle.name;
   }
 
 }

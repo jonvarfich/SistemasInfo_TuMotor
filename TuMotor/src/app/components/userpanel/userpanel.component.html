@@ -15,8 +15,12 @@
     </div>
     <div class="card">
         <h2>Manejo de Vehiculos</h2>
+        <div class="modify-btn">
+            <button type="button" href="#addVehicleModal" data-toggle="modal" class="userbtn btn btn-primary">Agregar Vehículo</button>
+        </div>   
         <div class="card-body"> 
-            <h3>Vehiculos Registrados</h3>             
+            <h3>Vehiculos Registrados</h3>
+           
             <div class= 'lista' *ngFor="let vehicle of Vehicles">
 
                 <div *ngIf="vehicle.status == true; else Disabled">'
@@ -28,15 +32,53 @@
             </div>
 
         </div>
+  
+        <div class="card-footer">
+            <app-footer></app-footer>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Manejo de Citas</h2>
 
         <div class="modify-btn">
-            <button type="button" href="#addVehicleModal" data-toggle="modal" class="userbtn btn btn-primary">Agregar Vehículo</button>
-        </div>       
+            <button type="button" href="#makeAppointment" data-toggle="modal" class="userbtn btn btn-primary">Pedir cita</button>
+        </div>  
+
+        <div class="card-body"> 
+            <h3>Citas Aceptadas</h3>             
+            <div class= 'lista' *ngFor="let appointment of  Appointments">
+
+                <div *ngIf="appointment.status == 'responded'">'
+                    <div class='card-header'><h1>{{ vehicleName(appointment.CarUid) }} Status: {{appointment.status}}</h1></div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="card-body"> 
+            <h3>Citas en procesamiento</h3>             
+            <div class= 'lista' >
+                <div class= 'lista' *ngFor="let appointment of  Appointments">
+
+                    <div *ngIf="appointment.status == 'requested'">'
+                        <div class='card-header'><h1>{{ vehicleName(appointment.CarUid) }} Status: {{appointment.status}}</h1></div>
+                    </div>
+    
+                </div>
+
+            </div>
+
+        </div>
+
+     
 
         <div class="card-footer">
             <app-footer></app-footer>
         </div>
     </div>
+
 </section>
 
 <div id="addVehicleModal" class="modal fade">
@@ -46,6 +88,11 @@
 <div id="updateuserdata" class="modal fade">
     <app-updatemodal></app-updatemodal>
 </div>
+
+<div id="makeAppointment" class="modal fade">
+    <app-add-appointment [Vehicles]="Vehicles"></app-add-appointment>
+</div>
+
 
 <ng-template #Disabled class="disabled">
 

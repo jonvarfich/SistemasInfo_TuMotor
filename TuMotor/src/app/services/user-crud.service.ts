@@ -12,6 +12,7 @@ import { Vehicle } from '../models/vehicle';
 import { User } from '../models/user';
 import { NgAuthService } from './auth.service';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { Appointment } from '../models/appointment';
 
 //https://stackoverflow.com/questions/49002735/how-to-add-collection-within-document-angularfire2-angular5
 //https://stackoverflow.com/questions/48541270/how-to-add-document-with-custom-id-to-firestore
@@ -26,6 +27,7 @@ export class UserCrudService {
   firestore: any;
   private UserTable: AngularFirestoreDocument;
   private VehicleCollection:AngularFirestoreCollection<Vehicle>;
+  private AppointmentCollection:AngularFirestoreCollection<Appointment>;
 
   constructor(
     public afs: AngularFirestore,
@@ -37,6 +39,7 @@ export class UserCrudService {
   ) {
     this.UserTable = this.afs.collection('users').doc(this.ngAuthService.userdata.uid);
     this.VehicleCollection = this.UserTable.collection<Vehicle>('vehicles');
+    this.AppointmentCollection = this.UserTable.collection<Appointment>('appointments');
   }
 
   
@@ -49,6 +52,21 @@ export class UserCrudService {
             {
               uid: Vehicle.payload.doc.id,
               ...Vehicle.payload.doc.data(),
+            }
+          )
+          )
+        }
+      ));
+  }
+
+  getallAppointments(): Observable<Appointment[]>{
+    return this.AppointmentCollection.snapshotChanges().pipe(
+      map((Appointments) =>
+        {
+          return Appointments.map((Appointment)=>(
+            {
+              uid: Appointment.payload.doc.id,
+              ...Appointment.payload.doc.data(),
             }
           )
           )
@@ -83,6 +101,10 @@ export class UserCrudService {
   userUpdate(name: string){
     this.ngAuthService.userdata.displayName = name;
     this.afs.collection(`users`).doc(this.ngAuthService.userdata.uid).update({'displayName': name});
+  }
+
+  setAppointment(request: Appointment, Uuid:string){
+    this.afs.collection('users').doc(Uuid).collection('appointments').add(request);
   }
     
 

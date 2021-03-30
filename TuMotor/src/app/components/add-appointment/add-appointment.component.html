@@ -1,0 +1,25 @@
+<div class="modal-dialog modal-addvehicle">
+    <div class="modal-content">
+    
+    <div class="modal-header">				
+        <h4 class="modal-title">Pedir Cita</h4>
+        <button id= "modalclosebutton" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    </div>
+    <div class="modal-body">				
+        <div class="form-group">
+
+            <label>Seleccione el vehículo</label>
+                <select class="form-control" name="Vehicles" #Vehicle>
+                    <option *ngFor="let car of Vehicles" value="{{car.uid}}">{{car.name}} // {{car.marca}} // {{car.placa}}</option>
+                </select>
+
+            <label>Explique brevemente su problema</label>
+            <input type="text" class="form-control" placeholder="Note" required="required" #Note required ngModel>
+
+        </div>
+    </div>
+
+   <input type="button" class="btn btn-primary pull-right" data-dismiss="modal" value="addvehicle" (click)="setAppointment(Vehicle.value,Note.value)">
+
+    </div>
+  </div>

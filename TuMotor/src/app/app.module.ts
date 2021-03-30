@@ -32,6 +32,7 @@ import { OrdenesComponent } from './pages/ordenes/ordenes.component';
 import { ReporteComponent } from './pages/reporte/reporte.component';
 import { UpdatemodalComponent } from './components/updatemodal/updatemodal.component';
 import { SuperadminComponent} from './pages/superadmin/superadmin.component';
+import { AddAppointmentComponent } from './components/add-appointment/add-appointment.component';
 
 
 
@@ -59,6 +60,7 @@ import { SuperadminComponent} from './pages/superadmin/superadmin.component';
     ReporteComponent,
     UpdatemodalComponent,
     SuperadminComponent,
+    AddAppointmentComponent,
   ],
   imports: [
     BrowserModule,
