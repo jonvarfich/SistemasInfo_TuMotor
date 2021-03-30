@@ -27,6 +27,7 @@ export class UserpanelComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.user = this.ngAuthService.userdata;
     this.usercrud.getallvehicles().subscribe(
       (Vehicles) => {
         console.log(JSON.stringify(Vehicles,null,4));

@@ -116,6 +116,17 @@ export class NgAuthService {
         window.alert(error)
       })
     }
+
+/*     SetUserVehicleCollection(){
+
+      const vehicleRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${this.LoggedUser.uid}`);
+      const userVehicle: Vehicle = {
+        uid: this.LoggedUser.uid,
+      }
+
+      this.afs.collection(`users/${this.LoggedUser.uid}/vehicles`).add(userVehicle);
+
+    } */
   
     SetUserData(user) {
       const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);

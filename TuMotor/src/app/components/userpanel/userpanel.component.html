@@ -12,10 +12,7 @@
             <button type="button" href="#updateuserdata" data-toggle="modal" class="userbtn btn btn-primary">Modificar Datos de Perfil</button>
         </div>
         <!-- <button type="button"  (click)='test()' class="btn btn-primary">makeadmin</button> -->
-        
     </div>
-
-    
     <div class="card">
         <h2>Manejo de Vehiculos</h2>
         <div class="card-body"> 
@@ -24,7 +21,7 @@
 
                 <div *ngIf="vehicle.status == true; else Disabled">'
                     <div class='card-header'><h1>{{vehicle.name}}</h1></div>
-                    <div class='card-body'>Marca: {{vehicle.marca}} Color: {{vehicle.color}} Placa: {{vehicle.placa}} Año: {{vehicle.year}} Fecha de registro: {{vehicle.DateRegistry}}</div>
+                    <div class='card-body'>Marca: {{vehicle.marca}} Color: {{vehicle.color}} Placa: {{vehicle.placa}} Año: {{vehicle.year}} Fecha de registro: {{vehicle.DateRegistry.toDate() | date}}</div>
                     <div class='card-footer'><button type="button" class="btn btn-danger disablebtn" (click)="disableVehicle(vehicle.uid)">Disable</button></div>
                 </div>
 
@@ -39,11 +36,8 @@
         <div class="card-footer">
             <app-footer></app-footer>
         </div>
-        
     </div>
-
 </section>
-
 
 <div id="addVehicleModal" class="modal fade">
     <app-add-vehicle></app-add-vehicle>

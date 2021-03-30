@@ -43,7 +43,7 @@ export class UserCrudService {
   getallvehicles(): Observable<Vehicle[]>{
     return this.VehicleCollection.snapshotChanges().pipe(
       map((Vehicles) =>
-
+  
         {
           return Vehicles.map((Vehicle)=>(
             {
@@ -64,6 +64,7 @@ export class UserCrudService {
   addvehicle(name:string, brand:string, color:string,placa:string,year:number,serial:string,foto:string){
 
       this.LoggedUser = this.ngAuthService.userdata;
+      let Datenow = new Date(Date.now());
       const vehicleRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${this.LoggedUser.uid}`);
       const userVehicle: Vehicle = {
         name: name,
@@ -74,7 +75,7 @@ export class UserCrudService {
         year:year,
         serial:serial,
         foto:foto,
-        DateRegistry: new Date(),
+        DateRegistry: Datenow,
       }
 
       this.afs.collection(`users/${this.LoggedUser.uid}/vehicles`).add(userVehicle);

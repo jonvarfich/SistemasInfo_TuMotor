@@ -18,6 +18,7 @@ export class UpdatemodalComponent implements OnInit {
   updateUser(displayName: string){
 
     if(displayName!=''){
+      console.log('updated!!');
       this.usercrud.userUpdate(displayName);
     }
     else{
