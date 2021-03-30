@@ -49,7 +49,7 @@
             <h3>Citas Aceptadas</h3>             
             <div class= 'lista' *ngFor="let appointment of  Appointments">
 
-                <div *ngIf="appointment.status == 'responded'">'
+                <div *ngIf="appointment.status == 'responded' && appointment.UserUid == user.uid">'
                     <div class='card-header'><h1>{{ vehicleName(appointment.CarUid) }} Status: {{appointment.status}}</h1></div>
                 </div>
 
@@ -60,9 +60,9 @@
         <div class="card-body"> 
             <h3>Citas en procesamiento</h3>             
             <div class= 'lista' >
-                <div class= 'lista' *ngFor="let appointment of  Appointments">
+                <div class= 'lista' *ngFor="let appointment of  Appointments ">
 
-                    <div *ngIf="appointment.status == 'requested'">'
+                    <div *ngIf="appointment.status == 'requested' && appointment.UserUid == user.uid">'
                         <div class='card-header'><h1>{{ vehicleName(appointment.CarUid) }} Status: {{appointment.status}}</h1></div>
                     </div>
     

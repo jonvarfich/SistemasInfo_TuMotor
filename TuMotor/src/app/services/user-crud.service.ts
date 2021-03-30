@@ -39,7 +39,7 @@ export class UserCrudService {
   ) {
     this.UserTable = this.afs.collection('users').doc(this.ngAuthService.userdata.uid);
     this.VehicleCollection = this.UserTable.collection<Vehicle>('vehicles');
-    this.AppointmentCollection = this.UserTable.collection<Appointment>('appointments');
+    this.AppointmentCollection = this.afs.collection<Appointment>('appointments');
   }
 
   
@@ -58,6 +58,7 @@ export class UserCrudService {
         }
       ));
   }
+
 
   getallAppointments(): Observable<Appointment[]>{
     return this.AppointmentCollection.snapshotChanges().pipe(
@@ -104,7 +105,7 @@ export class UserCrudService {
   }
 
   setAppointment(request: Appointment, Uuid:string){
-    this.afs.collection('users').doc(Uuid).collection('appointments').add(request);
+    this.afs.collection('appointments').add(request);
   }
     
 
