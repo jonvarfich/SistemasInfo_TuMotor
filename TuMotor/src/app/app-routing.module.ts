@@ -59,6 +59,12 @@ const routes: Routes = [
           return m.MechanichomeModule;
         })
       },
+      {
+        path:'sudo',
+        loadChildren: () => import('./pages/superadmin/superadmin.module').then(function (m) {
+          return m.SuperadminModule;
+        })
+      },
     ],
   },
 ];

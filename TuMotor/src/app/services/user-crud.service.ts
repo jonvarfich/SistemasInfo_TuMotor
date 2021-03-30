@@ -54,7 +54,6 @@ export class UserCrudService {
           )
         }
       ));
-
   }
 
   DisableVehicle(Vuid: string){

@@ -31,6 +31,10 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { OrdenesComponent } from './pages/ordenes/ordenes.component';
 import { ReporteComponent } from './pages/reporte/reporte.component';
 import { UpdatemodalComponent } from './components/updatemodal/updatemodal.component';
+import { SuperadminComponent} from './pages/superadmin/superadmin.component';
+
+
+
 
 @NgModule({
   declarations: [
@@ -53,7 +57,8 @@ import { UpdatemodalComponent } from './components/updatemodal/updatemodal.compo
     ProfileComponent,
     OrdenesComponent,
     ReporteComponent,
-    UpdatemodalComponent    
+    UpdatemodalComponent,
+    SuperadminComponent,
   ],
   imports: [
     BrowserModule,

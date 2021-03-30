@@ -8,16 +8,10 @@ import { Observable, Subscription } from 'rxjs';
 import { DocumentSnapshot } from '@firebase/firestore-types';
 import { LoginComponent } from '../components/login/login.component';
 import { Vehicle } from '../models/vehicle';
+import { User } from '../models/user';
 
 //https://stackoverflow.com/questions/49002735/how-to-add-collection-within-document-angularfire2-angular5
 
-export interface User {
-    uid: string;
-    email: string;
-    displayName: string;
-    photoURL: string;
-    emailVerified: boolean;
- }
 
 @Injectable({
   providedIn: 'root'
@@ -135,7 +129,8 @@ export class NgAuthService {
         email: user.email,
         displayName: user.displayName,
         photoURL: user.photoURL,
-        emailVerified: user.emailVerified
+        emailVerified: user.emailVerified,
+        power:'user',
       }
       this.LoggedUser = userState;
       //this.SetUserVehicleCollection()
