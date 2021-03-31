@@ -18,30 +18,34 @@ export class UserpanelComponent implements OnInit {
 
   //@Input() public user: User;
   public user: User;
+  public cUser: User;
   private AngularFirestore: any;
   Vehicles: Array<Vehicle> = [];
   Appointments: Array<Appointment> = [];
 
+  
 
   constructor(private ngAuthService: NgAuthService, private usercrud: UserCrudService, private superuser: SuperuserService) {
-    this.user = this.ngAuthService.userdata;
-    
+
+  
   }
 
   ngOnInit(): void {
     this.user = this.ngAuthService.userdata;
     this.usercrud.getallvehicles().subscribe(
       (Vehicles) => {
-        console.log(JSON.stringify(Vehicles,null,4));
+        //console.log(JSON.stringify(Vehicles,null,4));
         this.Vehicles = Vehicles;
       }
     );
     this.usercrud.getallAppointments().subscribe(
       (Appointments) => {
-        console.log(JSON.stringify(Appointments,null,4));
+        //console.log(JSON.stringify(Appointments,null,4));
         this.Appointments = Appointments;
       }
     );
+    this.usercrud.getUser().subscribe((User) => this.user = User);
+
   }
 
   disableVehicle(Vuid:string){
@@ -51,7 +55,7 @@ export class UserpanelComponent implements OnInit {
       this.usercrud.DisableVehicle(Vuid);
     }
     else {
-      window.console.log('opción cancelada');
+      //window.console.log('opción cancelada');
     }
   }
 

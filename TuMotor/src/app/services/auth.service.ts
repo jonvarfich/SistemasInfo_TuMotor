@@ -19,8 +19,8 @@ import { User } from '../models/user';
 
 export class NgAuthService {
     userState: any;
-    LoggedUser: User;
     firestore: any;
+    public user = new Observable<User>();
 
     constructor(
       public afs: AngularFirestore,
@@ -38,6 +38,10 @@ export class NgAuthService {
           JSON.parse(localStorage.getItem('user'));
         }
       })
+
+      let userDoc = this.afs.doc<User>('User/'+this.userdata.uid);
+      this.user = userDoc.valueChanges();
+
     }
   
     SignIn(email, password) {
@@ -45,10 +49,11 @@ export class NgAuthService {
       return this.afAuth.signInWithEmailAndPassword(email, password)
         .then((result) => {
           this.ngZone.run(() => {
-            this.router.navigate(['userhome']);
+            
             document.getElementById('modalclosebutton').click();
           });
           this.SetUserData(result.user);
+          this.router.navigate(['userhome']);
         }).catch((error) => {
           window.alert(error.message)
         })
@@ -94,8 +99,6 @@ export class NgAuthService {
   
     GoogleAuth() {
       return this.AuthLogin(new firebase.auth.GoogleAuthProvider());
-      //this.LoggedUser = JSON.parse(localStorage.getItem('user'));
-      //this.SetUserVehicleCollection();
     }
   
     AuthLogin(provider) {
@@ -103,9 +106,9 @@ export class NgAuthService {
       .then((result) => {
          this.ngZone.run(() => {
             document.getElementById('modalclosebutton').click();
-            this.redirectTo('userhome');
           })
         this.SetUserData(result.user);
+        this.redirectTo('userhome');
       }).catch((error) => {
         window.alert(error)
       })
@@ -123,6 +126,7 @@ export class NgAuthService {
     } */
   
     SetUserData(user) {
+
       const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
       const userState: User = {
         uid: user.uid,
@@ -130,10 +134,7 @@ export class NgAuthService {
         displayName: user.displayName,
         photoURL: user.photoURL,
         emailVerified: user.emailVerified,
-        power:'user',
       }
-      this.LoggedUser = userState;
-      //this.SetUserVehicleCollection()
       return userRef.set(userState, {
         merge: true
       })
@@ -142,7 +143,6 @@ export class NgAuthService {
     SignOut() {
       return this.afAuth.signOut().then(() => {
         localStorage.removeItem('user');
-        //this.router.navigate(['']);
         this.redirectTo('/home');
       })
     }  
@@ -151,7 +151,7 @@ export class NgAuthService {
 
       this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
       this.router.navigate([uri]));
-
       
   }
+
 }
