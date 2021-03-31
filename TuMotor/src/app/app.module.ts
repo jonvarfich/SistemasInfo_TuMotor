@@ -33,6 +33,7 @@ import { ReporteComponent } from './pages/reporte/reporte.component';
 import { UpdatemodalComponent } from './components/updatemodal/updatemodal.component';
 import { SuperadminComponent} from './pages/superadmin/superadmin.component';
 import { AddAppointmentComponent } from './components/add-appointment/add-appointment.component';
+import { ManagercomponentComponent } from './components/managercomponent/managercomponent.component';
 
 
 
@@ -61,6 +62,7 @@ import { AddAppointmentComponent } from './components/add-appointment/add-appoin
     UpdatemodalComponent,
     SuperadminComponent,
     AddAppointmentComponent,
+    ManagercomponentComponent,
   ],
   imports: [
     BrowserModule,

@@ -5,65 +5,6 @@
 
 <app-navbar> </app-navbar>
 
+<app-managercomponent></app-managercomponent>
 
-<!--Este accordion crea duplicados y cuando abre una cita, también abre todas las demás.
-Aunque los datos sean distintos-->
-<div class="accordion" id="accordionExample">
-  <div class="card" *ngFor="let item of list">
-    <div class="card-header" id="headingOne">
-      <h2 class="mb-0">
-        <button
-          class="btn btn-link"
-          type="button"
-          data-toggle="collapse"
-          data-target="#collapseOne"
-          aria-expanded="true"
-          aria-controls="collapseOne"
-        >
-          {{ item.nombre }}
-        </button>
-      </h2>
-    </div>
-    <div
-      id="collapseOne"
-      class="collapse show"
-      aria-labelledby="headingOne"
-      data-parent="#accordionExample"
-    >
-      <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
-        terry richardson ad squid. 3 wolf moon officia aute, non cupidatat
-        skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-      </div>
-    </div>
-  </div>
-</div>
-
-<!--Este accordion es super bonito pero como utiliza una propiedad llamada nextElementSibling
-al momento de crear un duplicado, son como fantasmas y por lo tanto la propiedad no los detecta y no funciona-->
-<div class="accordion">
-  <div class="accordion-item">
-    <button class="accordion-header">
-      <strong>Cita 1</strong>
-      <i class="fas fa-angle-down"></i>
-    </button>
-    <div class="accordion-body">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-      consequatur ipsa quod nam iste veniam, dolorem consectetur optio impedit
-      voluptas inventore earum quia quaerat totam neque in commodi animi quam?
-    </div>
-  </div>
-  <div class="accordion-item">
-    <button class="accordion-header">
-      <strong>Cita 2</strong>
-      <i class="fas fa-angle-down"></i>
-    </button>
-    <div class="accordion-body">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-      consequatur ipsa quod nam iste veniam, dolorem consectetur optio impedit
-      voluptas inventore earum quia quaerat totam neque in commodi animi quam?
-    </div>
-  </div>
-</div>
-
-<script src="./managerdates.component.ts"></script>
+<app-footer></app-footer>

@@ -28,5 +28,19 @@ export class NavbarComponent implements OnInit {
     }
     else{false;}
   }
+  isMechanic():boolean{
+    //console.log(this.ngAuthService.userdata.power );
+    if(this.user.power == "mechanic"){
+      return true;
+    }
+    else{false;}
+  }
+  isManager():boolean{
+    //console.log(this.ngAuthService.userdata.power );
+    if(this.user.power == "manager"){
+      return true;
+    }
+    else{false;}
+  }
 
 }

@@ -64,4 +64,11 @@ export class UserpanelComponent implements OnInit {
     return Vehicle.name;
   }
 
+  AcceptDate(Aid:string){
+    this.ngAuthService.afs.collection('appointments').doc(Aid).update({'status':'accepted'})
+  }
+  RejectDate(Aid:string){
+    this.ngAuthService.afs.collection('appointments').doc(Aid).update({'status':'rejected'})
+  }
+
 }

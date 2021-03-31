@@ -46,11 +46,14 @@
         </div>  
 
         <div class="card-body"> 
-            <h3>Citas Aceptadas</h3>             
+            <h3>Citas con fecha</h3>             
             <div class= 'lista' *ngFor="let appointment of  Appointments">
 
                 <div *ngIf="appointment.status == 'responded' && appointment.UserUid == user.uid">'
                     <div class='card-header'><h1>{{ vehicleName(appointment.CarUid) }} Status: {{appointment.status}}</h1></div>
+                    <div class='card-body'><h1>Fecha: {{appointment.Date.toDate() }}</h1></div>
+                    <button type="button" class="btn btn-success" (click)="AcceptDate(appointment.uid)">Aceptar</button>
+                    <button type="button" class="btn btn-danger" (click)="RejectDate(appointment.uid)">Rechazar</button>
                 </div>
 
             </div>
@@ -58,7 +61,7 @@
         </div>
 
         <div class="card-body"> 
-            <h3>Citas en procesamiento</h3>             
+            <h3>Citas en espera de fecha</h3>             
             <div class= 'lista' >
                 <div class= 'lista' *ngFor="let appointment of  Appointments ">
 
@@ -70,6 +73,21 @@
 
             </div>
 
+        </div>
+
+        <div class="card-body"> 
+            <h3>Citas aceptadas</h3>             
+            <div class= 'lista' >
+                <div class= 'lista' *ngFor="let appointment of  Appointments ">
+
+                    <div *ngIf="appointment.status == 'accepted' && appointment.UserUid == user.uid">'
+                        <div class='card-header'><h1>{{ vehicleName(appointment.CarUid) }} Status: {{appointment.status}}</h1></div>
+                        <div class='card-body'><h1>Fecha: {{appointment.Date.toDate() }}</h1></div>
+                    </div>
+    
+                </div>
+
+            </div>
         </div>
 
      
