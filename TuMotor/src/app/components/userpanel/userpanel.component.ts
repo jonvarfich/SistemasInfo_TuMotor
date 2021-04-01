@@ -9,6 +9,8 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 import { Appointment } from 'src/app/models/appointment';
 
+
+
 @Component({
   selector: 'app-userpanel',
   templateUrl: './userpanel.component.html',
@@ -20,17 +22,19 @@ export class UserpanelComponent implements OnInit {
   public user: User;
   public cUser: User;
   private AngularFirestore: any;
+  public myAngularxQrCode: string = null;
   Vehicles: Array<Vehicle> = [];
   Appointments: Array<Appointment> = [];
 
   
 
   constructor(private ngAuthService: NgAuthService, private usercrud: UserCrudService, private superuser: SuperuserService) {
-
+    this.myAngularxQrCode = 'Your QR code data string';
   
   }
 
   ngOnInit(): void {
+    this.myAngularxQrCode = 'Your QR code data string';
     this.user = this.ngAuthService.userdata;
     this.usercrud.getallvehicles().subscribe(
       (Vehicles) => {
@@ -69,6 +73,10 @@ export class UserpanelComponent implements OnInit {
   }
   RejectDate(Aid:string){
     this.ngAuthService.afs.collection('appointments').doc(Aid).update({'status':'rejected'})
+  }
+  
+  getQRstring(uid):string{
+    return uid;
   }
 
 }

@@ -35,6 +35,8 @@ import { SuperadminComponent} from './pages/superadmin/superadmin.component';
 import { AddAppointmentComponent } from './components/add-appointment/add-appointment.component';
 import { ManagercomponentComponent } from './components/managercomponent/managercomponent.component';
 
+import { QRCodeModule } from 'angularx-qrcode';
+
 
 
 
@@ -73,6 +75,7 @@ import { ManagercomponentComponent } from './components/managercomponent/manager
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireAuthModule,
+    QRCodeModule
   ],
   providers: [
     NgAuthService,
