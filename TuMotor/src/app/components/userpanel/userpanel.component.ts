@@ -25,7 +25,6 @@ export class UserpanelComponent implements OnInit {
   public myAngularxQrCode: string = null;
   Vehicles: Array<Vehicle> = [];
   Appointments: Array<Appointment> = [];
-
   
 
   constructor(private ngAuthService: NgAuthService, private usercrud: UserCrudService, private superuser: SuperuserService) {
@@ -74,9 +73,11 @@ export class UserpanelComponent implements OnInit {
   RejectDate(Aid:string){
     this.ngAuthService.afs.collection('appointments').doc(Aid).update({'status':'rejected'})
   }
-  
+
   getQRstring(uid):string{
     return uid;
   }
+
+
 
 }

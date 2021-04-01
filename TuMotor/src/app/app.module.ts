@@ -36,6 +36,8 @@ import { AddAppointmentComponent } from './components/add-appointment/add-appoin
 import { ManagercomponentComponent } from './components/managercomponent/managercomponent.component';
 
 import { QRCodeModule } from 'angularx-qrcode';
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
+
 
 
 
@@ -75,7 +77,8 @@ import { QRCodeModule } from 'angularx-qrcode';
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireAuthModule,
-    QRCodeModule
+    QRCodeModule,
+    ZXingScannerModule,
   ],
   providers: [
     NgAuthService,
