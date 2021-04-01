@@ -1,31 +1,19 @@
 <app-navbar></app-navbar>
-<section class="big-box">
-    <div class="botones">
-        <button type="button" href="" data-toggle="modal" class="btn btn-primary" >Perfil</button>
-        <button type="button" href="" data-toggle="modal" class="btn btn-primary" >Citas</button>
-        <button type="button" href="" data-toggle="modal" class="btn btn-primary" >Gestor de ordenes</button>
-        <button type="button" href="" data-toggle="modal" class="btn btn-primary" >Reportes</button>
-        <button type="button" href="" data-toggle="modal" class="btn btn-primary" >Gestor de citas</button>
-        
-    </div>
-    
-    <section class="gestor">
 
-        <div>
-            <h4 class="display-1">Gestor de ordenes</h4>
-        </div>
+<section class="big-box" *ngIf="!qrResultString">
 
-        <div class="card-body">
-            <h5 class="card-title">Orden #49178</h5>
-            <p class="card-text">Modelo: Toyota gt4500
-            </p>
-            <p class="card-title">placa: 890 MGH</p>
-            <p class="card-text">Comentario: Excelente =)</p>
-        </div>
+      
+      
+    <zxing-scanner #scanner class="test-class" start="true" [device]="selectedDevice" (scanSuccess)="handleQrCodeResult($event)"></zxing-scanner>
+      <div class="form-group">
+        <input type="text" placeholder="appointment id" #Aid required ngModel>
+        <input type="button" value="text" (click)="InputAid(Aid.value)">
+      </div>
 
-    </section>
-    
+</section>
 
+<section class="big-box" *ngIf="qrResultString">
+    <app-manage-appointment [appointmentuid]="this.qrResultString"></app-manage-appointment>
 </section>
 
 <app-footer></app-footer>
