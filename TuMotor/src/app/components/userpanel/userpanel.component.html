@@ -46,51 +46,31 @@
         </div>  
 
         <div class="card-body"> 
-            <h3>Citas con fecha</h3>             
-            <div class= 'lista' *ngFor="let appointment of  Appointments">
+            <h3>Citas</h3>             
+            <div class= 'lista' *ngFor="let appointment of  Appointments; let i = index">
 
-                <div *ngIf="appointment.status == 'responded' && appointment.UserUid == user.uid">'
-                    <qrcode [qrdata]="getQRstring(appointment.uid)" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
-                    <div class='card-header'><h1>{{ vehicleName(appointment.CarUid) }} Status: {{appointment.status}}</h1></div>
-                    <div class='card-body'><h1>Fecha: {{appointment.Date.toDate() }}</h1></div>
-                    <button type="button" class="btn btn-success" (click)="AcceptDate(appointment.uid)">Aceptar</button>
-                    <button type="button" class="btn btn-danger" (click)="RejectDate(appointment.uid)">Rechazar</button>
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="card-body"> 
-            <h3>Citas en espera de fecha</h3>             
-            <div class= 'lista' >
-                <div class= 'lista' *ngFor="let appointment of  Appointments ">
-
+                <div class="datecard">
+                    <div *ngIf="appointment.status == 'responded' && appointment.UserUid == user.uid">'
+                        <div class='card-header'><h1>{{ vehicleName(appointment.CarUid) }} Status: {{appointment.status}}</h1></div>
+                        <qrcode [qrdata]="appointment.uid" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+                        <div class='card-body'><h1>Fecha: {{appointment.Date.toDate() }}</h1></div>
+                        <button type="button" class="btn btn-success" (click)="AcceptDate(appointment.uid)">Aceptar</button>
+                        <button type="button" class="btn btn-danger" (click)="RejectDate(appointment.uid)">Rechazar</button>
+                    </div>
                     <div *ngIf="appointment.status == 'requested' && appointment.UserUid == user.uid">'
                         <div class='card-header'><h1>{{ vehicleName(appointment.CarUid) }} Status: {{appointment.status}}</h1></div>
                     </div>
-    
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="card-body"> 
-            <h3>Citas aceptadas</h3>             
-            <div class= 'lista' >
-                <div class= 'lista' *ngFor="let appointment of  Appointments ">
-
-                    <div *ngIf="appointment.status == 'accepted' && appointment.UserUid == user.uid">'
+                    <div *ngIf="appointment.status == 'accepted' && appointment.UserUid == user.uid">
                         <div class='card-header'><h1>{{ vehicleName(appointment.CarUid) }} Status: {{appointment.status}}</h1></div>
+                        <qrcode [qrdata]="appointment.uid" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
                         <div class='card-body'><h1>Fecha: {{appointment.Date.toDate() }}</h1></div>
                     </div>
-    
+                    
                 </div>
 
             </div>
-        </div>
 
+        </div>
      
 
         <div class="card-footer">
