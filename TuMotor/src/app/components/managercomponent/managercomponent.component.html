@@ -7,75 +7,25 @@
             <h3>Citas Pedidas</h3>             
             <div class= 'lista' *ngFor="let appointment of  Appointments">
 
-                <div *ngIf="appointment.status == 'requested' && managerID != appointment.UserUid ">'
+                <div *ngIf="appointment.status == 'requested' &&  managerID != appointment.UserUid">'
                     <div class='card-header'>
                         <h1>{{ UserName(appointment.UserUid) }} Status: {{appointment.status}}</h1>
+
+                    </div>
+                    <div class='card-body'><h4>Status:</h4> {{appointment.status}}</div>
+                    <div class='card-body'>
+                        <h4>NOTE:</h4> {{appointment.Note}}
                         <div class="form-group">
                             <input type="datetime-local" class="form-control" required="required" #Date required ngModel>
                             <input type="button" class="btn btn-primary pull-right" value="Enviar fecha" (click)="setDateProposal(appointment.uid,Date.value)">
                         </div>
                     </div>
-                    <div class='card-body'><h4>Status:</h4> {{appointment.status}}</div>
-                    <div class='card-body'><h4>NOTE:</h4> {{appointment.Note}}</div>
+                    
                 </div>
 
             </div>
 
-        </div>
-
-        <div class="card-body"> 
-            <h3>Esperando respuesta del usuario</h3>             
-            <div class= 'lista' >
-                <div class= 'lista' *ngFor="let appointment of  Appointments ">
-
-                    <div *ngIf="appointment.status == 'pending' && managerID != appointment.UserUid">'
-                        <div class='card-header'><h1>{{ UserName(appointment.UserUid) }} Status: {{appointment.status}}</h1></div>
-                        <div class='card-body'><h4>Status:</h4> {{appointment.status}}</div>
-                        <div class='card-body'><h4>NOTE:</h4> {{appointment.Note}}</div>
-                        
-                    </div>
-    
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="card-body"> 
-            <h3>Citas aceptadas</h3>             
-            <div class= 'lista' >
-                <div class= 'lista' *ngFor="let appointment of  Appointments ">
-
-                    <div *ngIf="appointment.status == 'accepted' && managerID != appointment.UserUid">'
-                        <div class='card-header'><h1>{{ UserName(appointment.UserUid) }} Status: {{appointment.status}}</h1></div>
-                        <div class='card-body'><h4>Status:</h4> {{appointment.status}}</div>
-                        <div class='card-body'><h4>NOTE:</h4> {{appointment.Note}}</div>
-                    </div>
-    
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="card-body"> 
-            <h3>Citas rechazadas</h3>             
-            <div class= 'lista' >
-                <div class= 'lista' *ngFor="let appointment of  Appointments ">
-
-                    <div *ngIf="appointment.status == 'rejected' && managerID != appointment.UserUid">'
-                        <div class='card-header'><h1>{{ UserName(appointment.UserUid) }} Status: {{appointment.status}}</h1></div>
-                        <div class='card-body'><h4>Status:</h4> {{appointment.status}}</div>
-                        <div class='card-body'><h4>NOTE:</h4> {{appointment.Note}}</div>
-                    </div>
-    
-                </div>
-
-            </div>
-
-        </div>
-
-     
+        </div>     
 
         <div class="card-footer">
             <app-footer></app-footer>

@@ -22,6 +22,7 @@ export class UserpanelComponent implements OnInit {
   //@Input() public user: User;
   public user: User;
   public cUser: User;
+  public DateShow:string;
   private AngularFirestore: any;
   Vehicles: Array<Vehicle> = [];
   Appointments: Array<Appointment> = [];
@@ -46,6 +47,7 @@ export class UserpanelComponent implements OnInit {
       }
     );
     this.usercrud.getUser().subscribe((User) => this.user = User);
+    this.DateShow = 'responded';
 
   }
 

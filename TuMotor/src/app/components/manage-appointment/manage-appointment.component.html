@@ -1,5 +1,4 @@
 <section>
-
     <h1>ID de la cita:</h1>{{appointmentuid}}<br>
     <h1>Usuario: </h1>{{user.displayName}}<br>
     <h1>Nota del Usuario: </h1><p>{{appointment.Note}}</p><br>
@@ -10,10 +9,19 @@
     
 
 
-    <input type="checkbox" id="brakes" name="vehicle1" value="Bike">
-    <label for="Frenos">Frenos</label>
-    <br>
+    <input type="checkbox" id="brakes" name="keys" value="1" #keys><label for="Frenos">llaves</label><br>
+    <input type="checkbox" id="brakes" name="cat" value="1" #cat><label for="Frenos">gato</label><br>
+    <input type="checkbox" id="brakes" name="player" value="1" #player><label for="Frenos">reproductor</label><br>
+    <input type="checkbox" id="brakes" name="tools" value="1" #tools><label for="Frenos">herramientas</label><br>
+    <input type="checkbox" id="brakes" name="tire" value="1" #tire><label for="Frenos">Caucho de repuesto</label><br>
+    <input type="number" #gas> <label for="">Gas</label> <br>
+    <input type="text" #note> <label for="">Gas</label> <br>
+    
+
+
     <input type="text" placeholder="Note">
-    <input type="button" value="Send" #Send>
+    <input type="button" value="Send" (click)="setRepairOrder(tire.value, keys.value, cat.value, player.value,tools.value,gas.value,note.value)">
 
 </section>
+
+

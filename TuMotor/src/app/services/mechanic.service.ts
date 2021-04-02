@@ -13,6 +13,7 @@ import { User } from '../models/user';
 import { NgAuthService } from './auth.service';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Appointment } from '../models/appointment';
+import { Repairorder } from '../models/repairorder';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,7 @@ import { Appointment } from '../models/appointment';
 export class MechanicService {
 
 
+  private OrderCollection:AngularFirestoreCollection<Repairorder>;
 
   constructor(
     public afs: AngularFirestore,
@@ -28,7 +30,9 @@ export class MechanicService {
     public router: Router,
     public ngZone: NgZone,
     public ngAuthService: NgAuthService,
-  ) { }
+  ) {
+    this.OrderCollection = this.afs.collection<Repairorder>('repairOrders');
+  }
 
   getAppointment(Aid:string): Observable<Appointment>{
     return this.afs.collection<Appointment>('appointments').doc(Aid).snapshotChanges().pipe(
@@ -63,6 +67,25 @@ export class MechanicService {
           return { id, ...data };
         }))
   }
+
+
+  getallOrders(): Observable<Repairorder[]>{
+    return this.OrderCollection.snapshotChanges().pipe(
+      map((Orders) =>
+        {
+          return Orders.map((Order)=>(
+            {
+              uid: Order.payload.doc.id,
+              ...Order.payload.doc.data(),
+            }
+          )
+          )
+        }
+      ));
+  }
+
+
+  
 
   
 }

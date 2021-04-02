@@ -47,25 +47,38 @@
 
 
         <div class="card-body"> 
-            <h3>Citas</h3>             
+            <h3>Citas
+
+            <button type="button" class="btn btn-success" *ngIf = "this.DateShow != 'responded'" (click)="this.DateShow = 'responded'">Citas Respondidas</button>
+            <button type="button" class="btn btn-success" *ngIf = "this.DateShow != 'requested'" (click)="this.DateShow = 'requested'">Citas pedidas</button>
+            <button type="button" class="btn btn-success" *ngIf = "this.DateShow != 'accepted'" (click)="this.DateShow = 'accepted'">Citas aceptadas</button>
+            <button type="button" class="btn btn-success" *ngIf = "this.DateShow != 'rejected'" (click)="this.DateShow = 'rejected'">Citas rechazadas</button>
+
+        </h3>  
             <div class= 'lista' *ngFor="let appointment of  Appointments; let i = index">
 
                 <div class="datecard">
-                    <div *ngIf="appointment.status == 'responded' && appointment.UserUid == user.uid">'
+                    <div *ngIf="appointment.status == 'responded' && appointment.UserUid == user.uid && this.DateShow == 'responded'">'
                         <div class='card-header'><h1>{{ vehicleName(appointment.CarUid) }} Status: {{appointment.status}}</h1></div>
                         <div class='card-body'><h1>Fecha: {{appointment.Date.toDate() }}</h1></div>
                         <button type="button" class="btn btn-success" (click)="AcceptDate(appointment.uid)">Aceptar</button>
                         <button type="button" class="btn btn-danger" (click)="RejectDate(appointment.uid)">Rechazar</button>
                     </div>
-                    <div *ngIf="appointment.status == 'requested' && appointment.UserUid == user.uid">'
+                    <div *ngIf="appointment.status == 'requested' && appointment.UserUid == user.uid && this.DateShow == 'requested'">'
                         <div class='card-header'><h1>{{ vehicleName(appointment.CarUid) }} Status: {{appointment.status}}</h1></div>
                     </div>
-                    <div *ngIf="appointment.status == 'accepted' && appointment.UserUid == user.uid">
+                    <div *ngIf="appointment.status == 'accepted' && appointment.UserUid == user.uid && this.DateShow == 'accepted'">
                         <div class='card-header'><h1>{{ vehicleName(appointment.CarUid) }} Status: {{appointment.status}}</h1></div>
                         <qrcode attr.id="i" [qrdata]="appointment.uid" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
                         <div class='card-body'><h1>Fecha: {{appointment.Date.toDate() }}</h1></div>
                     </div>
-                    
+
+                    <div *ngIf="appointment.status == 'rejected' && appointment.UserUid == user.uid && this.DateShow == 'rejected'">
+                        <div class='card-header'><h1>{{ vehicleName(appointment.CarUid) }} Status: {{appointment.status}}</h1></div>
+                        <qrcode attr.id="i" [qrdata]="appointment.uid" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+                        <div class='card-body'><h1>Fecha: {{appointment.Date.toDate() }}</h1></div>
+                    </div>
+                
                 </div>
 
             </div>

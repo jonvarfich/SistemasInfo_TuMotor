@@ -13,7 +13,9 @@ import { UserCrudService } from 'src/app/services/user-crud.service';
 })
 export class ManagercomponentComponent implements OnInit {
   Users: Array<User> = [];
+  user: User;
   managerID: string;
+  DateShow: string = 'pending';
   private AngularFirestore: any;
   Appointments: Array<Appointment> = [];
   constructor(private ngAuthService:NgAuthService, private usercrud:UserCrudService,private manager: ManagerService) {
