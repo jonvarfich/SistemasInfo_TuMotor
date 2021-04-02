@@ -29,6 +29,7 @@ export class AddAppointmentComponent implements OnInit {
       CarUid: CarUid,
       Note: Note,
       status: "requested",
+      Completed: "waiting",
     }
     this.usercrud.setAppointment(Appointment, UserUid);
   }

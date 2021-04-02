@@ -90,7 +90,7 @@ export class ManageAppointmentComponent implements OnInit {
       }else{
       const doc: Vehicle = ref.data();
       this.vehicle= doc;
-      //console.log(this.vehicle);
+      console.log(this.vehicle);
       }
       });
       }
@@ -112,24 +112,41 @@ export class ManageAppointmentComponent implements OnInit {
         console.log(this.userid);
       }
 
-      setRepairOrder(bt:string, keys:string, cat:string, player:string,tools:string,gas:number,note:string){
-        let aux: Repairorder ={
-          Completed: false,
-          BackupTire: this.isTrue(bt),
-          Keys: this.isTrue(keys),
-          Cat: this.isTrue(cat),
-          Player: this.isTrue(player),
-          Tools: this.isTrue(tools),
-          Gas: gas,
-          Note: note,
-          Appointmentuid: this.appointmentuid,
-        }
-        this.mechanic.afs.collection('repairOrders').add(aux);
+      setRepairOrder(bt:string, keys:string, cat:string, player:string,tools:string,gas:number){
+
+        console.log(this.appointmentuid);
+        console.log(this.appointment);
+
+        this.appointment.Completed = "standby";
+        this.appointment.BackupTire = this.isTrue(bt);
+        this.appointment.Keys = this.isTrue(keys);
+        this.appointment.Cat = this.isTrue(cat);
+        this.appointment.Player = this.isTrue(player);
+        this.appointment.Tools = this.isTrue(tools),
+        this.appointment.Gas = gas;
+
+        this.mechanic.afs.collection<Appointment>('appointments').doc<Appointment>(this.appointmentuid).update(
+          {
+            'Completed': "standby",
+            'BackupTire': true,
+            'Keys': true,
+            'Cat': true,
+            'Player':true,
+            'Tools': true,
+            'Gas': gas,
+          }          
+          );
       }
 
       isTrue(i:string):boolean{
         if(i == "1"){return true}
         else{return false}
+      }
+
+      isInDb(){
+        if(this.appointment.Completed == 'waiting'){
+          return true;
+        }else{return false;}
       }
 
 

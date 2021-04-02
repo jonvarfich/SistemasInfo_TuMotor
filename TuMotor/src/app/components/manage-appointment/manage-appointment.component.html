@@ -1,5 +1,5 @@
-<section>
-    <h1>ID de la cita:</h1>{{appointmentuid}}<br>
+<section *ngIf="this.isInDb()">
+    <h1>ID de la cita:</h1>{{appointment.uid}}<br>
     <h1>Usuario: </h1>{{user.displayName}}<br>
     <h1>Nota del Usuario: </h1><p>{{appointment.Note}}</p><br>
     <h1>Marca del vehículo: </h1>{{vehicle.marca}}<br>
@@ -9,19 +9,25 @@
     
 
 
-    <input type="checkbox" id="brakes" name="keys" value="1" #keys><label for="Frenos">llaves</label><br>
-    <input type="checkbox" id="brakes" name="cat" value="1" #cat><label for="Frenos">gato</label><br>
-    <input type="checkbox" id="brakes" name="player" value="1" #player><label for="Frenos">reproductor</label><br>
-    <input type="checkbox" id="brakes" name="tools" value="1" #tools><label for="Frenos">herramientas</label><br>
-    <input type="checkbox" id="brakes" name="tire" value="1" #tire><label for="Frenos">Caucho de repuesto</label><br>
-    <input type="number" #gas> <label for="">Gas</label> <br>
-    <input type="text" #note> <label for="">Gas</label> <br>
-    
+    <input type="checkbox" id="brakes" name="keys" value="1" #keys required ngModel><label for="Frenos">llaves</label><br>
+    <input type="checkbox" id="brakes" name="cat" value="1" #cat required ngModel><label for="Frenos">gato</label><br>
+    <input type="checkbox" id="brakes" name="player" value="1" #player required ngModel><label for="Frenos">reproductor</label><br>
+    <input type="checkbox" id="brakes" name="tools" value="1" #tools required ngModel><label for="Frenos">herramientas</label><br>
+    <input type="checkbox" id="brakes" name="tire" value="1" #tire required ngModel><label for="Frenos">Caucho de repuesto</label><br>
+    <input type="number" #gas required ngModel> <label for="">Gas</label> <br>
+    <input type="button" value="Send" (click)="setRepairOrder('1', '1', '1', '1','1',45,'1')">
 
+</section>
 
-    <input type="text" placeholder="Note">
-    <input type="button" value="Send" (click)="setRepairOrder(tire.value, keys.value, cat.value, player.value,tools.value,gas.value,note.value)">
-
+<section *ngIf="!this.isInDb()">
+    <h1>ID de la cita:</h1>{{this.appointment.uid}}<br>
+    <h1>Usuario: </h1>{{user.displayName}}<br>
+    <h1>Nota del Usuario: </h1><p>{{appointment.Note}}</p><br>
+    <h1>Marca del vehículo: </h1>{{vehicle.marca}}<br>
+    <h1>Serial del motor: </h1>{{vehicle.serial}}<br>
+    <h1>Placa: </h1>{{vehicle.serial}}<br>
+    <h1>Color: </h1>{{vehicle.color}}<br>
+    <h1>Gas: </h1>{{this.appointment.Completed}}<br>
 </section>
 
 
