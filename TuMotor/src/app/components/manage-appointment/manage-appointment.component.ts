@@ -31,10 +31,6 @@ export class ManageAppointmentComponent implements OnInit {
 
     this.getAppointment(this.appointmentuid);
 
-
-    //this.mechanic.getAppointment(this.appointmentuid).subscribe((appointment) => this.appointment = appointment);
-    
-    //this.getUser(this.userid);
   }
 
 

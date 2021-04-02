@@ -1,7 +1,19 @@
 <section>
 
-    {{user.displayName}}<br>
-    {{appointment.Note}}<br>
-    {{vehicle.name}}
+    <h1>ID de la cita:</h1>{{appointmentuid}}<br>
+    <h1>Usuario: </h1>{{user.displayName}}<br>
+    <h1>Nota del Usuario: </h1><p>{{appointment.Note}}</p><br>
+    <h1>Marca del vehículo: </h1>{{vehicle.marca}}<br>
+    <h1>Serial del motor: </h1>{{vehicle.serial}}<br>
+    <h1>Placa: </h1>{{vehicle.serial}}<br>
+    <h1>Color: </h1>{{vehicle.color}}<br>
+    
+
+
+    <input type="checkbox" id="brakes" name="vehicle1" value="Bike">
+    <label for="Frenos">Frenos</label>
+    <br>
+    <input type="text" placeholder="Note">
+    <input type="button" value="Send" #Send>
 
 </section>

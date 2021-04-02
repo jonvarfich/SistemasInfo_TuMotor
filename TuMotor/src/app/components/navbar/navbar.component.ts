@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { NgAuthService } from 'src/app/services/auth.service';
 import { UserCrudService } from 'src/app/services/user-crud.service';
@@ -13,7 +14,7 @@ export class NavbarComponent implements OnInit {
 
   public user:User;
 
-  constructor(public ngAuthService: NgAuthService, private usercrud:UserCrudService) {
+  constructor(private router:Router, public ngAuthService: NgAuthService, private usercrud:UserCrudService) {
     
   }
 
@@ -41,6 +42,10 @@ export class NavbarComponent implements OnInit {
       return true;
     }
     else{false;}
+  }
+
+  internalRoute(page,dst){
+    this.router.navigate([page], {fragment: dst});
   }
 
 }
