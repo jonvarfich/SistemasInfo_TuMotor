@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { data, map } from 'jquery';
 import { Observable } from 'rxjs';
 import { Appointment } from 'src/app/models/appointment';
 import { User } from 'src/app/models/user';
@@ -18,35 +19,97 @@ export class ManageAppointmentComponent implements OnInit {
   public user: User;
   public userid: string;
   public vehicleid: string;
+  public vehicle: Vehicle;
 
   constructor(
-    private mechanic:MechanicService
-  ) { }
+    private mechanic:MechanicService,
+  ) {
+
+  }
 
   ngOnInit(): void {
 
-    this.mechanic.getAppointment(this.appointmentuid).subscribe((appointment) => this.appointment = appointment);
-    //this.getUserDoc();
-    //this.getFirstNameByUid(this.appointmentuid);
+    this.getAppointment(this.appointmentuid);
 
+
+    //this.mechanic.getAppointment(this.appointmentuid).subscribe((appointment) => this.appointment = appointment);
+    
+    //this.getUser(this.userid);
   }
 
-  getUserDoc(){
-    this.mechanic.afs.collection<Appointment>('appointments').doc<Appointment>(this.appointmentuid).ref.get().then(
-      function(doc){
-          console.log(doc.data().UserUid);
-      }
-    );
 
-  }
 
-  getFirstNameByUid(uid: string) {
-    const userDocument = this.mechanic.afs.collection("appointment").doc<Appointment>(this.appointmentuid);
-    return userDocument.ref.get().then((doc) => {
-         const result = doc.exists ? doc.data().UserUid : null;
-         console.log(result);
-         return result;
+//Función salva patria
+  getDocFieldValue(uid){
+    this.mechanic.afs.doc<Appointment>(`appointments/${uid}`).get().subscribe(ref => {
+    if(!ref.exists){
+    console.log("none")// //DOC DOES NOT EXIST
+    }else{
+    const doc = ref.data();
+    this.userid = doc.UserUid;
+    this.vehicleid = doc.CarUid;
+    //console.log(this.userid);
+    }
     });
-}
+  }
+
+/*   getUser(uid){
+    this.mechanic.afs.doc<User>(`users/${uid}`).get().subscribe(ref => {
+    if(!ref.exists){
+    console.log("none")// //DOC DOES NOT EXIST
+    }else{
+      const doc = ref.data();
+      this.userid = ref.data().uid;
+    }
+    });
+  } */
+
+  getAppointment(uid){
+    this.mechanic.afs.doc<Appointment>(`appointments/${uid}`).get().subscribe(ref => {
+    if(!ref.exists){
+    console.log("none")// //DOC DOES NOT EXIST
+    }else{
+    const doc: Appointment = ref.data();
+    this.appointment= doc;
+    this.userid = doc.UserUid;
+    this.getUser(this.userid,doc.CarUid);
+    //console.log(this.userid);
+    //console.log(doc); //LOG ENTIRE DOC
+    //console.log("holaa"+this.userid);
+    }
+    });
+    }
+
+    
+    getVehicle(uid:string,vid:string){
+      console.log(vid);
+      this.mechanic.afs.doc<Vehicle>(`users/${uid}/vehicles/${vid}`).get().subscribe(ref => {
+      if(!ref.exists){
+      console.log("none")// //DOC DOES NOT EXIST
+      }else{
+      const doc: Vehicle = ref.data();
+      this.vehicle= doc;
+      console.log(this.vehicle);
+      }
+      });
+      }
+
+    getUser(uid:string, vid:string){
+      console.log(uid);
+      this.mechanic.afs.doc<User>(`users/${uid}`).get().subscribe(ref => {
+      if(!ref.exists){
+      console.log("none")// //DOC DOES NOT EXIST
+      }else{
+      const doc: User = ref.data();
+      this.user= doc;
+      this.getVehicle(this.user.uid,vid);
+      }
+      });
+      }
+
+      print(){
+        console.log(this.userid);
+      }
+  
 
 }
