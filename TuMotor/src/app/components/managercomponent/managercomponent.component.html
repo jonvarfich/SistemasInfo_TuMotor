@@ -12,7 +12,6 @@
                 <button type="button" class="btn btn-success" *ngIf = "this.DateShow != 'rejected'" (click)="this.DateShow = 'rejected'">Citas rechazadas</button>
                 <button type="button" class="btn btn-success" *ngIf = "this.DateShow != 'repaired'" (click)="this.DateShow = 'repaired'">Ordenes reparadas</button>
     
-
             </h3>       
 
             <div class= 'lista' *ngFor="let appointment of  Appointments">
@@ -72,6 +71,7 @@
                     <div class='card-body'><h4>Status:</h4> {{appointment.status}}</div>
                     <div class='card-body'>
                         <h4>NOTE:</h4> {{appointment.Note}}
+                        <input type="button" value="Terminar" (click)="Terminate(appointment.uid)"/>
                     </div>
                 </div>
 

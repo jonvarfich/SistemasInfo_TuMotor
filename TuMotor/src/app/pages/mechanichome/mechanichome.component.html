@@ -4,10 +4,13 @@
 
       
       
+    <!-- pueden cambiar el css pero esa linea es caca NO SE MODIFICA -->
     <zxing-scanner #scanner class="test-class" start="true" [device]="selectedDevice" (scanSuccess)="handleQrCodeResult($event)"></zxing-scanner>
+
+    <!-- este bloque también es caca -->
       <div class="form-group">
         <input type="text" placeholder="appointment id" #Aid required ngModel>
-        <input type="button" value="text" (click)="InputAid(Aid.value)">
+        <input type="button" value="Enviar" (click)="InputAid(Aid.value)">
       </div>
 
 </section>

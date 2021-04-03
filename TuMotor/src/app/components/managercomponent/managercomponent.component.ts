@@ -48,5 +48,14 @@ export class ManagercomponentComponent implements OnInit {
     this.ngAuthService.afs.collection('appointments').doc(Aid).update({'Date':Date, 'status':'responded'});
   }
 
+  Terminate(uid:string){
+    this.ngAuthService.afs.collection<Appointment>('appointments').doc<Appointment>(uid).update(
+      {
+      'Completed':'finished',
+      }
+    );
+
+  }
+
 
 }

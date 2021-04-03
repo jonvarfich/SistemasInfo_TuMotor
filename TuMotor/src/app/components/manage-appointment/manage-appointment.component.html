@@ -1,9 +1,12 @@
 <section *ngIf= '!this.appointment'>
 
     appointment not found
+    <input type="button" value="Escanear otra orden" (click)='Reload()'>
 
 </section>
 
+<!-- 
+escaneo appointment primera vez -->
 <section *ngIf="this.isInDb()">
 
     <div *ngIf = "this.appointment != null">
@@ -24,12 +27,14 @@
     <input [(ngModel)]="Player" [checked]="this.Player" (change)="this.Player != this.Player"id="Player"type="checkbox"/><label for="Player">Reproductor</label><br>
     <input [(ngModel)]="Tools" [checked]="this.Tools" (change)="this.Tools != this.Tools"id="Tools"type="checkbox"/><label for="Tools">Herramientas</label><br>
 
-    <input type="text" #Gas required ngModel>
+    <input type="number" #Gas required ngModel> <label for="Gas">Nivel gasolina</label>
 
     <input type="button" value="Enviar" (click)="setRepairOrder(Gas.value)">
 
 </section>
 
+
+<!-- escaneo appointment consulta -->
 <section *ngIf="!this.isInDb()">
     <h4>ID de la cita:</h4>{{this.appointment.uid}}<br>
     <h4>Usuario: </h4>{{user.displayName}}<br>
@@ -40,10 +45,14 @@
     <h4>Color: </h4>{{vehicle.color}}<br>
     <h4>Gas: </h4>{{this.appointment.Gas}}<br>
     <h4>Nota del cliente:</h4>{{this.appointment.Note}}<br>
+    <h4>Llanta de repuesto</h4>{{this.appointment.BackupTire}}<br>
+    <h4>gato</h4>{{this.appointment.Cat}}<br>
+    <h4>Llaves</h4>{{this.appointment.Keys}}<br>
+    <h4>Reproductor</h4>{{this.appointment.Player}}<br>
+    <h4>Herramientas</h4>{{this.appointment.Tools}}<br>
 
     <input type="button" value="Actualizar" (click)="this.edit = !this.edit"> <br>
     <input type="button" value="Finalizar" (click)="FinalOrder()">
-    <input type="button" value="Regresar" (click)="FinalOrder()">
     <input type="button" value="Escanear otra orden" (click)='Reload()'>
 
     <div *ngIf="this.edit == true">
