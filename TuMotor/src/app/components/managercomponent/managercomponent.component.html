@@ -1,13 +1,23 @@
 <section>
 
     <div class="card">
-        <h2>Manejo de Citas</h2>
-
+        ahhh
         <div class="card-body"> 
-            <h3>Citas Pedidas</h3>             
+
+            <h3>Manager Panel
+
+                <button type="button" class="btn btn-success" *ngIf = "this.DateShow != 'responded'" (click)="this.DateShow = 'responded'">Citas Respondidas</button>
+                <button type="button" class="btn btn-success" *ngIf = "this.DateShow != 'requested'" (click)="this.DateShow = 'requested'">Citas pedidas</button>
+                <button type="button" class="btn btn-success" *ngIf = "this.DateShow != 'accepted'" (click)="this.DateShow = 'accepted'">Citas aceptadas</button>
+                <button type="button" class="btn btn-success" *ngIf = "this.DateShow != 'rejected'" (click)="this.DateShow = 'rejected'">Citas rechazadas</button>
+                <button type="button" class="btn btn-success" *ngIf = "this.DateShow != 'repaired'" (click)="this.DateShow = 'repaired'">Ordenes reparadas</button>
+    
+
+            </h3>       
+
             <div class= 'lista' *ngFor="let appointment of  Appointments">
 
-                <div *ngIf="appointment.status == 'requested' &&  managerID != appointment.UserUid">'
+                <div *ngIf="appointment.status == 'requested' && this.DateShow == 'requested' && managerID != appointment.UserUid">'
                     <div class='card-header'>
                         <h1>{{ UserName(appointment.UserUid) }} Status: {{appointment.status}}</h1>
 
@@ -20,11 +30,52 @@
                             <input type="button" class="btn btn-primary pull-right" value="Enviar fecha" (click)="setDateProposal(appointment.uid,Date.value)">
                         </div>
                     </div>
-                    
+                </div>
+
+                <div *ngIf="appointment.status == 'responded' && this.DateShow == 'responded' && managerID != appointment.UserUid">'
+                    <div class='card-header'>
+                        <h1>{{ UserName(appointment.UserUid) }} Status: {{appointment.status}}</h1>
+
+                    </div>
+                    <div class='card-body'><h4>Status:</h4> {{appointment.status}}</div>
+                    <div class='card-body'>
+                        <h4>NOTE:</h4> {{appointment.Note}}
+                    </div>
+                </div>
+
+                <div *ngIf="appointment.status == 'accepted' && this.DateShow == 'accepted' && managerID != appointment.UserUid">'
+                    <div class='card-header'>
+                        <h1>{{ UserName(appointment.UserUid) }} Status: {{appointment.status}}</h1>
+
+                    </div>
+                    <div class='card-body'><h4>Status:</h4> {{appointment.status}}</div>
+                    <div class='card-body'>
+                        <h4>NOTE:</h4> {{appointment.Note}}
+                    </div>
+                </div>
+
+                <div *ngIf="appointment.status == 'rejected' && this.DateShow == 'rejected' && managerID != appointment.UserUid">'
+                    <div class='card-header'>
+                        <h1>{{ UserName(appointment.UserUid) }} Status: {{appointment.status}}</h1>
+
+                    </div>
+                    <div class='card-body'><h4>Status:</h4> {{appointment.status}}</div>
+                    <div class='card-body'>
+                        <h4>NOTE:</h4> {{appointment.Note}}
+                    </div>
+                </div>
+
+                <div *ngIf="appointment.Completed == 'repaired' && this.DateShow == 'repaired' && managerID != appointment.UserUid">'
+                    <div class='card-header'>
+                        <h1>{{ UserName(appointment.UserUid) }} Status: {{appointment.status}}</h1>
+                    </div>
+                    <div class='card-body'><h4>Status:</h4> {{appointment.status}}</div>
+                    <div class='card-body'>
+                        <h4>NOTE:</h4> {{appointment.Note}}
+                    </div>
                 </div>
 
             </div>
-
         </div>     
 
         <div class="card-footer">

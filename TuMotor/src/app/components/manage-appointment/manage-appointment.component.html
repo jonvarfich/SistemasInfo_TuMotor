@@ -1,38 +1,58 @@
+<section *ngIf= '!this.appointment'>
+
+    appointment not found
+
+</section>
+
 <section *ngIf="this.isInDb()">
 
     <div *ngIf = "this.appointment != null">
         <h1>ID de la cita:</h1>{{appointment.uid}}<br>
     </div>
     
-
     <h1>Usuario: </h1>{{user.displayName}}<br>
     <h1>Nota del Usuario: </h1><p>{{appointment.Note}}</p><br>
     <h1>Marca del vehículo: </h1>{{vehicle.marca}}<br>
     <h1>Serial del motor: </h1>{{vehicle.serial}}<br>
     <h1>Placa: </h1>{{vehicle.serial}}<br>
-    <h1>Color: </h1>{{vehicle.color}}<br>
-    
+    <h1>Color: </h1>{{vehicle.color}}<br>  
 
 
-    <input type="checkbox" id="brakes" name="keys" value="1" #keys required ngModel><label for="Frenos">llaves</label><br>
-    <input type="checkbox" id="brakes" name="cat" value="1" #cat required ngModel><label for="Frenos">gato</label><br>
-    <input type="checkbox" id="brakes" name="player" value="1" #player required ngModel><label for="Frenos">reproductor</label><br>
-    <input type="checkbox" id="brakes" name="tools" value="1" #tools required ngModel><label for="Frenos">herramientas</label><br>
-    <input type="checkbox" id="brakes" name="tire" value="1" #tire required ngModel><label for="Frenos">Caucho de repuesto</label><br>
-    <input type="number" #gas required ngModel> <label for="">Gas</label> <br>
-    <input type="button" value="Send" (click)="setRepairOrder('1', '1', '1', '1','1',45,'1')">
+    <input [(ngModel)]="BackupTire" [checked]="this.BackupTire" (change)="this.BackupTire != this.BackupTire" id="BackupTire" type="checkbox"/><label for="tire">Llanta de repuesto</label><br>
+    <input [(ngModel)]="Keys" [checked]="this.Keys" (change)="this.Keys != this.Keys"id="Keys" type="checkbox"/><label for="Keys">llaaves</label><br>
+    <input [(ngModel)]="Cat" [checked]="this.Cat" (change)="this.Cat!= this.Cat" id="Cat"type="checkbox"/><label for="Cat">Gato</label><br>
+    <input [(ngModel)]="Player" [checked]="this.Player" (change)="this.Player != this.Player"id="Player"type="checkbox"/><label for="Player">Reproductor</label><br>
+    <input [(ngModel)]="Tools" [checked]="this.Tools" (change)="this.Tools != this.Tools"id="Tools"type="checkbox"/><label for="Tools">Herramientas</label><br>
+
+    <input type="text" #Gas required ngModel>
+
+    <input type="button" value="Enviar" (click)="setRepairOrder(Gas.value)">
 
 </section>
 
 <section *ngIf="!this.isInDb()">
-    <h1>ID de la cita:</h1>{{this.appointment.uid}}<br>
-    <h1>Usuario: </h1>{{user.displayName}}<br>
-    <h1>Nota del Usuario: </h1><p>{{appointment.Note}}</p><br>
-    <h1>Marca del vehículo: </h1>{{vehicle.marca}}<br>
-    <h1>Serial del motor: </h1>{{vehicle.serial}}<br>
-    <h1>Placa: </h1>{{vehicle.serial}}<br>
-    <h1>Color: </h1>{{vehicle.color}}<br>
-    <h1>Gas: </h1>{{this.appointment.Note}}<br>
+    <h4>ID de la cita:</h4>{{this.appointment.uid}}<br>
+    <h4>Usuario: </h4>{{user.displayName}}<br>
+    <h4>Nota del Usuario: </h4><p>{{appointment.Note}}</p><br>
+    <h4>Marca del vehículo: </h4>{{vehicle.marca}}<br>
+    <h4>Serial del motor: </h4>{{vehicle.serial}}<br>
+    <h4>Placa: </h4>{{vehicle.serial}}<br>
+    <h4>Color: </h4>{{vehicle.color}}<br>
+    <h4>Gas: </h4>{{this.appointment.Gas}}<br>
+    <h4>Nota del cliente:</h4>{{this.appointment.Note}}<br>
+
+    <input type="button" value="Actualizar" (click)="this.edit = !this.edit"> <br>
+    <input type="button" value="Finalizar" (click)="FinalOrder()">
+    <input type="button" value="Regresar" (click)="FinalOrder()">
+    <input type="button" value="Escanear otra orden" (click)='Reload()'>
+
+    <div *ngIf="this.edit == true">
+        <label for="Process">Procedimiento Aplicado</label><input type="text" #Process required ngModel> <br>
+        <label for="Process">Repuestos Necesarios</label><input type="text" #Fixes required ngModel> <br>
+        <label for="Process">Diagnostico</label><input type="text" #Diagnostic required ngModel> <br>
+        <input type="button" value='Enviar' (click)="UpdateRepair(Process.value,Fixes.value,Diagnostic.value); this.edit = !this.edit">
+    </div>
+
 </section>
 
 

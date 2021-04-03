@@ -6,6 +6,8 @@ import { User } from 'src/app/models/user';
 import { Vehicle } from 'src/app/models/vehicle';
 import {Repairorder} from 'src/app/models/repairorder';
 import { MechanicService } from 'src/app/services/mechanic.service';
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-manage-appointment',
@@ -20,7 +22,13 @@ export class ManageAppointmentComponent implements OnInit {
   public userid: string;
   public vehicleid: string;
   public vehicle: Vehicle;
-  public Orders: Array<Repairorder> = [];
+  public edit: boolean = false;
+
+  public BackupTire: boolean = false;
+  public Keys: boolean = false;
+  public Cat: boolean = false;
+  public Player: boolean = false;
+  public Tools: boolean = false;
   
 
   constructor(
@@ -32,7 +40,6 @@ export class ManageAppointmentComponent implements OnInit {
   ngOnInit(): void {
 
     this.getAppointment(this.appointmentuid);
-    this.mechanic.getallOrders().subscribe((order) => this.Orders = order);
 
   }
 
@@ -71,7 +78,6 @@ export class ManageAppointmentComponent implements OnInit {
     const doc: Appointment = ref.data();
     this.appointment= doc;
     this.appointment.uid = ref.id;
-    console.log("ESTE ES EL ID:::",this.appointment.uid);
     this.userid = doc.UserUid;
     this.getUser(this.userid,doc.CarUid);
     //console.log(this.userid);
@@ -90,7 +96,6 @@ export class ManageAppointmentComponent implements OnInit {
       }else{
       const doc: Vehicle = ref.data();
       this.vehicle= doc;
-      console.log(this.vehicle);
       }
       });
       }
@@ -112,27 +117,24 @@ export class ManageAppointmentComponent implements OnInit {
         console.log(this.userid);
       }
 
-      setRepairOrder(bt:string, keys:string, cat:string, player:string,tools:string,gas:number){
-
-        console.log(this.appointmentuid);
-        console.log(this.appointment);
+      setRepairOrder(gas:number){
 
         this.appointment.Completed = "standby";
-        this.appointment.BackupTire = this.isTrue(bt);
-        this.appointment.Keys = this.isTrue(keys);
-        this.appointment.Cat = this.isTrue(cat);
-        this.appointment.Player = this.isTrue(player);
-        this.appointment.Tools = this.isTrue(tools),
+        this.appointment.BackupTire = this.BackupTire;
+        this.appointment.Keys = this.Keys;
+        this.appointment.Cat = this.Cat;
+        this.appointment.Player = this.Player;
+        this.appointment.Tools = this.Tools,
         this.appointment.Gas = gas;
 
         this.mechanic.afs.collection<Appointment>('appointments').doc<Appointment>(this.appointmentuid).update(
           {
             'Completed': "standby",
-            'BackupTire': true,
-            'Keys': true,
-            'Cat': true,
-            'Player':true,
-            'Tools': true,
+            'BackupTire': this.BackupTire,
+            'Keys': this.Keys,
+            'Cat': this.Cat,
+            'Player': this.Player,
+            'Tools': this.Tools,
             'Gas': gas,
           }          
           );
@@ -147,6 +149,29 @@ export class ManageAppointmentComponent implements OnInit {
         if(this.appointment.Completed == 'waiting'){
           return true;
         }else{return false;}
+      }
+
+      UpdateRepair(Process:string,Fixes:string,Diag:string){
+        this.mechanic.afs.collection<Appointment>('appointments').doc<Appointment>(this.appointment.uid).update(
+          {
+            'Process':Process,
+            'Fixes':Fixes,
+            'Diagnostic':Diag,
+          }
+        );
+      }
+
+      FinalOrder(){
+        this.mechanic.afs.collection<Appointment>('appointments').doc<Appointment>(this.appointmentuid).update(
+          {
+          'Completed':'repaired',
+          'status':'repaired',
+          }
+        );
+      }
+
+      Reload(){
+        window.location.reload();
       }
 
 
