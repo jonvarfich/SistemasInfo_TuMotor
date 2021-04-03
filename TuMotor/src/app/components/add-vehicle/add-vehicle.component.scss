@@ -1,73 +1,56 @@
-@import "../../styles/variables.scss"; 
+@import "../../styles/variables.scss";
 ////https://www.remotestack.io/angular-firebase-authentication-example-tutorial/
 
-.close {
-    color: #fff; 
-    opacity: 1;
-}
+.modal-content {
+  border-radius: 15px;
+  border: none;
 
-.modal-login {
-    width: 320px;
-    margin: 30px auto;
-}
-.modal-login .modal-content {
-    border-radius: 15px;
-    border: none;
-}
-.modal-login .modal-header {
+  .modal-header {
     position: relative;
     justify-content: center;
     background: $blueProject;
-    color: white;
+    color: $light;
+
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      color: #fff;
+      opacity: 1;
+    }
+
+    .modal-title {
+      color: $light;
+      font-size: 30px;
+      font-weight: bold;
+      text-align: center;
+    }
+  }
 }
-.modal-login .modal-body {
-    padding: 30px;
-}
-.modal-login .modal-footer {
-    background: #f2f2f2;
-}
-.modal-login h4 {
-    text-align: center;
-    font-size: 26px;
-}
-.modal-login label {
+
+.modal-body {
+  padding: 30px;
+
+  label {
     font-weight: normal;
     font-size: 13px;
-}
-.modal-login .form-control, .modal-login .btn {
-    min-height: 38px;
-    border-radius: 2px; 
-}
-.modal-login .hint-text {
-    text-align: center;
-}
-.modal-login .close {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-}
-.modal-login .checkbox-inline {
-    margin-top: 12px;
-}
-.modal-login input[type="checkbox"]{
-    margin-top: 2px;
-}
-.modal-login .btn {
-    min-width: 50px;
-    background-color: $blueProject;
-    border: none;
-    border-radius: 5px;
-    line-height: normal;
-}
-.modal-login .btn:hover, .modal-login .btn:focus {
-    background: $blueProject;
-}
-.modal-login .hint-text a {
-    color: #999;
-}
-.trigger-btn {
-    display: inline-block;
-    margin: 100px auto;
-}
-///////////
+  }
 
+  .form-control,
+  .modal-login .btn {
+    min-height: 38px;
+    border-radius: 2px;
+  }
+}
+
+.btn {
+  min-width: 50px;
+  background: $blueProject;
+  border: none;
+  border-radius: 0;
+  line-height: normal;
+
+  &:hover {
+    font-weight: bold;
+  }
+}

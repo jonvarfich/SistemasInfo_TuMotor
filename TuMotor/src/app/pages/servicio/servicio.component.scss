@@ -1,17 +1,37 @@
 @import '../../styles/variables.scss';
 
 .the-service{
-    margin: 10vh 10vh 10vh 10vh;
-    background-color: $light;
-    height: 50vh;
-    padding: 3vh;
+    margin-top: 80px;
+    background-color: $lightShadow;
     border-radius: 20px;
+    height: auto;
 }
 
 h1{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 5vh;
+    font-weight: bold;
     color:$blueProject;
+    text-align: center;
+}
+
+.carousel-indicators{
+    position: static;
+    margin: 0;
+    margin-bottom: 20px;
+    padding: 0;
+    width: 100vw;
+    background: $blueProject;
 }
 
 h4{
     color:$blueProject; 
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+}
+
+p{
+    text-align: justify;
 }

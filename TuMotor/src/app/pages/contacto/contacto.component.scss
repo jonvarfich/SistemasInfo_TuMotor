@@ -2,43 +2,49 @@
 
 
 .contain{
-    margin: 10vh auto 10vh ;
-    background-color: $light;
+    margin-top: 80px;
+    background-color: $lightShadow;
     height: fit-content;
-    padding: 3vh;
-    border-radius: 20px;
 }
 
 .row {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    align-content: center;
     width: 100%;
+    
+    iframe{
+        margin-left: 40px;
+    }
+    
+    .ctext{
+        color:$blueProject;
+        font-size: 14px;
+        text-align: justify;
+
+        &.column {
+            display: flex;
+            flex-direction: column;
+            flex-basis: 100%;
+            flex: 1;
+            margin-left: 10px;
+        }
+
+        .special{
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    
+    }
   }
-  
-.column {
-    display: flex;
-    flex-direction: column;
-    flex-basis: 100%;
-    flex: 1;
-}
-
-.ctext{
-
-    margin: 0 2vh;
-    color:$blueProject;
-    font-size: 2vh;
-    text-align: justify;
-    justify-content: center;
-
-}
-
-.mapa
-{
-    height: auto;
-}
 
 .icon{
+
+    margin-left: 5px;
+    margin-right: 5px;
+
     &:hover{
         -webkit-filter: brightness(0.6)contrast(3.4)hue-rotate(217deg)saturate(9.9);
         filter: brightness(0.6)contrast(3.4)hue-rotate(217deg)saturate(9.9);
@@ -54,6 +60,11 @@
 
 .display-1
 {
-    color: $blueProject;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 5vh;
+    font-weight: bold;
+    color:$blueProject;
+    text-align: center;
 }
 
