@@ -15,9 +15,7 @@ import { MechanicService } from 'src/app/services/mechanic.service';
 export class ManageAppointmentComponent implements OnInit {
 
   @Input() appointmentuid:string;
-
   public appointment: Appointment;
-  public repairOrder: Repairorder;
   public user: User;
   public userid: string;
   public vehicleid: string;
@@ -72,6 +70,8 @@ export class ManageAppointmentComponent implements OnInit {
     }else{
     const doc: Appointment = ref.data();
     this.appointment= doc;
+    this.appointment.uid = ref.id;
+    console.log("ESTE ES EL ID:::",this.appointment.uid);
     this.userid = doc.UserUid;
     this.getUser(this.userid,doc.CarUid);
     //console.log(this.userid);

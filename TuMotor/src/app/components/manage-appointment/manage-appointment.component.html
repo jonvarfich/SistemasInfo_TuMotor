@@ -1,5 +1,10 @@
 <section *ngIf="this.isInDb()">
-    <h1>ID de la cita:</h1>{{appointment.uid}}<br>
+
+    <div *ngIf = "this.appointment != null">
+        <h1>ID de la cita:</h1>{{appointment.uid}}<br>
+    </div>
+    
+
     <h1>Usuario: </h1>{{user.displayName}}<br>
     <h1>Nota del Usuario: </h1><p>{{appointment.Note}}</p><br>
     <h1>Marca del vehículo: </h1>{{vehicle.marca}}<br>
@@ -27,7 +32,7 @@
     <h1>Serial del motor: </h1>{{vehicle.serial}}<br>
     <h1>Placa: </h1>{{vehicle.serial}}<br>
     <h1>Color: </h1>{{vehicle.color}}<br>
-    <h1>Gas: </h1>{{this.appointment.Completed}}<br>
+    <h1>Gas: </h1>{{this.appointment.Note}}<br>
 </section>
 
 
