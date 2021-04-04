@@ -19,7 +19,7 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //this.usercrud.getUser().subscribe((User) => this.user = User);
+    this.usercrud.getUser().subscribe((User) => this.user = User);
   }
 
   isSudo():boolean{
