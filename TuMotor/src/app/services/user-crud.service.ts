@@ -37,12 +37,20 @@ export class UserCrudService {
     public ngZone: NgZone,
     public ngAuthService: NgAuthService,
   ) {
+  }
+
+  InitUserCrud(){
     this.UserTable = this.afs.collection('users').doc(this.ngAuthService.userdata.uid);
     this.VehicleCollection = this.UserTable.collection<Vehicle>('vehicles');
     this.AppointmentCollection = this.afs.collection<Appointment>('appointments');
   }
 
-  
+  offCrud(){
+    this.UserTable = null;
+    this.VehicleCollection = null;
+    this.AppointmentCollection = null;
+  }
+
   getallvehicles(): Observable<Vehicle[]>{
     return this.VehicleCollection.snapshotChanges().pipe(
       map((Vehicles) =>

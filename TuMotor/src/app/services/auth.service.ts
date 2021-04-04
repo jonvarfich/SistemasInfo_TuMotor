@@ -9,6 +9,7 @@ import { DocumentSnapshot } from '@firebase/firestore-types';
 import { LoginComponent } from '../components/login/login.component';
 import { Vehicle } from '../models/vehicle';
 import { User } from '../models/user';
+import { UserCrudService } from './user-crud.service';
 
 //https://stackoverflow.com/questions/49002735/how-to-add-collection-within-document-angularfire2-angular5
 
@@ -26,7 +27,7 @@ export class NgAuthService {
       public afs: AngularFirestore,
       public afAuth: AngularFireAuth,
       public router: Router,
-      public ngZone: NgZone
+      public ngZone: NgZone,
     ) {
       this.afAuth.authState.subscribe(user => {
         if (user) {
@@ -37,11 +38,9 @@ export class NgAuthService {
           localStorage.setItem('user', null);
           JSON.parse(localStorage.getItem('user'));
         }
-      })
-
-      let userDoc = this.afs.doc<User>('User/'+this.userdata.uid);
-      this.user = userDoc.valueChanges();
-
+      });
+      //let userDoc = this.afs.doc<User>('User/'+this.userdata.uid);
+      //this.user = userDoc.valueChanges();
     }
   
     SignIn(email, password) {
