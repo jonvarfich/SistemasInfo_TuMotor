@@ -52,6 +52,9 @@ export class UserCrudService {
   }
 
   getallvehicles(): Observable<Vehicle[]>{
+    this.UserTable = this.afs.collection('users').doc(this.ngAuthService.userdata.uid);
+    this.VehicleCollection = this.UserTable.collection<Vehicle>('vehicles');
+    this.AppointmentCollection = this.afs.collection<Appointment>('appointments');
     return this.VehicleCollection.snapshotChanges().pipe(
       map((Vehicles) =>
   
@@ -80,6 +83,9 @@ export class UserCrudService {
 ///https://stackoverflow.com/questions/54285816/how-to-map-object-using-subscribe-in-angular
 
   getallAppointments(): Observable<Appointment[]>{
+    this.UserTable = this.afs.collection('users').doc(this.ngAuthService.userdata.uid);
+    this.VehicleCollection = this.UserTable.collection<Vehicle>('vehicles');
+    this.AppointmentCollection = this.afs.collection<Appointment>('appointments');
     return this.AppointmentCollection.snapshotChanges().pipe(
       map((Appointments) =>
         {
