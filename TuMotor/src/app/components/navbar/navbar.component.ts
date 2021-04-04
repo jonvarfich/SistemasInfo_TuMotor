@@ -19,7 +19,7 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.usercrud.getUser().subscribe((User) => this.user = User);
+    //this.usercrud.getUser().subscribe((User) => this.user = User);
   }
 
   isSudo():boolean{
@@ -46,6 +46,11 @@ export class NavbarComponent implements OnInit {
 
   internalRoute(page,dst){
     this.router.navigate([page], {fragment: dst});
+  }
+
+  SignOut(){
+    this.ngAuthService.SignOut();
+    this.usercrud.offCrud
   }
 
 }

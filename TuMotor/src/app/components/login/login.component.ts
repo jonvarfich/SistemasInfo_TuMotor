@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserCrudService } from 'src/app/services/user-crud.service';
 import { NgAuthService } from '../../services/auth.service';
 
 
@@ -9,7 +10,7 @@ import { NgAuthService } from '../../services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public ngAuthService: NgAuthService) {
+  constructor(public ngAuthService: NgAuthService, public usercrud: UserCrudService) {
     
   }
 
@@ -18,6 +19,11 @@ export class LoginComponent implements OnInit {
 
   public static closemodal(){
     document.getElementById("close").click();
+  }
+
+  SignIn(userName, userPassword){
+    this.ngAuthService.SignIn(userName, userPassword);
+    this.usercrud.InitUserCrud();
   }
 
 
