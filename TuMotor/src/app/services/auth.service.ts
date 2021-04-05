@@ -60,7 +60,7 @@ export class NgAuthService {
       return this.afAuth.createUserWithEmailAndPassword(email, password)
         .then((result) => {
           //this.SendVerificationMail();
-          this.SetUserData(result.user);
+          this.SetUserDataR(result.user);
           document.getElementById('modalclosebutton').click();
           this.redirectTo('userhome'); 
         }).catch((error) => {
@@ -141,6 +141,25 @@ export class NgAuthService {
       return userRef.set(userState, {
         merge: true
       }) */
+
+    }
+
+    SetUserDataR(user) {
+
+      const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+
+       const userState: User = {
+        uid: user.uid,
+        email: user.email,
+        displayName: user.displayName,
+        photoURL: user.photoURL,
+        emailVerified: user.emailVerified,
+      }
+      console.log(user.photoURL);
+
+      return userRef.set(userState, {
+        merge: true
+      })
 
     }
    
