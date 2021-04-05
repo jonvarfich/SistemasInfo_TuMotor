@@ -1,73 +1,52 @@
-@import "../../styles/variables.scss"; 
+@import "../../styles/variables.scss";
 ////https://www.remotestack.io/angular-firebase-authentication-example-tutorial/
 
 .close {
-    color: #fff; 
-    opacity: 1;
+  color: #fff;
+  opacity: 1;
+  position: absolute;
+  top: 15px;
+  right: 15px;
 }
 
-.modal-login {
-    width: 320px;
-    margin: 30px auto;
+.modal-content {
+  border-radius: 15px;
+  border: none;
 }
-.modal-login .modal-content {
-    border-radius: 15px;
-    border: none;
+.modal-header {
+  position: relative;
+  justify-content: center;
+  background: $blueProject;
+  color: white;
 }
-.modal-login .modal-header {
-    position: relative;
-    justify-content: center;
-    background: $blueProject;
-    color: white;
+.modal-body {
+  padding: 30px;
 }
-.modal-login .modal-body {
-    padding: 30px;
+.modal-footer {
+  background: #f2f2f2;
 }
-.modal-login .modal-footer {
-    background: #f2f2f2;
+h4 {
+  text-align: center;
+  font-size: 20px;
 }
-.modal-login h4 {
-    text-align: center;
-    font-size: 26px;
+label {
+  font-weight: normal;
+  font-size: 15px;
+  color: $blueProject;
 }
-.modal-login label {
-    font-weight: normal;
-    font-size: 13px;
+.form-control,
+.btn {
+  min-height: 38px;
+  border-radius: 2px;
 }
-.modal-login .form-control, .modal-login .btn {
-    min-height: 38px;
-    border-radius: 2px; 
-}
-.modal-login .hint-text {
-    text-align: center;
-}
-.modal-login .close {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-}
-.modal-login .checkbox-inline {
-    margin-top: 12px;
-}
-.modal-login input[type="checkbox"]{
-    margin-top: 2px;
-}
-.modal-login .btn {
-    min-width: 50px;
-    background-color: $blueProject;
-    border: none;
-    border-radius: 5px;
-    line-height: normal;
-}
-.modal-login .btn:hover, .modal-login .btn:focus {
-    background: $blueProject;
-}
-.modal-login .hint-text a {
-    color: #999;
-}
-.trigger-btn {
-    display: inline-block;
-    margin: 100px auto;
-}
-///////////
 
+.btn {
+  min-width: 50px;
+  background-color: $blueProject;
+  border: none;
+  line-height: normal;
+
+  &:hover {
+    background-color: $blueProjectIntense;
+  }
+}

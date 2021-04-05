@@ -1,29 +1,48 @@
 <div class="modal-dialog modal-addvehicle">
-    <div class="modal-content">
-    
-    <div class="modal-header">				
-        <h4 class="modal-title">Pedir Cita</h4>
-        <button id= "modalclosebutton" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">Solicitar Cita</h4>
+      <button
+        id="modalclosebutton"
+        type="button"
+        class="close"
+        data-dismiss="modal"
+        aria-hidden="true"
+      >
+        &times;
+      </button>
     </div>
-    <div class="modal-body">				
-        <div class="form-group">
+    <div class="modal-body">
+      <div class="form-group">
+        <label>Seleccione el vehículo</label>
 
-            <label>Seleccione el vehículo</label>
+        <select class="form-control" name="Vehicles" #Vehicle>
+          <ng-container *ngFor="let car of Vehicles">
+            <option *ngIf="car.status == true" value="{{ car.uid }}">
+              {{ car.name }} // {{ car.marca }} // {{ car.placa }}
+            </option>
+          </ng-container>
+        </select>
 
-                <select class="form-control" name="Vehicles" #Vehicle>
-                    <ng-container *ngFor="let car of Vehicles">
-                        <option *ngIf="car.status == true" value="{{car.uid}}">{{car.name}} // {{car.marca}} // {{car.placa}}</option>
-                    </ng-container>
-                    
-                </select>
-
-            <label>Explique brevemente su problema</label>
-            <input type="text" class="form-control" placeholder="Note" required="required" #Note required ngModel>
-
-        </div>
+        <label>Explique brevemente su problema</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Note"
+          required="required"
+          #Note
+          required
+          ngModel
+        />
+      </div>
     </div>
 
-   <input type="button" class="btn btn-primary pull-right" data-dismiss="modal" value="addvehicle" (click)="setAppointment(Vehicle.value,Note.value)">
-
-    </div>
+    <input
+      type="button"
+      class="btn btn-primary pull-right"
+      data-dismiss="modal"
+      value="Solicitar"
+      (click)="setAppointment(Vehicle.value, Note.value)"
+    />
   </div>
+</div>

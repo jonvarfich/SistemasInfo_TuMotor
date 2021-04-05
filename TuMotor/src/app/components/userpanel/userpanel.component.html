@@ -1,121 +1,209 @@
 <section>
-
-    <div class="card">
-        <div class="header">Bienvenido <span *ngIf='user.displayName' class='nameheader'>{{user.displayName}}!</span></div>
-        <div class="card-body">
-            <h2>Perfil</h2>
-            <div class="user-data"><img src={{user.photoURL}} class="img-fluid rounded-circle img-thumbnail float-left" alt="Foto de Perfil"></div>
-            <div class="user-data"><span class="special">Nombre de usuario:</span> {{user.displayName}}</div>
-            <div class="user-data"><span class="special">Correo electrónico:</span> {{user.email}}</div>
-        </div>
-        <div class="modify-btn">
-            <button type="button" href="#updateuserdata" data-toggle="modal" class="userbtn btn btn-primary">Modificar Datos de Perfil</button>
-        </div>
-        <!-- <button type="button"  (click)='test()' class="btn btn-primary">makeadmin</button> -->
+  <div class="card">
+    <div class="header">
+      Bienvenido
+      <span *ngIf="user.displayName" class="nameheader"
+        >{{ user.displayName }}!</span
+      >
     </div>
-    <div class="card" #cars>
-        <h2>Manejo de Vehiculos</h2>
-        <div class="modify-btn">
-            <button type="button" href="#addVehicleModal" data-toggle="modal" class="userbtn btn btn-primary">Agregar Vehículo</button>
-        </div>   
-        <div class="card-body"> 
-            <h3>Vehiculos Registrados</h3>
-           
-            <div class= 'lista' *ngFor="let vehicle of Vehicles">
-                <div *ngIf="vehicle.status == true; else Disabled">
-                    <div class="car-card">
-                        <div class='card-header'>{{vehicle.name}}</div>
-                        <div class='card-footer'><button type="button" class="btn btn-danger disablebtn" (click)="disableVehicle(vehicle.uid)">Desactivar</button></div>
-                    </div>
-                    <div class="car-card">
-                            <div class="foto">                                
-                                <img src={{vehicle.foto}} class="img-fluid rounded-circle img-thumbnail float-left" width="250px" alt="Foto del vehículo">
-                            </div>
-                            <div>
-                                <div class="user-data"><span class="special">Marca:</span> {{vehicle.marca}}</div>
-                                <div class="user-data"><span class="special">Color:</span> {{vehicle.color}}</div>
-                                <div class="user-data"><span class="special">Placa:</span> {{vehicle.placa}}</div>
-                                <div class="user-data"><span class="special">Año:</span> {{vehicle.year}}</div>
-                                <div class="user-data"><span class="special">Fecha de registro:</span> {{vehicle.DateRegistry.toDate() | date}}</div>
-                            </div>
-                    </div>       
-                </div>
+    <div class="card-body">
+      <h2>Perfil</h2>
+      <div class="user-data">
+        <img
+          src="{{ user.photoURL }}"
+          class="img-fluid rounded-circle img-thumbnail flex-left"
+          alt="Foto de Perfil"
+        />
+      </div>
+      <div class="user-data">
+        <span class="special">Nombre de usuario:</span> {{ user.displayName }}
+      </div>
+      <div class="user-data">
+        <span class="special">Correo electrónico:</span> {{ user.email }}
+      </div>
+    </div>
+    <div class="modify-btn">
+      <button
+        type="button"
+        href="#updateuserdata"
+        data-toggle="modal"
+        class="userbtn btn btn-primary"
+      >
+        Modificar Datos de Perfil
+      </button>
+    </div>
+    <!-- <button type="button"  (click)='test()' class="btn btn-primary">makeadmin</button> -->
+  </div>
+  <div class="card" #cars>
+    <h2>Manejo de Vehiculos</h2>
+    <div class="modify-btn">
+      <button
+        type="button"
+        href="#addVehicleModal"
+        data-toggle="modal"
+        class="userbtn btn btn-primary"
+      >
+        Agregar Vehículo
+      </button>
+    </div>
+    <div class="card-body">
+      <h3>Vehiculos Registrados</h3>
+
+      <div class="lista" *ngFor="let vehicle of Vehicles">
+        <div *ngIf="vehicle.status == true; else Disabled">
+          <div class="car-card">
+            <div class="card-header">{{ vehicle.name }}</div>
+            <div class="card-footer">
+              <button
+                type="button"
+                class="btn btn-danger disablebtn"
+                (click)="disableVehicle(vehicle.uid)"
+              >
+                Desactivar
+              </button>
             </div>
-        </div>
-  
-        <div class="card-footer">
-            <app-footer></app-footer>
-        </div>
-    </div>
-
-    <div class="card" id="citas">
-        <h2>Manejo de Citas</h2>
-
-        <div class="modify-btn">
-            <button type="button" href="#makeAppointment" data-toggle="modal" class="userbtn btn btn-primary">Pedir cita</button>
-        </div>  
-
-
-        <div class="card-body"> 
-            <h3>Citas
-
-            <button type="button" class="btn btn-success" *ngIf = "this.DateShow != 'responded'" (click)="this.DateShow = 'responded'">Citas Respondidas</button>
-            <button type="button" class="btn btn-success" *ngIf = "this.DateShow != 'requested'" (click)="this.DateShow = 'requested'">Citas pedidas</button>
-            <button type="button" class="btn btn-success" *ngIf = "this.DateShow != 'accepted'" (click)="this.DateShow = 'accepted'">Citas aceptadas</button>
-            <button type="button" class="btn btn-success" *ngIf = "this.DateShow != 'rejected'" (click)="this.DateShow = 'rejected'">Citas rechazadas</button>
-
-        </h3>  
-            <div class= 'lista' *ngFor="let appointment of  Appointments; let i = index">
-
-                <div class="datecard">
-                    <div *ngIf="appointment.status == 'responded' && appointment.UserUid == user.uid && this.DateShow == 'responded'">'
-                        <div class='card-header'><h1>{{ vehicleName(appointment.CarUid) }} Status: {{appointment.status}}</h1></div>
-                        <div class='card-body'><h1>Fecha: {{appointment.Date.toDate() }}</h1></div>
-                        <button type="button" class="btn btn-success" (click)="AcceptDate(appointment.uid)">Aceptar</button>
-                        <button type="button" class="btn btn-danger" (click)="RejectDate(appointment.uid)">Rechazar</button>
-                    </div>
-                    <div *ngIf="appointment.status == 'requested' && appointment.UserUid == user.uid && this.DateShow == 'requested'">'
-                        <div class='card-header'><h1>{{ vehicleName(appointment.CarUid) }} Status: {{appointment.status}}</h1></div>
-                    </div>
-                    <div *ngIf="appointment.status == 'accepted' && appointment.UserUid == user.uid && this.DateShow == 'accepted'">
-                        <div class='card-header'><h1>{{ vehicleName(appointment.CarUid) }} Status: {{appointment.status}}</h1></div>
-                        <qrcode attr.id="i" [qrdata]="appointment.uid" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
-                        <div class='card-body'><h1>Fecha: {{appointment.Date.toDate() }}</h1></div>
-                    </div>
-
-                    <div *ngIf="appointment.status == 'rejected' && appointment.UserUid == user.uid && this.DateShow == 'rejected'">
-                        <div class='card-header'><h1>{{ vehicleName(appointment.CarUid) }} Status: {{appointment.status}}</h1></div>
-                        <qrcode attr.id="i" [qrdata]="appointment.uid" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
-                        <div class='card-body'><h1>Fecha: {{appointment.Date.toDate() }}</h1></div>
-                    </div>
-                
-                </div>
-
+            <div class="card-footer">
+              <button type="button" class="btn btn-danger disablebtn">
+                Modificar
+              </button>
             </div>
-
+          </div>
+          <div class="car-card">
+            <div class="foto">
+              <img
+                src="{{ vehicle.foto }}"
+                class="img-fluid rounded-circle img-thumbnail"
+                width="250px"
+                alt="Foto del vehículo"
+              />
+            </div>
+            <div>
+              <div class="user-data">
+                <span class="special">Marca:</span> {{ vehicle.marca }}
+              </div>
+              <div class="user-data">
+                <span class="special">Color:</span> {{ vehicle.color }}
+              </div>
+              <div class="user-data">
+                <span class="special">Placa:</span> {{ vehicle.placa }}
+              </div>
+              <div class="user-data">
+                <span class="special">Año:</span> {{ vehicle.year }}
+              </div>
+              <div class="user-data">
+                <span class="special">Fecha de registro:</span>
+                {{ vehicle.DateRegistry.toDate() | date }}
+              </div>
+            </div>
+          </div>
         </div>
-     
-
-        <div class="card-footer">
-            <app-footer></app-footer>
-        </div>
+      </div>
     </div>
 
+    <div class="card-footer">
+      <app-footer></app-footer>
+    </div>
+  </div>
+
+  <div class="card" id="citas">
+    <h2>Manejo de Citas</h2>
+
+    <div class="card-body">
+      <h3>
+        <button type="button" class="btn btn-success" *ngIf="this.DateShow != 'responded'" (click)="this.DateShow = 'responded'">
+          Citas respondidas</button>
+        <button type="button" class="btn btn-success" *ngIf="this.DateShow != 'requested'" (click)="this.DateShow = 'requested'">
+          Citas pedidas </button>
+        <button type="button" class="btn btn-success" *ngIf="this.DateShow != 'accepted'" (click)="this.DateShow = 'accepted'">
+          Citas aceptadas </button>
+
+        <button type="button" class="btn btn-success" *ngIf="this.DateShow != 'rejected'" (click)="this.DateShow = 'rejected'">
+          Citas rechazadas </button>
+
+        <button type="button" href="#makeAppointment" data-toggle="modal" class="userbtn btn btn-primary">
+          Solicitar cita </button>
+      </h3>
+      <div class="lista" *ngFor="let appointment of Appointments; let i = index">
+        <div class="datecard">
+          <div *ngIf=" appointment.status == 'responded' && appointment.UserUid == user.uid &&
+              this.DateShow == 'responded'">
+              <div class = "carta">
+                <div class="card-header">              
+                  Vehículo: {{ vehicleName(appointment.CarUid) }}              
+                </div>            
+                <div class="card-body">
+                  <p><span class="special">Status: </span> respondida</p>
+                  <p><span class="special">Nota: </span> {{ appointment.Note }}</p>
+                  <p><span class="special">Fecha Asignada: </span> {{ appointment.Date.toDate() }}</p>
+                </div>
+                <button type="button" class="btn btn-success" (click)="AcceptDate(appointment.uid)">
+                Aceptar Fecha
+                </button>
+                <button type="button" class="btn btn-danger" (click)="RejectDate(appointment.uid)">
+                Rechazar Fecha
+                </button>
+              </div>            
+          </div>
+          <div *ngIf="appointment.status == 'requested' && appointment.UserUid == user.uid && this.DateShow == 'requested'">      
+            <div class="carta">
+                <div class="card-header">              
+                  Vehículo: {{ vehicleName(appointment.CarUid) }}                             
+                </div>
+                <div class="card-body">
+                        <p><span class="special">Status: </span> solicitada</p>
+                        <p><span class="special">Nota: </span>{{ appointment.Note }}</p>
+                        <p><span class="special">Fecha: </span> por asignar</p>
+                </div>    
+            </div>                          
+          </div>
+          <div *ngIf=" appointment.status == 'accepted' && appointment.UserUid == user.uid && this.DateShow == 'accepted' ">
+            <div class = "carta">
+              <div class="card-header">
+                Vehículo: {{ vehicleName(appointment.CarUid) }}
+              </div>
+              <qrcode attr.id="i" [qrdata]="appointment.uid" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+              <div class="card-body">
+                <p><span class="special">Status: </span> aceptada</p>
+                <p><span class="special">Nota: </span> {{ appointment.Note }}</p>
+                <p><span class="special">Fecha Asignada: </span> {{ appointment.Date.toDate() }}</p>
+              </div>
+            </div>
+            
+          </div>
+
+          <div *ngIf=" appointment.status == 'rejected' && appointment.UserUid == user.uid && this.DateShow == 'rejected' ">
+            <div class="carta">
+              <div class="card-header">
+              Vehículo: {{ vehicleName(appointment.CarUid) }} 
+              </div>
+              <qrcode attr.id="i" [qrdata]="appointment.uid" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+              <div class="card-body">
+                <p><span class="special">Status: </span> rechazada</p>
+                <p><span class="special">Nota: </span> {{ appointment.Note }}</p>
+                <p><span class="special">Fecha Asignada: </span> {{ appointment.Date.toDate() }}</p>
+              </div>
+            </div>            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-footer">
+      <app-footer></app-footer>
+    </div>
+  </div>
 </section>
 
 <div id="addVehicleModal" class="modal fade">
-    <app-add-vehicle></app-add-vehicle>
+  <app-add-vehicle></app-add-vehicle>
 </div>
 
 <div id="updateuserdata" class="modal fade">
-    <app-updatemodal></app-updatemodal>
+  <app-updatemodal></app-updatemodal>
 </div>
 
 <div id="makeAppointment" class="modal fade">
-    <app-add-appointment [Vehicles]="Vehicles"></app-add-appointment>
+  <app-add-appointment [Vehicles]="Vehicles"></app-add-appointment>
 </div>
 
-
-<ng-template #Disabled class="disabled">
-
-</ng-template>
+<ng-template #Disabled class="disabled"> </ng-template>
