@@ -11,6 +11,7 @@
   
   background-color: $lightShadow;
   border: none;
+  margin-top: 10vh;
 
   .card-header{
     margin-top: 10vh;
@@ -31,7 +32,7 @@
 
 
   h2 {
-    margin-left: 10vw;
+    // margin-left: 10vw;
     color: $blueProject;
     font-weight: bold;
   }
@@ -63,24 +64,20 @@
   }
 
   h3{
-    font-size: 20px;
     background: $blueProject;
     padding: 10px;
-    color: $light;
-    margin-left:20px;
-    margin-right: 20px;
+    border-radius: 17px;
+    color: #f7f7f7;
+    font-size: 2vw;
 }
 
   .lista{
-    background: $light;
-    margin-left:20px;
-    margin-right: 20px;
+    background: #8d8bf552;
+    margin-bottom: 3vh;
+    border-radius: 20px;
 
     .card-header{
-        background: $light;
-        color: $blueProject;
-        margin-left: 30px; 
-        margin-right: 30px;   
+        color: $blueProject;  
         border-color: $blueProject;
         margin:0;
     }
@@ -98,4 +95,8 @@
 
 .container {
   width: 100%;
+}
+
+.btn-manager {
+  margin: .2vh 1vw;
 }

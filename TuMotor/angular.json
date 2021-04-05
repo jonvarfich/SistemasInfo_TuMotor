@@ -129,5 +129,8 @@
       }
     }
   },
-  "defaultProject": "TuMotor"
+  "defaultProject": "TuMotor",
+  "cli": {
+    "analytics": "7e0e9818-f5b5-475c-87bf-b21867721090"
+  }
 }
