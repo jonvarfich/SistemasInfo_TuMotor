@@ -78,8 +78,6 @@
 
   .lista{
     background: $light;
-    margin-left:20px;
-    margin-right: 20px;
 
     .car-card{
       display: flex;
@@ -89,9 +87,7 @@
     }
     .card-header{
         background: $light;
-        color: $blueProject; 
-        margin-left: 30px; 
-        margin-right: 30px;   
+        color: $blueProject;  
         width: 90vw;
         border-color: $blueProject;
         font-size: 20px;

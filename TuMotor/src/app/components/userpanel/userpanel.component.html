@@ -4,7 +4,7 @@
         <div class="header">Bienvenido <span *ngIf='user.displayName' class='nameheader'>{{user.displayName}}!</span></div>
         <div class="card-body">
             <h2>Perfil</h2>
-            <div class="user-data"><img src={{user.photoURL}} class="img-fluid rounded-circle img-thumbnail float-left" alt="Foto de Perfil"></div>
+            <div class="user-data"><img src={{user.photoURL}} class="img-fluid rounded-circle img-thumbnail flex-left" alt="Foto de Perfil"></div>
             <div class="user-data"><span class="special">Nombre de usuario:</span> {{user.displayName}}</div>
             <div class="user-data"><span class="special">Correo electrónico:</span> {{user.email}}</div>
         </div>
@@ -17,7 +17,7 @@
         <h2>Manejo de Vehiculos</h2>
         <div class="modify-btn">
             <button type="button" href="#addVehicleModal" data-toggle="modal" class="userbtn btn btn-primary">Agregar Vehículo</button>
-        </div>   
+        </div>           
         <div class="card-body"> 
             <h3>Vehiculos Registrados</h3>
            
@@ -26,10 +26,11 @@
                     <div class="car-card">
                         <div class='card-header'>{{vehicle.name}}</div>
                         <div class='card-footer'><button type="button" class="btn btn-danger disablebtn" (click)="disableVehicle(vehicle.uid)">Desactivar</button></div>
+                        <div class='card-footer'><button type="button" class="btn btn-danger disablebtn" >Modificar</button></div>
                     </div>
                     <div class="car-card">
                             <div class="foto">                                
-                                <img src={{vehicle.foto}} class="img-fluid rounded-circle img-thumbnail float-left" width="250px" alt="Foto del vehículo">
+                                <img src={{vehicle.foto}} class="img-fluid rounded-circle img-thumbnail" width="250px" alt="Foto del vehículo">
                             </div>
                             <div>
                                 <div class="user-data"><span class="special">Marca:</span> {{vehicle.marca}}</div>
