@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
+import { User } from 'src/app/models/user';
+import { NgAuthService } from 'src/app/services/auth.service';
 import { UserCrudService } from 'src/app/services/user-crud.service';
 
 @Component({
@@ -14,7 +16,7 @@ export class UpdatemodalComponent implements OnInit {
   uploadPercent: Observable<number>;
   downloadURL: Observable<string>;
   
-  constructor(private usercrud: UserCrudService, private storage: AngularFireStorage) {}
+  constructor(private ngAuthService: NgAuthService, private usercrud: UserCrudService, private storage: AngularFireStorage) {}
  
   ngOnInit(): void {}  
 
@@ -23,7 +25,7 @@ export class UpdatemodalComponent implements OnInit {
       console.log('updated!!');
       this.usercrud.userUpdate(displayName);
     } else {
-      alert('Must fill all fields');
+      alert('Must fill name field');
     }
   }
 
@@ -38,8 +40,25 @@ export class UpdatemodalComponent implements OnInit {
     this.uploadPercent = task.percentageChanges();
     // get notified when the download URL is available
     task.snapshotChanges().pipe(
-        finalize(() => this.downloadURL = fileRef.getDownloadURL() )
+
+        finalize( () => this.photoupdate( fileRef.getDownloadURL() ) )
      )
-    .subscribe()
+    .subscribe( )
+
   }
+
+  photoupdate(str:Observable<string>){
+    this.downloadURL = str;
+    console.log(this.downloadURL);
+    this.downloadURL.subscribe(
+      val => this.ngAuthService.afs.collection<User>('users').doc<User>(this.ngAuthService.userdata.uid).update(
+        {
+          'photoURL':val,
+        }
+      )
+    )
+    
+
+  }
+
 }
