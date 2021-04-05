@@ -8,6 +8,7 @@ import { AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/f
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 import { Appointment } from 'src/app/models/appointment';
+import { UpdatemodalComponent } from '../updatemodal/updatemodal.component';
 
 
 
@@ -76,6 +77,10 @@ export class UserpanelComponent implements OnInit {
 
   getQRstring(uid):string{
     return uid;
+  }
+
+  vehiclemod(vehicleuid){
+    let notify = new UpdatemodalComponent(this.ngAuthService,this.usercrud, vehicleuid);
   }
 
 

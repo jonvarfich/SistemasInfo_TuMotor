@@ -38,6 +38,7 @@ import { ManagercomponentComponent } from './components/managercomponent/manager
 import { QRCodeModule } from 'angularx-qrcode';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import { ManageAppointmentComponent } from './components/manage-appointment/manage-appointment.component';
+import { UpdatecarComponent } from './components/updatecar/updatecar.component';
 
 
 
@@ -69,6 +70,7 @@ import { ManageAppointmentComponent } from './components/manage-appointment/mana
     AddAppointmentComponent,
     ManagercomponentComponent,
     ManageAppointmentComponent,
+    UpdatecarComponent,
   ],
   imports: [
     BrowserModule,

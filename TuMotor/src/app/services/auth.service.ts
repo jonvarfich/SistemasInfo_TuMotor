@@ -44,15 +44,13 @@ export class NgAuthService {
     }
   
     SignIn(email, password) {
-      console.log("sign");
       return this.afAuth.signInWithEmailAndPassword(email, password)
         .then((result) => {
           this.ngZone.run(() => {
-            
             document.getElementById('modalclosebutton').click();
           });
           this.SetUserData(result.user);
-          this.router.navigate(['userhome']);
+          location.reload();
         }).catch((error) => {
           window.alert(error.message)
         })
@@ -127,16 +125,23 @@ export class NgAuthService {
     SetUserData(user) {
 
       const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
-      const userState: User = {
+
+      userRef.get().subscribe(val => this.userState= val.data());
+
+
+/*       const userState: User = {
         uid: user.uid,
         email: user.email,
         displayName: user.displayName,
         photoURL: user.photoURL,
         emailVerified: user.emailVerified,
       }
+      console.log(user.photoURL);
+
       return userRef.set(userState, {
         merge: true
-      })
+      }) */
+
     }
    
     SignOut() {
