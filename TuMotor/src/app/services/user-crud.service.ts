@@ -123,7 +123,7 @@ export class UserCrudService {
     this.afs.collection('users').doc(this.ngAuthService.userdata.uid).collection('vehicles').doc(Vuid).update({'status': false});
   }
   
-  addvehicle(name:string, brand:string, color:string,placa:string,year:number,serial:string,foto:string){
+  addvehicle(name:string, brand:string, color:string,placa:string,year:number,serial:string){
 
       this.LoggedUser = this.ngAuthService.userdata;
       let Datenow = new Date(Date.now());
@@ -136,7 +136,6 @@ export class UserCrudService {
         status: true,
         year:year,
         serial:serial,
-        foto:foto,
         DateRegistry: Datenow,
       }
 

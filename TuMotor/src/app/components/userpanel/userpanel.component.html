@@ -63,7 +63,7 @@
               </button>
             </div>
             <div class="card-footer">
-              <button type="button" class="btn btn-danger disablebtn">
+              <button type="button" (click)="this.mod = vehicle.uid" class="btn btn-danger disablebtn">
                 Modificar
               </button>
             </div>
@@ -96,6 +96,77 @@
               </div>
             </div>
           </div>
+
+          <!-- modificar -->
+          <div *ngIf= "this.mod == vehicle.uid">
+                  <div class="modal-header" method="post">
+                    <h4 class="modal-title">Actualización de los Datos del vehiculo</h4>
+                    <button
+                      id="modalclosebutton"
+                      type="button"
+                      (click)="this.nullmod()"
+                      aria-hidden="true"
+                    >
+                      &times;
+                    </button>
+                  </div>
+              
+                  <div class="modal-body">
+                    <form method="POST">
+                      <div class="form-group">
+                        <label>Nombre de vehiculo</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="La vieja betsy"
+                          required="true"
+                          #name
+                        />
+                        <label>Placa</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          required="true"
+                          #placa
+                        />
+                        <label>color</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="azul"
+                          required="true"
+                          #color
+                        />
+                        
+                        <label>Foto del vehiculo</label>
+                        <div class="imagen">
+                          <img
+                            src="{{ downloadURL | async }}"
+                            class="img-fluid rounded-circle img-thumbnail"
+                          />
+                          <input type="file" (change)="uploadFileV($event)" />
+                          Subiendo la imagen: {{ uploadPercent | async }} %
+                        </div>
+              
+                        <div class="modify-btn">
+                          <button
+                            type="submit"
+                            class="btn btn-primary pull-right"
+                            value="Update"
+                            data-dismiss="modal"
+                            (click)="updateVehicle(name.value, placa.value, color.value)"
+                          >
+                            Guardar cambios
+                          </button>            
+                        </div>
+                      </div>
+                    </form>
+   
+              
+            </div>
+
+          </div>
+
         </div>
       </div>
     </div>

@@ -9,6 +9,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 import { Appointment } from 'src/app/models/appointment';
 import { UpdatemodalComponent } from '../updatemodal/updatemodal.component';
+import { finalize } from 'rxjs/operators';
 
 
 
@@ -24,12 +25,16 @@ export class UserpanelComponent implements OnInit {
   public user: User;
   public cUser: User;
   public DateShow:string;
+  public mod:string;
   private AngularFirestore: any;
   Vehicles: Array<Vehicle> = [];
   Appointments: Array<Appointment> = [];
+  uploadPercent: Observable<number>;
+  downloadURL: Observable<string>;
   
 
-  constructor(private ngAuthService: NgAuthService, private usercrud: UserCrudService, private superuser: SuperuserService) {
+  constructor(private ngAuthService: NgAuthService, private usercrud: UserCrudService, private superuser: SuperuserService,
+    private storage: AngularFireStorage) {
     this.user = this.ngAuthService.userdata;   
   }
 
@@ -81,6 +86,67 @@ export class UserpanelComponent implements OnInit {
 
   vehiclemod(vehicleuid){
     let notify = new UpdatemodalComponent(this.ngAuthService,this.usercrud, vehicleuid);
+  }
+
+  modCar(uid: string){
+    this.mod = uid;
+  }
+
+
+
+  //////
+
+  updateVehicle(name: string, placa:string, color: string) {
+    if (name != '' && placa != '' && color != '') {
+      this.ngAuthService.afs.collection<User>('users').doc<User>(this.ngAuthService.userdata.uid).collection<Vehicle>('vehicles')
+      .doc<Vehicle>(this.mod).update(
+        {
+          'name': name,
+          'color': color,
+          'placa': placa,
+        }
+      );
+      this.mod = null;
+
+    } else {
+      alert('Must fill name field');
+    }
+  }
+
+  //Este método no está verificando que sólo se seleccione un archivo .jpg o .png
+  uploadFileV(event) {
+    const file = event.target.files[0];
+    const filePath = 'name-your-file-path-here';
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, file);
+
+    // observe percentage changes
+    this.uploadPercent = task.percentageChanges();
+    // get notified when the download URL is available
+    task.snapshotChanges().pipe(
+
+        finalize( () => this.photoupdateV( fileRef.getDownloadURL() ) )
+     )
+    .subscribe( )
+
+  }
+
+  photoupdateV(str:Observable<string>){
+    this.downloadURL = str;
+    console.log(this.downloadURL);
+    this.downloadURL.subscribe(
+      val => this.ngAuthService.afs.collection<User>('users').doc<User>(this.ngAuthService.userdata.uid).collection<Vehicle>('vehicles')
+      .doc<Vehicle>(this.mod).update(
+        {
+          'foto':val,
+        }
+      )
+    )
+
+  }
+
+  nullmod(){
+    this.mod = null;
   }
 
 

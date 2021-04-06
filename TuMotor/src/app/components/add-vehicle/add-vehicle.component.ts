@@ -15,14 +15,14 @@ export class AddVehicleComponent implements OnInit {
   ngOnInit(): void {
   }
   
-  addvehicle(name: string,brand: string,color:string,placa:string, year:number, serial:string, foto:string){
+  addvehicle(name: string,brand: string,color:string,placa:string, year:number, serial:string){
 
     if(name == '' || color == '' || brand == '' || placa == '' || serial == '' || year == null){
       alert("Todos los datos deben ser llenados");
     }else if(year <= 0){
       alert("El año no puede ser negativo");
     }
-    else{this.usercrud.addvehicle(name,brand,color,placa,year,serial,foto);} 
+    else{this.usercrud.addvehicle(name,brand,color,placa,year,serial);} 
   }
 }
 
