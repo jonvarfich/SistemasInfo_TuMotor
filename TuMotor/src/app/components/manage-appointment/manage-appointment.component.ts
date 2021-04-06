@@ -7,6 +7,7 @@ import { Vehicle } from 'src/app/models/vehicle';
 import {Repairorder} from 'src/app/models/repairorder';
 import { MechanicService } from 'src/app/services/mechanic.service';
 import { FormsModule } from '@angular/forms';
+import { NgAuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -33,6 +34,7 @@ export class ManageAppointmentComponent implements OnInit {
 
   constructor(
     private mechanic:MechanicService,
+    private ngAuthService:NgAuthService,
   ) {
 
   }
@@ -136,6 +138,7 @@ export class ManageAppointmentComponent implements OnInit {
             'Player': this.Player,
             'Tools': this.Tools,
             'Gas': gas,
+            'mechanic':this.ngAuthService.userdata.uid,
           }          
           );
       }

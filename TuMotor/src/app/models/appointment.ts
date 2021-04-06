@@ -16,4 +16,6 @@ export interface Appointment {
     Process?:string,
     Fixes?:string,
     Diagnostic?:string,
+
+    mechanic?:string,
 }

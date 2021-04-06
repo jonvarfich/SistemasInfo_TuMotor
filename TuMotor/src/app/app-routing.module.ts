@@ -65,6 +65,12 @@ const routes: Routes = [
           return m.SuperadminModule;
         })
       },
+      {
+        path:'reports',
+        loadChildren: () => import('./pages/viewreport/viewreport.module').then(function (m) {
+          return m.ViewreportModule;
+        })
+      },
     ],
   },
 ];

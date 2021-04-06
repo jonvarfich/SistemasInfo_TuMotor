@@ -70,6 +70,25 @@ export class UserCrudService {
       ));
   }
 
+  getallvehiclesR(uid:string): Observable<Vehicle[]>{
+    this.UserTable = this.afs.collection('users').doc(uid);
+    this.VehicleCollection = this.UserTable.collection<Vehicle>('vehicles');
+    this.AppointmentCollection = this.afs.collection<Appointment>('appointments');
+    return this.VehicleCollection.snapshotChanges().pipe(
+      map((Vehicles) =>
+  
+        {
+          return Vehicles.map((Vehicle)=>(
+            {
+              uid: Vehicle.payload.doc.id,
+              ...Vehicle.payload.doc.data(),
+            }
+          )
+          )
+        }
+      ));
+  }
+
   getUser(): Observable<User>{
     return this.afs.collection<User>('users').doc(this.ngAuthService.userdata.uid).snapshotChanges().pipe(
       map((User) =>
