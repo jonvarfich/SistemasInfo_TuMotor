@@ -28,11 +28,12 @@
             flex-direction: column;
             flex-basis: 100%;
             flex: 1;
-            margin-left: 10px;
+            margin-left: 5vw;
+            margin-right: 5vw;
         }
 
         .special{
-            font-size: 18px;
+            font-size: 2vw;
             font-weight: bold;
             margin-bottom: 10px;
         }
@@ -62,9 +63,15 @@
 {
     padding-top: 20px;
     padding-bottom: 20px;
-    font-size: 5vh;
+    font-size: 3vw;
     font-weight: bold;
     color:$blueProject;
     text-align: center;
+}
+
+.mapa {
+    width: 45vw;
+    height: 45vh;
+    margin: 0 4vw 5vh;
 }
 
