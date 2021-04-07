@@ -1,0 +1,110 @@
+@import "../../styles/variables.scss";
+
+section{
+    background-color: $lightShadow;
+}
+.title{
+    margin-top: 80px;
+    padding-top: 10px;
+    font-size: 40px;
+    text-align: center;
+    color: $blueProject;
+}
+
+p{
+    color: $blueProject;
+    font-size: 18px;
+    text-align: center;
+}
+
+.botones{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    input{
+        background-color: $blueProject;
+        color: $light;
+        border: none;
+        border-radius: 10px;
+        height: 40px;
+        width: 280px;
+        margin: 5px;
+
+        &:hover{
+            background-color: $blueProjectIntense;
+        }
+    }
+}
+
+.data{
+    background-color: $light;
+    color: $blueProject;
+    border: solid;
+    border-color: $blueProject;
+    border-radius: 10px;
+    margin: 10px;
+
+    p{
+        margin: 5px;
+        font-size: 15px;
+        text-align: center;
+        font-weight: bold;
+
+        &.s{
+            font-weight: normal;
+        }
+    }
+
+    .form-group{
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        input{
+            margin-left: 10px;
+            margin-right: 10px;
+            background-color: $light;
+            color: $blueProject;
+        }
+        .btn{
+            input{
+                background-color: $blueProject;
+                color: $light;
+                height: 30px;
+                width: 100px;
+                margin-top: 10px;
+                border: none;
+                border-radius: 10px;
+                &:hover{
+                    background-color: $blueProjectIntense;
+                }
+            }
+        }
+    }
+
+    .user-data{
+        background-color: $blueProject;
+        color: $light;
+        margin: 20px;
+        padding-top: 10px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        p{
+            color: $light;
+
+            &.title{
+                font-size: 20px;
+                border-bottom: solid;
+                border-color: $light;
+            }
+        }
+
+        .v{
+            margin: 10px;
+        }
+        
+    }
+
+}

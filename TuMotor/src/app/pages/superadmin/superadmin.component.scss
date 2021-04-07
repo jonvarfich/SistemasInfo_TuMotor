@@ -8,27 +8,49 @@
   text-align: center;
 }
 .card {
-  
   background-color: $lightShadow;
   border: none;
 
-  .card-header{
+  .card-header {
     margin-top: 10vh;
-    .nameheader {    
-        color: $blueProject;
-      }
-  }  
-.disablebtn{
-  display: inline-block;
-  margin-right: 0;
-  right:0;
-}
+    .nameheader {
+      color: $blueProject;
+    }
+  }
 
-.disabled{
-  background-color: rgb(59, 59, 59);
-  color: aquamarine;
-}
+  .card-body {
+display: block;
+align-content: center;
 
+    .title {
+      color: $blueProject;
+      font-size: 25px;
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+  }
+  .disablebtn {
+    display: inline-block;
+    background-color: $lightBlue;
+    color: $blueProject;
+    font-weight: bold;
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    width: 200px;
+    right: 0;
+    border: none;
+
+    &:hover {
+      background-color: $greenProjectIntense;
+    }
+  }
+
+  .disabled {
+    background-color: rgb(59, 59, 59);
+    color: aquamarine;
+  }
 
   h2 {
     margin-left: 10vw;
@@ -62,39 +84,59 @@
     }
   }
 
-  h3{
-    font-size: 20px;
-    background: $blueProject;
-    padding: 10px;
-    color: $light;
-    margin-left:20px;
-    margin-right: 20px;
-}
+  .card-footer {
+    border: none;
+    height: 60px;
+    background: none;
+    margin-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+  }
 
-  .lista{
-    background: $light;
-    margin-left:20px;
-    margin-right: 20px;
+  .card-body {
+    padding-bottom: 0;
 
-    .card-header{
+    p {
+      font-size: 15px;
+      text-align: left;
+      margin: 0;
+
+      .special {
+        color: $blueProject;
+        font-weight: bold;
+        margin-right: 5px;
+      }
+    }
+
+    .lista {
+      background: $light;
+      margin-right: 20px;
+      border: solid;
+      border-radius: 10px;
+      border-color: $blueProject;
+      margin-bottom: 5px;      
+      width: 300px;    
+      height: 350px;  
+      float: left;
+
+      .card-header {
         background: $light;
         color: $blueProject;
-        margin-left: 30px; 
-        margin-right: 30px;   
+        margin-left: 30px;
+        margin-right: 30px;
         border-color: $blueProject;
-        margin:0;
+        margin: 0;
+
+        p {
+          font-size: 20px;
+          text-align: left;
+          font-weight: bold;
+          margin: 0;
+        }
+      }
     }
   }
-
-  .card-footer{
-    border: none;
-    height: 40px;
-    background: none;
-  }
-
-  
 }
-
 
 .container {
   width: 100%;

@@ -1,67 +1,90 @@
 <app-navbar></app-navbar>
 <section>
-    <br>
-    <br>
-    <br>
-    <br>
-    <input type="button" value="Buscar todas las citas atendidas por un mecánico" (click)="this.State = 'mechanic'; this.ready = false">
-    <input type="button" value="Buscar Usuario" (click)="this.State = 'user'; this.ready = false">
-    <input type="button" value="Buscar todas las citas de un vehículo" (click)="this.State = 'vehicle'; this.ready = false ">
-    
-    <ng-container *ngIf=" this.State == 'mechanic' ">
-        <label>Ingrese el mail del mecánico al cual se desea ver todas sus citas realizadas</label>
-        <div class="form-group">
-            <input type="text" #mechanic required ngModel>
-            <input type="button" value="Enviar" (click)="this.mechanicQuery(mechanic.value)">
-        </div>
+    <p class="title">Gestor de Reportes</p>
+    <p>Seleccione una opción de búsqueda</p>
 
-        <ng-container *ngIf="this.ready == true">
-            <ng-container *ngFor="let cita of this.mechAppointments; let i = index">
-                {{cita.uid}}
+    <div class="botones">
+        <input type="button" value="Citas atendidas por un mecánico" (click)="this.State = 'mechanic'; this.ready = false">
+        <input type="button" value="Usuario" (click)="this.State = 'user'; this.ready = false">
+        <input type="button" value="Citas de un vehículo" (click)="this.State = 'vehicle'; this.ready = false ">    
+    </div>
+
+    <ng-container *ngIf=" this.State == 'mechanic' ">
+        <div class="data">
+            <p>Datos de la búsqueda</p>
+            <p class = "s">Ingrese el mail del mecánico</p>
+            <div class="form-group">
+                <input type="text" #mechanic required ngModel>
+                <div class="btn">
+                    <input type="button" value="Enviar" (click)="this.mechanicQuery(mechanic.value)">
+                </div>
+            </div>
+            <ng-container *ngIf="this.ready == true">
+                <div class="user-data">
+                    <p class ="title">Citas</p>
+                <ng-container *ngFor="let cita of this.mechAppointments; let i = index">
+                    <div class = "v">
+                        <p>ID de la cita: {{cita.uid}}</p>
+                        <p>Status de la cita: {{cita.status}}</p>
+                    </div>
+                </ng-container>
+                </div>
             </ng-container>
-        </ng-container>
+        </div>
     </ng-container>
 
     <ng-container *ngIf=" this.State == 'user' ">
-
-        <label>Ingrese el email del usuario</label>
+      <div class="data">
+        <p>Datos de la búsqueda</p>
+        <p class = "s">Ingrese el mail del usuario</p>
         <div class="form-group">
             <input type="text" #user required ngModel>
-            <input type="button" value="Enviar" (click)="clientQuery(user.value)">
+            <div class="btn">
+                <input type="button" value="Enviar" (click)="clientQuery(user.value)">
+            </div>
         </div>
         
         <ng-container *ngIf="this.ready == true">
-
-            {{UserQuery.displayName}}
-            <img src={{UserQuery.photoURL}} alt="">
-
-            <ng-container *ngFor="let car of this.Vehicles; let i = index">
-
-                {{car.uid}}
-                {{car.status}}
-
-            </ng-container>
-
+            <div class="user-data">                
+                <img src={{UserQuery.photoURL}} class="img-fluid rounded-circle img-thumbnail"
+                alt="Foto de Perfil "
+                width="250px">                       
+                <p>Nombre del Usuario: {{UserQuery.displayName}}</p>
+                <p class ="title">Vehículos</p>
+                <ng-container *ngFor="let car of this.Vehicles; let i = index">
+                    <div class = "v">
+                    <p>Nombre del vehículo: {{car.name}}</p>
+                    <p>Estado del vehículo: {{car.status}}</p>
+                    </div>
+                </ng-container>                                    
+            </div>
         </ng-container>
-
+      </div>
     </ng-container>
 
     <ng-container *ngIf=" this.State == 'vehicle' ">
-
-        <label>Ingrese el ID del vehículo que se quiere ver todas sus citas</label>
+        <div class="data">
+            <p>Datos de la búsqueda</p>
+            <p class = "s">Ingrese el ID del vehículo</p>
         <div class="form-group">
             <input type="text" #car required ngModel>
-            <input type="button" value="Enviar" (click)="vehicleAppointments(car.value)">
+            <div class ="btn">
+                <input type="button" value="Enviar" (click)="vehicleAppointments(car.value)">
+            </div>
         </div>
 
         <ng-container *ngIf="this.ready == true">
-
+            <div class="user-data">
+                <p class ="title">Citas del Vehículo</p>
             <ng-container *ngFor="let cita of this.mechAppointments; let i = index">
-                {{cita.uid}}
+                <div class = "v">
+                    <p>ID de la cita: {{cita.uid}}</p>
+                    <p>Status de la cita: {{cita.status}}</p>
+                </div>
             </ng-container>
-
+            </div>
         </ng-container>
-        
+        </div>
     </ng-container>
 
 </section>

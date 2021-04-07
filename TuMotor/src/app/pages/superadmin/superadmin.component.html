@@ -1,19 +1,19 @@
 <section>
 
     <div class="card">
-        <div class="card-header header">Manejo de roles de usuarios.</div>
+        <div class="card-header header">Gestión de roles de usuarios.</div>
     </div>
     <div class="card">
         <div class="card-body"> 
-            <h3>Usuarios registrados</h3>             
+            <p class = "title">Usuarios registrados</p>             
              <div class= 'lista' *ngFor="let user of Users">
 
-                <div *ngIf="cuser.uid != user.uid; else Disabled">'
-                    <div class='card-header'><h1>{{user.email}}</h1></div>
+                <div *ngIf="cuser.uid != user.uid; else Disabled">
+                    <div class='card-header'><p>{{user.email}}</p></div>
                     <div class='card-body'>
-                        <h4>ID: {{user.uid}}</h4>
-                        <h4>Nombre: {{user.displayName}}</h4>
-                        <h4>Cargo: {{user.power}} </h4>  
+                        <p><span class="special">ID:</span> {{user.uid}}</p>
+                        <p><span class="special">Nombre:</span>{{user.displayName}}</p>
+                        <p><span class="special">Cargo Actual:</span>{{user.power}} </p>  
                     </div>
                     <div class='card-footer'>
                         <button type="button" class="btn btn-danger disablebtn" (click)="setRole(user.uid,'user')" *ngIf="user.power != 'user' ">Asignar usuario</button>
