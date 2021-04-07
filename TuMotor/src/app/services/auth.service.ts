@@ -154,6 +154,7 @@ export class NgAuthService {
         displayName: user.displayName,
         photoURL: user.photoURL,
         emailVerified: user.emailVerified,
+        'power':'user',
       }
       console.log(user.photoURL);
 
