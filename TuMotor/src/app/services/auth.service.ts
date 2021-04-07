@@ -104,7 +104,7 @@ export class NgAuthService {
          this.ngZone.run(() => {
             document.getElementById('modalclosebutton').click();
           })
-        this.SetUserData(result.user);
+        this.SetUserDataR(result.user);
         this.redirectTo('userhome');
       }).catch((error) => {
         window.alert(error)
@@ -154,7 +154,6 @@ export class NgAuthService {
         displayName: user.displayName,
         photoURL: user.photoURL,
         emailVerified: user.emailVerified,
-        'power':'user',
       }
       console.log(user.photoURL);
 
