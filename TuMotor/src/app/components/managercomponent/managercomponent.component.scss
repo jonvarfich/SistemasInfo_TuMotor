@@ -50,11 +50,33 @@
   }
 
   h3 {
-    background: $blueProject;
+    background-color: $blueProject;
     padding: 10px;
     border-radius: 17px;
-    color: #f7f7f7;
-    font-size: 2vw;
+    color: $light;
+    font-weight: bold;
+    font-size: 25px;
+    text-align: center;
+
+    p{
+      align-self: center;
+      margin: 0;
+    }
+
+    button{
+      background-color: $lightBlue;
+      color: $blueProject;
+      border: solid;
+      border-color: $blueProject;
+      border-radius: 10px;
+      font-weight: bold;
+      width: 180px;
+      margin: 5px;
+
+      &:hover{
+        background-color: $greenProjectIntense;
+      }
+    }
   }
 
   .lista {
@@ -65,10 +87,41 @@
     .card-header {
       background: none;
       color: $blueProject;
-      margin: 0;
-      border-bottom: solid;
+      margin: 0;      
+      border: solid;      
       border-color: $blueProject;
+      border-bottom: none;
+
+      p{
+        font-size: 20px;
+        margin: 0;
+        font-weight: bold;
+      }
     }
+
+    .card-body{
+      border: solid;      
+      border-color: $blueProject;
+
+      .special{
+        color: $blueProject;
+        font-weight: bold;
+      }
+
+      .form-group{
+        margin: 0;
+        padding: 0;
+
+        .btn{
+          margin-top: 10px;
+          background-color: $blueProject;
+          color: $light;
+          border: none;
+          width: 100%;
+        }
+      }
+    }
+
   }
 
   .card-footer {

@@ -4,25 +4,25 @@
         
         <div class="card-body"> 
 
-            <h3>Panel del Gerente
-
-                <button type="button" class="btn btn-success btn-manager" *ngIf = "this.DateShow != 'responded'" (click)="this.DateShow = 'responded'">Citas Respondidas</button>
+            <h3>
+                <p>Panel de Gerente</p>
+                <button type="button" class="btn btn-success btn-manager" *ngIf = "this.DateShow != 'responded'" (click)="this.DateShow = 'responded'">Citas respondidas</button>
                 <button type="button" class="btn btn-success btn-manager" *ngIf = "this.DateShow != 'requested'" (click)="this.DateShow = 'requested'">Citas pedidas</button>
                 <button type="button" class="btn btn-success btn-manager" *ngIf = "this.DateShow != 'accepted'" (click)="this.DateShow = 'accepted'">Citas aceptadas</button>
                 <button type="button" class="btn btn-success btn-manager" *ngIf = "this.DateShow != 'rejected'" (click)="this.DateShow = 'rejected'">Citas rechazadas</button>
-                <button type="button" class="btn btn-success btn-manager" *ngIf = "this.DateShow != 'repaired'" (click)="this.DateShow = 'repaired'">Ordenes reparadas</button>
-    
+                <button type="button" class="btn btn-success btn-manager" *ngIf = "this.DateShow != 'repaired'" (click)="this.DateShow = 'repaired'">Ordenes reparadas</button>    
             </h3>       
 
             <div class= 'lista' *ngFor="let appointment of  Appointments">
 
-                <div *ngIf="appointment.status == 'requested' && this.DateShow == 'requested' && managerID != appointment.UserUid">'
+                <div *ngIf="appointment.status == 'requested' && this.DateShow == 'requested' && managerID != appointment.UserUid">
                     <div class='card-header'>
                         <p class = "title">Usuario: {{ UserName(appointment.UserUid) }}</p>
                     </div>
                     <div class='card-body'>
                         <p><span class = "special">Estado:</span> {{appointment.status}}</p>
                         <p><span class = "special">Nota:</span> {{appointment.Note}}</p>
+                        <p>Por favor seleccione una <span class = "special">fecha tentativa</span> para la cita: </p>
                         <div class="form-group">
                             <input type="datetime-local" class="form-control" required="required" #Date required ngModel>
                             <input type="button" class="btn btn-primary pull-right" value="Enviar fecha" (click)="setDateProposal(appointment.uid,Date.value)">
@@ -32,44 +32,48 @@
 
                 <div *ngIf="appointment.status == 'responded' && this.DateShow == 'responded' && managerID != appointment.UserUid">'
                     <div class='card-header'>
-                        <h2>Usuario: {{ UserName(appointment.UserUid) }}</h2>
-
+                        <p class = "title">Usuario: {{ UserName(appointment.UserUid) }}</p>
                     </div>
-                    <div class='card-body'><h4>Estado:</h4> {{appointment.status}}</div>
                     <div class='card-body'>
-                        <h4>Nota:</h4> {{appointment.Note}}
+                        <p><span class = "special">Estado:</span> {{appointment.status}}</p>
+                        <p><span class = "special">Nota:</span> {{appointment.Note}}</p>
+                        <p><span class = "special">Fecha tentiva:</span> {{appointment.Date | date}}</p>
                     </div>
                 </div>
 
                 <div *ngIf="appointment.status == 'accepted' && this.DateShow == 'accepted' && managerID != appointment.UserUid">'
                     <div class='card-header'>
-                        <h2>Usuario: {{ UserName(appointment.UserUid) }}</h2>
-
+                        <p class = "title">Usuario: {{ UserName(appointment.UserUid) }}</p>
                     </div>
-                    <div class='card-body'><h4>Estado:</h4> {{appointment.status}}</div>
                     <div class='card-body'>
-                        <h4>Nota:</h4> {{appointment.Note}}
+                        <p><span class = "special">Estado:</span> {{appointment.status}}</p>
+                        <p><span class = "special">Nota:</span> {{appointment.Note}}</p>
+                        <p><span class = "special">Fecha:</span> {{appointment.Date | date}}</p>
                     </div>
                 </div>
 
                 <div *ngIf="appointment.status == 'rejected' && this.DateShow == 'rejected' && managerID != appointment.UserUid">'
                     <div class='card-header'>
-                        <h2>Usuario: {{ UserName(appointment.UserUid) }}</h2>
-
+                        <p class = "title">Usuario: {{ UserName(appointment.UserUid) }}</p>
                     </div>
-                    <div class='card-body'><h4>Estado:</h4> {{appointment.status}}</div>
                     <div class='card-body'>
-                        <h4>Nota:</h4> {{appointment.Note}}
+                        <p><span class = "special">Estado:</span> {{appointment.status}}</p>
+                        <p><span class = "special">Nota:</span> {{appointment.Note}}</p>
+                        <p><span class = "special">Fecha anterior:</span> {{appointment.Date | date}}</p>
+                        <p>Por favor seleccione una <span class = "special">nueva fecha tentativa</span> para la cita: </p>
+                        <div class="form-group">
+                            <input type="datetime-local" class="form-control" required="required" #Date required ngModel>
+                            <input type="button" class="btn btn-primary pull-right" value="Enviar fecha" (click)="setDateProposal(appointment.uid,Date.value)">
+                        </div>
                     </div>
                 </div>
 
                 <div *ngIf="appointment.Completed == 'repaired' && this.DateShow == 'repaired' && managerID != appointment.UserUid">'
                     <div class='card-header'>
-                        <h2>Usuario: {{ UserName(appointment.UserUid) }}</h2>
+                        <p class = "title">Usuario: {{ UserName(appointment.UserUid) }}</p>
                     </div>
-                    <div class='card-body'><h4>Estado:</h4> {{appointment.status}}</div>
                     <div class='card-body'>
-                        <h4>Nota:</h4> {{appointment.Note}}
+                        <p class = "title">Usuario: {{ UserName(appointment.UserUid) }}</p>
                         <input type="button" value="Terminar" (click)="Terminate(appointment.uid)"/>
                     </div>
                 </div>

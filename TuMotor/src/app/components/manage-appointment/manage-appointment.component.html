@@ -12,7 +12,7 @@ escaneo appointment primera vez -->
 <section *ngIf="this.isInDb()" class = "infoPV">
     <h1>Buscador de Órdenes de Reparación</h1>
     <div class = "data">
-        <p class = "title">Datos de la Órden de Reparación</p>
+        <p class = "title">Datos de la Orden de Reparación</p>
         <div *ngIf = "this.appointment != null">
             <p><span class="special">ID de la cita: </span> {{this.appointment.uid}}</p>
         </div>    
@@ -41,8 +41,9 @@ escaneo appointment primera vez -->
 <section *ngIf="!this.isInDb()" class = "infoC">
     <h1>Buscador de Órdenes de Reparación</h1>
     <div class = "data">    
-        <p class = "title">Datos de la Órden de Reparación</p>   
+        <p class = "title">Datos de la Orden de Reparación</p>   
         <p><span class="special">ID de la cita: </span> {{this.appointment.uid}}</p>
+        <p><span class="special">Estado de la reparación: </span> {{this.appointment.status}}</p>
         <p><span class="special">Usuario: </span> {{user.displayName}}</p>
         <p><span class="special">Nota del usuario: </span> {{appointment.Note}}</p>
         <p><span class="special">Marca del vehículo: </span> {{vehicle.marca}}</p>
@@ -55,6 +56,14 @@ escaneo appointment primera vez -->
         <p><span class="special">Llaves: </span>{{this.appointment.Keys}}</p>
         <p><span class="special">ID de la cita: </span>{{this.appointment.Player}}</p>
         <p><span class="special">Herramientas: </span>{{this.appointment.Tools}}</p>
+
+        <!-- Me gustaría que si la orden ya está reparada no se pueda modificar más, que el botón actualizar y el botón finaliza no aparezcan
+
+        <div *ngIf="{{this.appointment.status}}=='repaired'" class = "dataR">
+            <p><span class="special">Proceso de Reparación: </span>{{this.appointment.Process}}</p>
+            <p><span class="special">Repuestos Necesarios: </span>{{this.appointment.Fixed}}</p>
+            <p><span class="special">Diagnóstico: </span>{{this.appointment.Diagnostic}}</p>
+        </div>-->
 
         <div class = "botones">
             <input type="button" value="Actualizar" (click)="this.edit = !this.edit">         
