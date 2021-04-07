@@ -16,7 +16,6 @@ export class AuthenticationGuard implements CanActivate {
       return true;
     }
     else{
-      window.alert('access denied');
       this.ngAuthService.redirectTo('home')
       return false;
     }
