@@ -1,0 +1,186 @@
+@import "../../styles/variables.scss";
+
+.infoNF {
+  background: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    color: $blueProject;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  p {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  input {
+    background-color: $blueProject;
+    color: $light;
+    border: none;
+    height: 30px;
+    width: 250px;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: $blueProjectIntense;
+    }
+  }
+}
+
+.infoPV {
+  background: none;
+
+  h1 {
+    color: $blueProject;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  .data {
+    margin: 10px;
+    border: solid;
+    border-color: $blueProject;
+    border-radius: 10px;
+    background-color: $light;
+    padding: 10px;
+
+    .title {
+      background: none;
+      font-size: 25px;
+      color: $blueProject;
+      font-weight: bold;
+      text-align: center;
+      border-bottom: solid;
+      border-color: $blueProject;
+    }
+    p {
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+
+    .special {
+      font-weight: bold;
+      color: $blueProject;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+
+    label {
+      font-weight: bold;
+      color: $blueProject;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+
+      input {
+        background-color: $blueProject;
+        color: $light;
+        border: none;
+        height: 30px;
+        border-radius: 5px;
+        width: 100%;
+
+        &:hover {
+          background-color: $blueProjectIntense;
+        }
+      }
+    }
+  }
+}
+
+.infoC {
+  background: none;
+
+  h1 {
+    color: $blueProject;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  .title {
+    background: none;
+    font-size: 25px;
+    color: $blueProject;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: solid;
+    border-color: $blueProject;
+  }
+
+  .data {
+    margin: 10px;
+    border: solid;
+    border-color: $blueProject;
+    border-radius: 10px;
+    background-color: $light;
+    padding: 10px;
+
+    .special {
+      font-weight: bold;
+      color: $blueProject;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+
+    .botones {
+      input {
+        background-color: $blueProject;
+        color: $light;
+        border: none;
+        height: 30px;
+        width: 200px;
+        border-radius: 5px;
+        margin-left: 5px;
+        margin-right: 5px;
+
+        &:hover {
+          background-color: $blueProjectIntense;
+        }
+      }
+    }
+
+    .mod {
+      margin-top: 10px;
+      padding-top: 5px;
+      background-color: $blueProject;
+      color: $light;
+      border-radius: 10px;   
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      label {
+        font-weight: bold;
+        color: $light;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 5px;
+      }
+
+      input {
+        background-color: $light;
+        color: $blueProject;
+        border: none;
+        height: 30px;        
+        border-radius: 5px;
+        margin: 5px;
+        width: 300px;
+
+        &:hover {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}

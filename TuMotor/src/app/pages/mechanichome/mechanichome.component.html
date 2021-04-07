@@ -2,15 +2,19 @@
 
 <section class="big-box" *ngIf="!qrResultString">
 
-      
+    <h1>Buscador de Órdenes de Reparación</h1>
       
     <!-- pueden cambiar el css pero esa linea es caca NO SE MODIFICA -->
     <zxing-scanner #scanner class="test-class" start="true" [device]="selectedDevice" (scanSuccess)="handleQrCodeResult($event)"></zxing-scanner>
 
     <!-- este bloque también es caca -->
+    
       <div class="form-group">
-        <input type="text" placeholder="appointment id" #Aid required ngModel>
-        <input type="button" value="Enviar" (click)="InputAid(Aid.value)">
+        <p>Si no se activa el acceso al escáner a través de la cámara, por favor ingrese el ID de la cita directamente:</p>
+        <input type="text" placeholder="ID de la orden" #Aid required ngModel>
+        <div class="btne">
+          <input type="button" value="Buscar" (click)="InputAid(Aid.value)">
+        </div>        
       </div>
 
 </section>

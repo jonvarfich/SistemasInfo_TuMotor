@@ -2,10 +2,14 @@
 //https://mdbootstrap.com/docs/b4/jquery/modals/forms/
 
 .header {
-  font-size: 10vh;
+  font-size: 6vw;
   border: none;
   background: none;
   text-align: center;
+}
+
+h2{
+  margin-top: 10px;
 }
 .card {
   background-color: $lightShadow;
@@ -75,23 +79,41 @@
   }
 
   .lista {
-    background: $light;
+    background: $light; 
 
     .car-card {
       display: flex;
-      .foto {
-        align-self: center;
+      align-items: center;
+      align-content: center;
+      
+      
+        .foto {
+          align-self: center;
+          float: right;
+        }
+      
+      
+      .card-header {
+        background: $light;
+        color: $blueProject;
+        width:90vw;
+        border: solid;
+        border-color: $blueProject;
+        font-size: 20px;
+        font-weight: bold;
       }
       .card-footer {
         border: none;
-        height: 40px;
         background: none;
+        display: flex;
+        flex-direction: column-reverse;
 
         button {
           background-color: $lightBlue;
           border-radius: 5px;
           border: none;
           margin: 5px;
+          width: 100px;
 
           &:hover {
             background-color: $lightBlueIntense;
@@ -99,23 +121,17 @@
         }
       }
     }
-    .card-header {
-      background: $light;
-      color: $blueProject;
-      width: 90vw;
-      border-color: $blueProject;
-      font-size: 20px;
-      font-weight: bold;
-    }
 
-    .datecard {
+
+    .datecard {      
       width: 100%;
 
-      .carta {
+
+      .carta {        
         border-style: solid;
         border-color: $blueProject;
-        margin: 10px 10px 10px 10px;
-        border-radius: 5px;
+        margin: 10px;
+        border-radius: 5px;  
 
         .card-header {
           font-size: 20px;
@@ -123,20 +139,65 @@
         }
 
         .card-body {
+          display: flex;
+          flex-direction: column;
+          align-content: center;
           .special {
             color: $blueProject;
             font-weight: bold;
           }
         }
 
-        button {
-          background-color: $blueProject;
-          color: $light;
-          font-weight: bold;
+        .botones{
+          display: flex;
+          flex-direction: column;
+          align-items: center;          
+            button {
+              margin-bottom: 10px;
+              width: 97%;
+              margin-left: 10px;
+              margin-right: 10px;
+              background-color: $blueProject;
+              color: $light;
+              font-weight: bold;             
+              
+              &:hover {
+                background-color: $blueProjectIntense;
+              }
+            }
+        }
+      }
+    }
 
-          &:hover {
-            background-color: $blueProjectIntense;
-          }
+    .actualizarCar{
+      margin-top: 10px;
+      border: solid;
+      border-color: $blueProject;
+      border-radius: 10px;      
+
+      .modal-header{
+
+        display: flex;
+        align-items: center;
+        background-color: $blueProject;
+        color: $light;  
+
+        button{
+          background-color: $blueProject;
+          border: none;
+          color: $light;
+          font-size: 30px;
+        }
+      }
+
+      .modal-body{
+        label{
+          color: $blueProject;
+          font-weight: bold;
+        }
+
+        .modify-btn{
+          margin-top: 10px;        
         }
       }
     }
@@ -146,12 +207,13 @@
     h3 {
       font-weight: bold;
       text-align: center;
-      display: wrap;
+      display: wrap;      
       button {
-        margin-right: 20px;
+        margin: 5px;
         background-color: $greenProjectIntense;
         color: $light;
         font-weight: bold;
+        width: 200px;
 
         &:hover {
           background-color: $greenProject;

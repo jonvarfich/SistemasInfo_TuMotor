@@ -11,8 +11,9 @@
       <div class="user-data">
         <img
           src="{{ user.photoURL }}"
-          class="img-fluid rounded-circle img-thumbnail flex-left"
-          alt="Foto de Perfil"
+          class="img-fluid rounded-circle img-thumbnail"
+          alt="Foto de Perfil "
+          width="250px"
         />
       </div>
       <div class="user-data">
@@ -61,46 +62,46 @@
               >
                 Desactivar
               </button>
-            </div>
-            <div class="card-footer">
               <button type="button" (click)="this.mod = vehicle.uid" class="btn btn-danger disablebtn">
                 Modificar
               </button>
-            </div>
+            </div>           
           </div>
           <div class="car-card">
-            <div class="foto">
-              <img
-                src="{{ vehicle.foto }}"
-                class="img-fluid rounded-circle img-thumbnail"
-                width="250px"
-                alt="Foto del vehículo"
-              />
-            </div>
-            <div>
-              <div class="user-data">
-                <span class="special">Marca:</span> {{ vehicle.marca }}
+            
+              <div class="foto">
+                <img
+                  src="{{ vehicle.foto }}"
+                  class="img-fluid rounded-circle img-thumbnail"
+                  width="250px"
+                  alt="Foto del vehículo"
+                />
               </div>
-              <div class="user-data">
-                <span class="special">Color:</span> {{ vehicle.color }}
+              <div>
+                <div class="user-data">
+                  <span class="special">Marca:</span> {{ vehicle.marca }}
+                </div>
+                <div class="user-data">
+                  <span class="special">Color:</span> {{ vehicle.color }}
+                </div>
+                <div class="user-data">
+                  <span class="special">Placa:</span> {{ vehicle.placa }}
+                </div>
+                <div class="user-data">
+                  <span class="special">Año:</span> {{ vehicle.year }}
+                </div>
+                <div class="user-data">
+                  <span class="special">Fecha de registro:</span>
+                  {{ vehicle.DateRegistry.toDate() | date }}
+                </div>
               </div>
-              <div class="user-data">
-                <span class="special">Placa:</span> {{ vehicle.placa }}
-              </div>
-              <div class="user-data">
-                <span class="special">Año:</span> {{ vehicle.year }}
-              </div>
-              <div class="user-data">
-                <span class="special">Fecha de registro:</span>
-                {{ vehicle.DateRegistry.toDate() | date }}
-              </div>
-            </div>
+                       
           </div>
 
           <!-- modificar -->
-          <div *ngIf= "this.mod == vehicle.uid">
+          <div *ngIf= "this.mod == vehicle.uid" class = "actualizarCar">
                   <div class="modal-header" method="post">
-                    <h4 class="modal-title">Actualización de los Datos del vehiculo</h4>
+                    <h4 class="modal-title">Actualización de los Datos del Vehiculo: {{vehicle.name}}</h4>
                     <button
                       id="modalclosebutton"
                       type="button"
@@ -114,7 +115,14 @@
                   <div class="modal-body">
                     <form method="POST">
                       <div class="form-group">
-                        <label>Nombre de vehiculo</label>
+
+                        <label>Foto del vehiculo</label>
+                        <div class="imagen">                          
+                          <input type="file" (change)="uploadFileV($event)" />
+                          <p>Subiendo la imagen: {{ uploadPercent | async }} %</p>
+                        </div>
+                        
+                        <label>Nombre del vehiculo</label>
                         <input
                           type="text"
                           class="form-control"
@@ -126,10 +134,11 @@
                         <input
                           type="text"
                           class="form-control"
+                          placeholder="ACDC23"
                           required="true"
                           #placa
                         />
-                        <label>color</label>
+                        <label>Color</label>
                         <input
                           type="text"
                           class="form-control"
@@ -137,17 +146,7 @@
                           required="true"
                           #color
                         />
-                        
-                        <label>Foto del vehiculo</label>
-                        <div class="imagen">
-                          <img
-                            src="{{ downloadURL | async }}"
-                            class="img-fluid rounded-circle img-thumbnail"
-                          />
-                          <input type="file" (change)="uploadFileV($event)" />
-                          Subiendo la imagen: {{ uploadPercent | async }} %
-                        </div>
-              
+
                         <div class="modify-btn">
                           <button
                             type="submit"
@@ -159,6 +158,7 @@
                             Guardar cambios
                           </button>            
                         </div>
+                        
                       </div>
                     </form>
    
@@ -205,14 +205,16 @@
                 <div class="card-body">
                   <p><span class="special">Status: </span> respondida</p>
                   <p><span class="special">Nota: </span> {{ appointment.Note }}</p>
-                  <p><span class="special">Fecha Asignada: </span> {{ appointment.Date.toDate() }}</p>
+                  <p><span class="special">Fecha Asignada: </span> {{ appointment.Date | date}}</p>
                 </div>
-                <button type="button" class="btn btn-success" (click)="AcceptDate(appointment.uid)">
-                Aceptar Fecha
-                </button>
-                <button type="button" class="btn btn-danger" (click)="RejectDate(appointment.uid)">
-                Rechazar Fecha
-                </button>
+                <div class = "botones">
+                  <button type="button" class="btn btn-success" (click)="AcceptDate(appointment.uid)">
+                    Aceptar Fecha
+                  </button>                 
+                  <button type="button" class="btn btn-danger" (click)="RejectDate(appointment.uid)">
+                    Rechazar Fecha
+                  </button>
+                </div>   
               </div>            
           </div>
           <div *ngIf="appointment.status == 'requested' && appointment.UserUid == user.uid && this.DateShow == 'requested'">      
@@ -236,7 +238,7 @@
               <div class="card-body">
                 <p><span class="special">Status: </span> aceptada</p>
                 <p><span class="special">Nota: </span> {{ appointment.Note }}</p>
-                <p><span class="special">Fecha Asignada: </span> {{ appointment.Date.toDate() }}</p>
+                <p><span class="special">Fecha Asignada: </span> {{ appointment.Date | date }}</p>
               </div>
             </div>
             
@@ -251,7 +253,7 @@
               <div class="card-body">
                 <p><span class="special">Status: </span> rechazada</p>
                 <p><span class="special">Nota: </span> {{ appointment.Note }}</p>
-                <p><span class="special">Fecha Asignada: </span> {{ appointment.Date.toDate() }}</p>
+                <p><span class="special">Fecha Asignada: </span> {{ appointment.Date | date }}</p>
               </div>
             </div>            
           </div>

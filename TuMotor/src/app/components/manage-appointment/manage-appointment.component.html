@@ -1,66 +1,85 @@
-<section *ngIf= '!this.appointment'>
+<section *ngIf= '!this.appointment' class="infoNF">
 
-    appointment not found
+    <h1>Buscador de Órdenes de Reparación</h1>
+    <p>No se han encontrado coincidencias para la orden de reparación ingresada</p>
     <input type="button" value="Escanear otra orden" (click)='Reload()'>
+    
 
 </section>
 
 <!-- 
 escaneo appointment primera vez -->
-<section *ngIf="this.isInDb()">
-
-    <div *ngIf = "this.appointment != null">
-        <h1>ID de la cita:</h1>{{appointment.uid}}<br>
-    </div>
-    
-    <h1>Usuario: </h1>{{user.displayName}}<br>
-    <h1>Nota del Usuario: </h1><p>{{appointment.Note}}</p><br>
-    <h1>Marca del vehículo: </h1>{{vehicle.marca}}<br>
-    <h1>Serial del motor: </h1>{{vehicle.serial}}<br>
-    <h1>Placa: </h1>{{vehicle.serial}}<br>
-    <h1>Color: </h1>{{vehicle.color}}<br>  
-
-
-    <input [(ngModel)]="BackupTire" [checked]="this.BackupTire" (change)="this.BackupTire != this.BackupTire" id="BackupTire" type="checkbox"/><label for="tire">Llanta de repuesto</label><br>
-    <input [(ngModel)]="Keys" [checked]="this.Keys" (change)="this.Keys != this.Keys"id="Keys" type="checkbox"/><label for="Keys">llaaves</label><br>
-    <input [(ngModel)]="Cat" [checked]="this.Cat" (change)="this.Cat!= this.Cat" id="Cat"type="checkbox"/><label for="Cat">Gato</label><br>
-    <input [(ngModel)]="Player" [checked]="this.Player" (change)="this.Player != this.Player"id="Player"type="checkbox"/><label for="Player">Reproductor</label><br>
-    <input [(ngModel)]="Tools" [checked]="this.Tools" (change)="this.Tools != this.Tools"id="Tools"type="checkbox"/><label for="Tools">Herramientas</label><br>
-
-    <input type="number" #Gas required ngModel> <label for="Gas">Nivel gasolina</label>
-
-    <input type="button" value="Enviar" (click)="setRepairOrder(Gas.value)">
-
+<section *ngIf="this.isInDb()" class = "infoPV">
+    <h1>Buscador de Órdenes de Reparación</h1>
+    <div class = "data">
+        <p class = "title">Datos de la Órden de Reparación</p>
+        <div *ngIf = "this.appointment != null">
+            <p><span class="special">ID de la cita: </span> {{this.appointment.uid}}</p>
+        </div>    
+        <p><span class="special">Usuario: </span> {{this.user.displayName}}</p>
+        <p><span class="special">Nota del usuario: </span> {{appointment.Note}}</p>
+        <p><span class="special">Marca del vehículo: </span> {{vehicle.marca}}</p>
+        <p><span class="special">Serial del motor: </span> {{vehicle.serial}}</p>
+        <p><span class="special">Placa del vehículo: </span> {{vehicle.placa}}</p>
+        <p><span class="special">Color: </span> {{vehicle.color}}</p>
+        <p>Ingrese el valor del nivel de gasolina: </p>
+        <p><label for="Gas">Nivel gasolina</label> <input type="number" #Gas required ngModel> </p>
+        <p>Seleccione entre estos accesorios para dejar constancia de entrega al taller: </p>
+        <p><input [(ngModel)]="BackupTire" [checked]="this.BackupTire" (change)="this.BackupTire != this.BackupTire" id="BackupTire" type="checkbox"/><label for="tire"> Llanta de repuesto</label></p>
+        <p><input [(ngModel)]="Keys" [checked]="this.Keys" (change)="this.Keys != this.Keys"id="Keys" type="checkbox"/><label for="Keys"> Llaves del vehículo</label></p>
+        <p><input [(ngModel)]="Cat" [checked]="this.Cat" (change)="this.Cat!= this.Cat" id="Cat"type="checkbox"/><label for="Cat"> Gato mecánico</label></p>
+        <p><input [(ngModel)]="Player" [checked]="this.Player" (change)="this.Player != this.Player"id="Player"type="checkbox"/><label for="Player"> Reproductor de sonido</label></p>
+        <p><input [(ngModel)]="Tools" [checked]="this.Tools" (change)="this.Tools != this.Tools"id="Tools"type="checkbox"/><label for="Tools"> Herramientas de reparación</label></p>
+        <div class = "btn">
+            <input type="button" value="Enviar Datos" (click)="setRepairOrder(Gas.value)">
+        </div>        
+    </div>    
 </section>
 
 
 <!-- escaneo appointment consulta -->
-<section *ngIf="!this.isInDb()">
-    <h4>ID de la cita:</h4>{{this.appointment.uid}}<br>
-    <h4>Usuario: </h4>{{user.displayName}}<br>
-    <h4>Nota del Usuario: </h4><p>{{appointment.Note}}</p><br>
-    <h4>Marca del vehículo: </h4>{{vehicle.marca}}<br>
-    <h4>Serial del motor: </h4>{{vehicle.serial}}<br>
-    <h4>Placa: </h4>{{vehicle.serial}}<br>
-    <h4>Color: </h4>{{vehicle.color}}<br>
-    <h4>Gas: </h4>{{this.appointment.Gas}}<br>
-    <h4>Nota del cliente:</h4>{{this.appointment.Note}}<br>
-    <h4>Llanta de repuesto</h4>{{this.appointment.BackupTire}}<br>
-    <h4>gato</h4>{{this.appointment.Cat}}<br>
-    <h4>Llaves</h4>{{this.appointment.Keys}}<br>
-    <h4>Reproductor</h4>{{this.appointment.Player}}<br>
-    <h4>Herramientas</h4>{{this.appointment.Tools}}<br>
+<section *ngIf="!this.isInDb()" class = "infoC">
+    <h1>Buscador de Órdenes de Reparación</h1>
+    <div class = "data">    
+        <p class = "title">Datos de la Órden de Reparación</p>   
+        <p><span class="special">ID de la cita: </span> {{this.appointment.uid}}</p>
+        <p><span class="special">Usuario: </span> {{user.displayName}}</p>
+        <p><span class="special">Nota del usuario: </span> {{appointment.Note}}</p>
+        <p><span class="special">Marca del vehículo: </span> {{vehicle.marca}}</p>
+        <p><span class="special">Serial del motor: </span> {{vehicle.serial}}</p>
+        <p><span class="special">Placa del vehículo: </span> {{vehicle.placa}}</p>
+        <p><span class="special">Color: </span> {{vehicle.color}}</p>
+        <p><span class="special">Gas: </span> {{this.appointment.Gas}}</p>
+        <p><span class="special">Llanta de repuesto: </span>{{this.appointment.BackupTire}}</p>
+        <p><span class="special">Gato: </span>{{this.appointment.Cat}}</p>
+        <p><span class="special">Llaves: </span>{{this.appointment.Keys}}</p>
+        <p><span class="special">ID de la cita: </span>{{this.appointment.Player}}</p>
+        <p><span class="special">Herramientas: </span>{{this.appointment.Tools}}</p>
 
-    <input type="button" value="Actualizar" (click)="this.edit = !this.edit"> <br>
-    <input type="button" value="Finalizar" (click)="FinalOrder()">
-    <input type="button" value="Escanear otra orden" (click)='Reload()'>
+        <div class = "botones">
+            <input type="button" value="Actualizar" (click)="this.edit = !this.edit">         
+            <input type="button" value="Finalizar" (click)="FinalOrder()">        
+            <input type="button" value="Escanear otra orden" (click)='Reload()'>
+        </div>
 
-    <div *ngIf="this.edit == true">
-        <label for="Process">Procedimiento Aplicado</label><input type="text" #Process required ngModel> <br>
-        <label for="Process">Repuestos Necesarios</label><input type="text" #Fixes required ngModel> <br>
-        <label for="Process">Diagnostico</label><input type="text" #Diagnostic required ngModel> <br>
-        <input type="button" value='Enviar' (click)="UpdateRepair(Process.value,Fixes.value,Diagnostic.value); this.edit = !this.edit">
+        <div *ngIf="this.edit == true" class = "mod">
+            <div>
+                <label for="Process">Procedimiento Aplicado</label>
+                <input type="text" #Process required ngModel>
+            </div>
+            <div>
+                <label for="Process">Repuestos Necesarios</label>
+                <input type="text" #Fixes required ngModel> 
+            </div>
+            <div>
+                <label for="Process">Diagnóstico</label>
+                <input type="text" #Diagnostic required ngModel> 
+            </div>
+            
+            <input type="button" value='Actualizar Orden de Reparación' (click)="UpdateRepair(Process.value,Fixes.value,Diagnostic.value); this.edit = !this.edit">
+        </div>
     </div>
+    
 
 </section>
 
